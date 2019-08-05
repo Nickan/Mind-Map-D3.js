@@ -1,0 +1,6 @@
+Todo
+  Drag screen
+  Drag node
+  Show text input
+  Text wrapping
+  
