@@ -6,7 +6,6 @@ class ElonComponent {
     return d3.json('flare.json')
     .then((json) => {
       let ec = new ElonComponent();
-      ec.init(json);
 
       let margin = {
         top: 20,
@@ -25,17 +24,16 @@ class ElonComponent {
         .append('svg')
         .attr('width', width + margin.right + margin.left)
         .attr('height', height + margin.top + margin.bottom)
-        
         .append('g')
         .attr('transform', "translate("
           + margin.left + "," + margin.top + ")");
 
       let root;
 
-      let treemap = d3.tree()
-        .size([height, width]);
       // let treemap = d3.tree()
-      //   .nodeSize([30, 140]);
+      //   .size([height, width]);
+      let treemap = d3.tree()
+        .nodeSize([30, 140]);
 
       root = d3.hierarchy(json, function(d) { return d.children; });
       root.x0 = height / 2;
