@@ -129,6 +129,7 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
   // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
   var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
+  // Note: This is for dragging the node to select a new parent
   function initiateDrag(d, domNode) {
       draggingNode = d;
       d3.select(domNode).select('.ghostCircle').attr('pointer-events', 'none');
