@@ -4,3 +4,11 @@ Todo
   Show text input
   Text wrapping
   
+Drag screen
+  Study how to drag the whole svg?
+  Replan after
+
+
+
+Always have a plan
+Break down challenges into manageable pieces

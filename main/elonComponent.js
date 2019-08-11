@@ -5,8 +5,6 @@ class ElonComponent {
   init() {
     return d3.json('flare.json')
     .then((json) => {
-      let ec = new ElonComponent();
-
       let margin = {
         top: 20,
         right: 90,
@@ -20,7 +18,7 @@ class ElonComponent {
       // let width = 960 - margin.left - margin.right;
       // let height = 500 - margin.top - margin.bottom;
 
-      let svg = d3.select('body')
+      let treeContainer = d3.select('#tree-container')
         .append('svg')
         .attr('width', width + margin.right + margin.left)
         .attr('height', height + margin.top + margin.bottom)
@@ -28,6 +26,7 @@ class ElonComponent {
         .attr('transform', "translate("
           + margin.left + "," + margin.top + ")");
 
+      console.log(treeContainer);
       let root;
 
       // let treemap = d3.tree()
@@ -39,14 +38,14 @@ class ElonComponent {
       root.x0 = height / 2;
       root.y0 = 0;
 
-      root.svg = svg;
+      root.treeContainer = treeContainer;
       root.treemap = treemap;
       return root;
     });
   }
 
   update(source, root) {
-    let svg = root.svg;
+    let treeContainer = root.treeContainer;
     let treemap = root.treemap;
 
     // Assigns the x and y position for the nodes
@@ -66,7 +65,7 @@ class ElonComponent {
     let i = 0,
       duration = 750;
     // Update the nodes...
-    var node = svg.selectAll('g.node')
+    var node = treeContainer.selectAll('g.node')
         .data(nodes, function(d) {return d.id || (d.id = ++i); });
   
     // Enter any new modes at the parent's previous position.
@@ -136,7 +135,7 @@ class ElonComponent {
     // ****************** links section ***************************
   
     // Update the links...
-    var link = svg.selectAll('path.link')
+    var link = treeContainer.selectAll('path.link')
         .data(links, function(d) { return d.id; });
   
     // Enter any new links at the parent's previous position.
