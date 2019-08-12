@@ -38,9 +38,15 @@
 }
 
 
-
+#tree-container {
+  background-color: #151515;
+}
 #text-input {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+.text-rect {
+  fill: rgba(0, 0, 0, 0)
 }
