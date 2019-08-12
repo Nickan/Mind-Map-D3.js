@@ -1,15 +1,27 @@
+
+let elonComponent;
+let dragManager;
 start();
 
 function start() {
-  let ec = new ElonComponent();
-  let dm = new DragManager();
-  ec.init()
+  elonComponent = new ElonComponent();
+  dragManager = new DragManager();
+  elonComponent.init()
   .then((root) => {
-    return ec.update(root, root);
+    return elonComponent.update(root, root);
   })
   .then((root) => {
     // console.log('testing1');
-    dm.init(root);
+    dragManager.init(root);
   });
 
+  document.addEventListener("keypress", function onEvent(e) {
+    // console.log(e.key);
+    switch (e.key) {
+      case "Enter": elonComponent.processTextInput();
+      break;
+      default:
+    }
+  });
+  
 }
