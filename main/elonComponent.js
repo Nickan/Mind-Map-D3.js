@@ -1,5 +1,6 @@
 class ElonComponent {
   constructor() {
+    this.textManager = new TextManager();
   }
 
   init() {
@@ -46,6 +47,8 @@ class ElonComponent {
   }
 
   update(source, root) {
+    this.root = root;
+    console.log(source);
     let treeContainer = root.treeContainer;
     let treemap = root.treemap;
 
@@ -76,7 +79,7 @@ class ElonComponent {
     var nodeEnter = node.enter().append('g')
       .attr('class', 'node')
       .attr('id', function(d) {
-        return d.id;
+        return "g-" + d.id;
       })
       .attr("transform", function(d) {
         return "translate(" + source.y0 + "," + source.x0 + ")";
@@ -91,11 +94,12 @@ class ElonComponent {
           return d._children ? "lightsteelblue" : "#fff";
       })
       .on('click', (d) => {
-        click(d, root, this.update);
+        click(d, root, this);
       });
     
     let rWidth = 100;
     let rHeight = 25;
+    let textManager = this.textManager;
     nodeEnter.append("rect")
       .attr("width", rWidth)
       .attr("height", rHeight)
@@ -104,14 +108,13 @@ class ElonComponent {
         return rHeight * -0.5;
       })
       .attr('class', 'text-rect')
-      .on('dblclick', (d) => {
-        jQuery(`#tree-container`).prepend(`
-          <input type="text" id="text-input" />
-        `);
+      .on('dblclick', function(d) {
+        textManager.onOpenTextEdit(this, d);
       });
   
     // Add labels for the nodes
     nodeEnter.append('text')
+      .attr('class', 'node')
       .attr("dy", ".35em")
       .attr("x", function(d) {
         return 15;
@@ -140,6 +143,10 @@ class ElonComponent {
           return d._children ? "lightsteelblue" : "#fff";
       })
       .attr('cursor', 'pointer');
+
+    nodeUpdate.select('text.node')
+      .text(function(d) { return d.data.name; })
+      .call(wrap, rWidth);
   
   
     // Remove any exiting nodes
@@ -195,6 +202,7 @@ class ElonComponent {
       d.y0 = d.y;
     });
 
+    console.log('Update');
     return root;
   
     // Creates a curved (diagonal) path from parent to the child nodes
@@ -206,7 +214,7 @@ class ElonComponent {
     }
   
     // Toggle children on click.
-    function click(d, root, updateFn) {
+    function click(d, root, e) {
       if (d.children) {
         d._children = d.children;
         d.children = null;
@@ -214,7 +222,7 @@ class ElonComponent {
         d.children = d._children;
         d._children = null;
       }
-      updateFn(d, root);
+      e.update(d, root);
     }
 
     function wrap(text, width) {
@@ -261,7 +269,9 @@ class ElonComponent {
     let t = jQuery(`#text-input`)
     if (t.length > 0) {
       // console.log(t.val());
+      this.textManager.onTextEdit();
       t.remove();
+      this.update(this.textManager.d, this.root);
     }
   }
 }
