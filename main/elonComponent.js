@@ -69,7 +69,8 @@ class ElonComponent {
     var node = treeContainer.selectAll('g.node')
       .data(nodes, function(d) {
         return d.id || (d.id = ++i); 
-      });
+      })
+      .attr('background-color', d3.rgb('#151515'));
   
     // Enter any new modes at the parent's previous position.
     var nodeEnter = node.enter().append('g')
@@ -80,14 +81,7 @@ class ElonComponent {
       .attr("transform", function(d) {
         return "translate(" + source.y0 + "," + source.x0 + ")";
       })
-      .on('click', (d) => {
-        click(d, root, this.update);
-      })
-      .on('dblclick', (d) => {
-        jQuery(`#tree-container`).prepend(`
-          <input type="text" id="text-input" />
-        `);
-      });
+      
   
     // Add Circle for the nodes
     nodeEnter.append('circle')
@@ -95,6 +89,9 @@ class ElonComponent {
       .attr('r', 1e-6)
       .style("fill", function(d) {
           return d._children ? "lightsteelblue" : "#fff";
+      })
+      .on('click', (d) => {
+        click(d, root, this.update);
       });
     
     let rWidth = 100;
@@ -104,24 +101,27 @@ class ElonComponent {
       .attr("height", rHeight)
       .attr("x", 13)
       .attr("y", function(d) {
-        console.log(d);
         return rHeight * -0.5;
       })
-      .attr("fill",  "blue");
+      .attr('class', 'text-rect')
+      .on('dblclick', (d) => {
+        jQuery(`#tree-container`).prepend(`
+          <input type="text" id="text-input" />
+        `);
+      });
   
     // Add labels for the nodes
     nodeEnter.append('text')
       .attr("dy", ".35em")
       .attr("x", function(d) {
-          // return d.children || d._children ? -13 : 13;
         return 15;
       })
       .attr("text-anchor", function(d) {
-          // return d.children || d._children ? "end" : "start";
         return "start";
       })
       .text(function(d) { return d.data.name; })
-      .call(this.wrap, rWidth);
+      .style("fill", "white")
+      .call(wrap, rWidth);
 
     // UPDATE
     var nodeUpdate = nodeEnter.merge(node);
@@ -216,6 +216,45 @@ class ElonComponent {
       }
       updateFn(d, root);
     }
+
+    function wrap(text, width) {
+      text.each(function () {
+        var text = d3.select(this),
+          words = text.text().split(/\s+/).reverse(),
+          word,
+          line = [],
+          lineNumber = 0,
+          lineHeight = 1.1, // ems
+          x = text.attr("x"),
+          y = text.attr("y"),
+          dy = 0.25, //parseFloat(text.attr("dy")),
+          tspan1 = text.text(null)
+                      .append("tspan")
+                      .attr("x", x)
+                      .attr("y", y)
+                      .attr("dy", dy + "em");
+        
+        let tspan = tspan1;
+        while (word = words.pop()) {
+          line.push(word);
+          tspan.text(line.join(" "));
+          if (tspan.node().getComputedTextLength() > width) {
+            ++lineNumber;
+            line.pop();
+            tspan.text(line.join(" "));
+            line = [word];
+            tspan = text.append("tspan")
+                        .attr("x", x)
+                        .attr("y", y)
+                        .attr("dy", lineHeight + "em")
+                        .text(word);
+          }
+        }
+  
+        if (lineNumber > 0) 
+          tspan1.attr("dy", (dy - (0.5 * lineNumber)) + "em");
+      });
+    }
   }
 
   processTextInput() {
@@ -224,45 +263,5 @@ class ElonComponent {
       // console.log(t.val());
       t.remove();
     }
-  }
-
-  wrap(text, width) {
-    text.each(function () {
-      var text = d3.select(this),
-        words = text.text().split(/\s+/).reverse(),
-        word,
-        line = [],
-        lineNumber = 0,
-        lineHeight = 1.1, // ems
-        x = text.attr("x"),
-        y = text.attr("y"),
-        dy = 0.25, //parseFloat(text.attr("dy")),
-        tspan1 = text.text(null)
-                    .append("tspan")
-                    .attr("x", x)
-                    .attr("y", y)
-                    .attr("dy", dy + "em");
-      
-      let tspan = tspan1;
-      while (word = words.pop()) {
-        line.push(word);
-        tspan.text(line.join(" "));
-        if (tspan.node().getComputedTextLength() > width) {
-          ++lineNumber;
-          line.pop();
-          tspan.text(line.join(" "));
-          line = [word];
-          tspan = text.append("tspan")
-                      .attr("x", x)
-                      .attr("y", y)
-                      // .attr("dy", ++lineNumber * lineHeight + dy + "em")
-                      .attr("dy", lineHeight + "em")
-                      .text(word);
-        }
-      }
-
-      if (lineNumber > 0) 
-        tspan1.attr("dy", (dy - (0.5 * lineNumber)) + "em");
-    });
   }
 }
