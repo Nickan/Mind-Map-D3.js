@@ -26,7 +26,6 @@ class ElonComponent {
         .attr('transform', "translate("
           + margin.left + "," + margin.top + ")");
 
-      console.log(treeContainer);
       let root;
 
       // let treemap = d3.tree()
@@ -70,12 +69,12 @@ class ElonComponent {
   
     // Enter any new modes at the parent's previous position.
     var nodeEnter = node.enter().append('g')
-        .attr('class', 'node')
-        .attr("transform", function(d) {
-          return "translate(" + source.y0 + "," + source.x0 + ")";
+      .attr('class', 'node')
+      .attr("transform", function(d) {
+        return "translate(" + source.y0 + "," + source.x0 + ")";
       })
       .on('click', (d) => {
-        click(d, root);
+        click(d, root, this.update);
       });
   
     // Add Circle for the nodes
@@ -180,15 +179,15 @@ class ElonComponent {
     }
   
     // Toggle children on click.
-    function click(d, root) {
+    function click(d, root, updateFn) {
       if (d.children) {
-          d._children = d.children;
-          d.children = null;
-        } else {
-          d.children = d._children;
-          d._children = null;
-        }
-      this.update(d, root);
+        d._children = d.children;
+        d.children = null;
+      } else {
+        d.children = d._children;
+        d._children = null;
+      }
+      updateFn(d, root);
     }
   }
 }
