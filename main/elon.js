@@ -15,13 +15,22 @@ function start() {
     dragManager.init(root);
   });
 
-  document.addEventListener("keypress", function onEvent(e) {
-    // console.log(e.key);
-    switch (e.key) {
+  document.onkeydown = function(ev) {
+    // console.log(ev);
+    switch (ev.key) {
       case "Enter": elonComponent.processTextInput();
+      ev.preventDefault();
+      break;
+      case "Tab": elonComponent.createNewChild();
+      ev.preventDefault();
       break;
       default:
     }
+  }
+
+  jQuery('#svg').keydown(function() {
+    // console.log(event);
   });
+
   
 }
