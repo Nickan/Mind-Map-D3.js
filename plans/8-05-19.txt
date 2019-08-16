@@ -1,8 +1,13 @@
 Todo
-  Drag screen
+  Create new node
+  Delete node
   Drag node
+
+Implemented
   Show text input
+  Edit node
   Text wrapping
+  Drag screen
   
 Drag screen
   Study how to drag the whole svg?
@@ -12,3 +17,7 @@ Drag screen
 
 Always have a plan
 Break down challenges into manageable pieces
+
+Create new node
+  Study the code
+  Click then 

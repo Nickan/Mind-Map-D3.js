@@ -23,6 +23,7 @@ class ElonComponent {
         .append('svg')
         .attr('width', width + margin.right + margin.left)
         .attr('height', height + margin.top + margin.bottom)
+        .attr('id', 'svg')
         .append('g')
         .attr('transform', "translate("
           + margin.left + "," + margin.top + ")");
@@ -48,7 +49,6 @@ class ElonComponent {
 
   update(source, root) {
     this.root = root;
-    console.log(source);
     let treeContainer = root.treeContainer;
     let treemap = root.treemap;
 
@@ -66,143 +66,29 @@ class ElonComponent {
     });
   
     // ****************** Nodes section ***************************
-    let i = 0,
-      duration = 750;
+    let duration = 750;
     // Update the nodes...
-    var node = treeContainer.selectAll('g.node')
-      .data(nodes, function(d) {
-        return d.id || (d.id = ++i); 
-      })
-      .attr('background-color', d3.rgb('#151515'));
-  
-    // Enter any new modes at the parent's previous position.
-    var nodeEnter = node.enter().append('g')
-      .attr('class', 'node')
-      .attr('id', function(d) {
-        return "g-" + d.id;
-      })
-      .attr("transform", function(d) {
-        return "translate(" + source.y0 + "," + source.x0 + ")";
-      })
-      
-  
-    // Add Circle for the nodes
-    nodeEnter.append('circle')
-      .attr('class', 'node')
-      .attr('r', 1e-6)
-      .style("fill", function(d) {
-          return d._children ? "lightsteelblue" : "#fff";
-      })
-      .on('click', (d) => {
-        click(d, root, this);
-      });
-    
-    let rWidth = 100;
-    let rHeight = 25;
-    let textManager = this.textManager;
-    nodeEnter.append("rect")
-      .attr("width", rWidth)
-      .attr("height", rHeight)
-      .attr("x", 13)
-      .attr("y", function(d) {
-        return rHeight * -0.5;
-      })
-      .attr('class', 'text-rect')
-      .on('dblclick', function(d) {
-        textManager.onOpenTextEdit(this, d);
-      });
-  
-    // Add labels for the nodes
-    nodeEnter.append('text')
-      .attr('class', 'node')
-      .attr("dy", ".35em")
-      .attr("x", function(d) {
-        return 15;
-      })
-      .attr("text-anchor", function(d) {
-        return "start";
-      })
-      .text(function(d) { return d.data.name; })
-      .style("fill", "white")
-      .call(wrap, rWidth);
+    let node = initNodes(treeContainer, nodes);
+    let nodeEnter = positionNewNodeInParentPreviousPosition(node, source);
+    let width = 100;
+    initCircle(nodeEnter, root, this);
+    initTextArea(nodeEnter, this, width);
 
-    // UPDATE
-    var nodeUpdate = nodeEnter.merge(node);
-  
-    // Transition to the proper position for the node
-    nodeUpdate.transition()
-      .duration(duration)
-      .attr("transform", function(d) { 
-          return "translate(" + d.y + "," + d.x + ")";
-       });
-  
-    // Update the node attributes and style
-    nodeUpdate.select('circle.node')
-      .attr('r', 10)
-      .style("fill", function(d) {
-          return d._children ? "lightsteelblue" : "#fff";
-      })
-      .attr('cursor', 'pointer');
+    let nodeUpdate = nodeEnter.merge(node);
+    animateNodePosition(nodeUpdate, duration);
+    updateCircleNode(nodeUpdate);
+    updateTextNode(nodeUpdate, width, wrap);
+    let nodeExit = removeExistingNodes(node, source, duration);
+    exitCircle(nodeExit);
+    exitText(nodeExit);
 
-    nodeUpdate.select('text.node')
-      .text(function(d) { return d.data.name; })
-      .call(wrap, rWidth);
-  
-  
-    // Remove any exiting nodes
-    var nodeExit = node.exit().transition()
-        .duration(duration)
-        .attr("transform", function(d) {
-            return "translate(" + source.y + "," + source.x + ")";
-        })
-        .remove();
-  
-    // On exit reduce the node circles size to 0
-    nodeExit.select('circle')
-      .attr('r', 1e-6);
-  
-    // On exit reduce the opacity of text labels
-    nodeExit.select('text')
-      .style('fill-opacity', 1e-6);
-  
-    // ****************** links section ***************************
-  
-    // Update the links...
-    var link = treeContainer.selectAll('path.link')
-        .data(links, function(d) { return d.id; });
-  
-    // Enter any new links at the parent's previous position.
-    var linkEnter = link.enter().insert('path', "g")
-        .attr("class", "link")
-        .attr('d', function(d){
-          var o = {x: source.x0, y: source.y0}
-          return diagonal(o, o)
-        });
-  
-    // UPDATE
-    var linkUpdate = linkEnter.merge(link);
-  
-    // Transition back to the parent element position
-    linkUpdate.transition()
-        .duration(duration)
-        .attr('d', function(d){ return diagonal(d, d.parent) });
-  
-    // Remove any exiting links
-    var linkExit = link.exit().transition()
-        .duration(duration)
-        .attr('d', function(d) {
-          var o = {x: source.x, y: source.y}
-          return diagonal(o, o)
-        })
-        .remove();
-  
-    // Store the old positions for transition.
-    nodes.forEach(function(d){
-      d.x0 = d.x;
-      d.y0 = d.y;
-    });
+    let link = updateLinks(treeContainer, links);
+    let linkEnter = enterLinkToParentPreviousPosition(link, source, diagonal);
+    let linkUpdate = linkEnter.merge(link);
+    linkTransitionBackToParentElementPosition(linkUpdate, duration);
+    let linkExit = removeExitingLinks(link, duration, source, diagonal);
+    nodes = storeOldPositionForTransition(nodes);
 
-    console.log('Update');
     return root;
   
     // Creates a curved (diagonal) path from parent to the child nodes
@@ -263,7 +149,165 @@ class ElonComponent {
           tspan1.attr("dy", (dy - (0.5 * lineNumber)) + "em");
       });
     }
+
+    function initNodes(treeContainer, nodes) {
+      let i = 0;
+      return treeContainer.selectAll('g.node')
+        .data(nodes, function(d) {
+          return d.id || (d.id = ++i); 
+        })
+        .attr('background-color', d3.rgb('#151515'));
+    }
+
+    function positionNewNodeInParentPreviousPosition(node, source) {
+      return node.enter().append('g')
+      .attr('class', 'node')
+      .attr('id', function(d) {
+        return "g-" + d.id;
+      })
+      .attr("transform", function(d) {
+        return "translate(" + source.y0 + "," + source.x0 + ")";
+      })
+    }
+
+    function initCircle(nodeEnter, root, ec) {
+      // Add Circle for the nodes
+      nodeEnter.append('circle')
+      .attr('class', 'node')
+      .attr('r', 1e-6)
+      .style("fill", function(d) {
+          return d._children ? "lightsteelblue" : "#fff";
+      })
+      .on('click', (d) => {
+        click(d, root, ec);
+      });
+    }
+
+    function initTextArea(nodeEnter, ec, width) {
+      let textManager = ec.textManager;
+      let height = 25;
+      initRect(nodeEnter, textManager, ec, width, height);
+      initLabels(nodeEnter, textManager, ec, width);
+
+      function initRect(nodeEnter, textManager, ec, width, height) {
+        nodeEnter.append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("x", 13)
+        .attr("y", function(d) {
+          return height * -0.5;
+        })
+        .attr('class', 'text-rect')
+        .on('click', (d) => {
+          textManager.onNodeSelected(d);
+        })
+        .on('dblclick', function(d) {
+          textManager.onOpenTextEdit(ec, d);
+        });
+      }
+  
+      function initLabels(nodeEnter, textManager, ec, width) {
+        nodeEnter.append('text')
+        .attr('class', 'node')
+        .attr("dy", ".35em")
+        .attr("x", function(d) {
+          return 15;
+        })
+        .attr("text-anchor", function(d) {
+          return "start";
+        })
+        .on('click', (d) => {
+          
+        })
+        .on('dblclick', function(d) {
+          textManager.onOpenTextEdit(ec, d);
+        })
+        .text(function(d) { return d.data.name; })
+        .style("fill", "white")
+        .call(wrap, width);
+      }
+    }
+
+    function animateNodePosition(nodeUpdate, duration) {
+      nodeUpdate.transition()
+      .duration(duration)
+      .attr("transform", function(d) { 
+          return "translate(" + d.y + "," + d.x + ")";
+      });
+    }
+
+    function updateCircleNode(nodeUpdate) {
+      nodeUpdate.select('circle.node')
+      .attr('r', 10)
+      .style("fill", function(d) {
+          return d._children ? "lightsteelblue" : "#fff";
+      })
+      .attr('cursor', 'pointer');
+    }
+
+    function updateTextNode(nodeUpdate, width, wrapFn) {
+      nodeUpdate.select('text.node')
+      .text(function(d) { return d.data.name; })
+      .call(wrapFn, width);
+    }
+
+    function removeExistingNodes(node, source, duration) {
+      return node.exit().transition()
+      .duration(duration)
+      .attr("transform", function(d) {
+          return "translate(" + source.y + "," + source.x + ")";
+      })
+      .remove();
+    }
+
+    function exitCircle(nodeExit) {
+      nodeExit.select('circle')
+      .attr('r', 1e-6);
+    }
+
+    function exitText(nodeExit) {
+      nodeExit.select('text')
+      .style('fill-opacity', 1e-6);
+    }
+
+    function updateLinks(treeContainer, links) {
+      return treeContainer.selectAll('path.link')
+      .data(links, function(d) { return d.id; });
+    }
+
+    function enterLinkToParentPreviousPosition(link, source, diagonalFn) {
+      return link.enter().insert('path', "g")
+      .attr("class", "link")
+      .attr('d', function(d){
+        var o = {x: source.x0, y: source.y0}
+        return diagonalFn(o, o)
+      });
+    }
+
+    function linkTransitionBackToParentElementPosition(linkUpdate, duration) {
+      linkUpdate.transition()
+      .duration(duration)
+      .attr('d', function(d){ return diagonal(d, d.parent) });
+    }
+
+    function removeExitingLinks(link, duration, source, diagonalFn) {
+      return link.exit().transition()
+      .duration(duration)
+      .attr('d', function(d) {
+        var o = {x: source.x, y: source.y}
+        return diagonalFn(o, o)
+      })
+      .remove();
+    }
+
+    function storeOldPositionForTransition(nodes) {
+      nodes.forEach(function(d){
+        d.x0 = d.x;
+        d.y0 = d.y;
+      });
+    }
   }
+
 
   processTextInput() {
     let t = jQuery(`#text-input`)
@@ -273,5 +317,9 @@ class ElonComponent {
       t.remove();
       this.update(this.textManager.d, this.root);
     }
+  }
+
+  createNewChild() {
+    console.log('createNew child');
   }
 }
