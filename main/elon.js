@@ -8,6 +8,7 @@ function start() {
   dragManager = new DragManager();
   elonComponent.init()
   .then((root) => {
+    console.log(root);
     return elonComponent.update(root, root);
   })
   .then((root) => {

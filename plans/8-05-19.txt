@@ -20,4 +20,9 @@ Break down challenges into manageable pieces
 
 Create new node
   Study the code
-  Click then 
+  When to create?
+    Click then the tab is pressed
+  Need unique node ID
+    How?
+      
+  Need unique data ID
