@@ -18,7 +18,37 @@ class TextManager {
 
   onNodeSelected(d) {
     this.selectedNode = d;
-    console.log(d);
+    // console.log(d);
+  }
+
+  onCreateNewChild() {
+    if (this.selectedNode == undefined)
+      return;
+
+    let s = this.selectedNode;
+    // console.log(s);
+    if (s.children == undefined) {
+      // Create array of children
+      let children = [
+        new Node(s, "Test New Child")
+      ];
+      this.selectedNode.children = children;
+      console.log(this.selectedNode);
+    } else {
+      // Add to existing children
+      // Have to handle hidden children
+      // Currently it is _children
+
+    }
+    // then update the tree
+
+
+    // Add children
+    // Then update the tree
+    // if (this.selectedNode.chi)
+    // console.log(this.selectedNode.children);
+    // console.log('onCreateNewChild');
+    // console.log(this.selectedNode);
   }
 
 }
