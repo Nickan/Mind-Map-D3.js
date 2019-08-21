@@ -38,7 +38,7 @@ class TextManager {
       // Add to existing children
       // Have to handle hidden children
       // Currently it is _children
-
+      s.children.push(new Node(s, nodeId, "Existing Test New Child"));
     }
     // then update the tree
 

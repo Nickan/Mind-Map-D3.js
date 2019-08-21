@@ -8,12 +8,15 @@ function start() {
   dragManager = new DragManager();
   elonComponent.init()
   .then((root) => {
-    console.log(root);
     return elonComponent.update(root, root);
   })
   .then((root) => {
-    // console.log('testing1');
     dragManager.init(root);
+
+    // Initiate only once
+    root.nodes.forEach(function(d){
+      root.lastNodeId = d.id;
+    });
   });
 
   document.onkeydown = function(ev) {
