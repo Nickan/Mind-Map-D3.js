@@ -18,10 +18,10 @@ class TextManager {
 
   onNodeSelected(d) {
     this.selectedNode = d;
-    // console.log(d);
+    console.log("selected node id: " + d.id);
   }
 
-  onCreateNewChild() {
+  onCreateNewChild(nodeId) {
     if (this.selectedNode == undefined)
       return;
 
@@ -30,7 +30,7 @@ class TextManager {
     if (s.children == undefined) {
       // Create array of children
       let children = [
-        new Node(s, "Test New Child")
+        new Node(s, nodeId, "Test New Child")
       ];
       this.selectedNode.children = children;
       console.log(this.selectedNode);
