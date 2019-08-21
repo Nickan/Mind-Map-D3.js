@@ -89,6 +89,7 @@ class ElonComponent {
     let linkExit = removeExitingLinks(link, duration, source, diagonal);
     nodes = storeOldPositionForTransition(nodes);
 
+    root.nodes = nodes;
     return root;
   
     // Creates a curved (diagonal) path from parent to the child nodes
@@ -154,8 +155,9 @@ class ElonComponent {
       let i = 0;
       return treeContainer.selectAll('g.node')
         .data(nodes, (d) => {
-          root.lastNodeId = d.id || (d.id = ++i);
-          return root.lastNodeId; 
+          // if (root.lastNodeId == undefined)
+          //   return root.lastNodeId = d.id || (d.id = ++i);
+          return d.id || (d.id = ++i); 
         })
         .attr('background-color', d3.rgb('#151515'));
     }
@@ -306,6 +308,7 @@ class ElonComponent {
         d.x0 = d.x;
         d.y0 = d.y;
       });
+      return nodes;
     }
   }
 
@@ -313,7 +316,6 @@ class ElonComponent {
   processTextInput() {
     let t = jQuery(`#text-input`)
     if (t.length > 0) {
-      // console.log(t.val());
       this.textManager.onTextEdit();
       t.remove();
       this.update(this.textManager.d, this.root);
