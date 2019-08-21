@@ -1,7 +1,6 @@
 class ElonComponent {
   constructor() {
     this.textManager = new TextManager();
-    this.lastNodeId = 0;
   }
 
   init() {
@@ -69,7 +68,7 @@ class ElonComponent {
     // ****************** Nodes section ***************************
     let duration = 750;
     // Update the nodes...
-    let node = initNodes(treeContainer, nodes);
+    let node = initNodes(treeContainer, nodes, root);
     let nodeEnter = positionNewNodeInParentPreviousPosition(node, source);
     let width = 100;
     initCircle(nodeEnter, root, this);
@@ -151,12 +150,12 @@ class ElonComponent {
       });
     }
 
-    function initNodes(treeContainer, nodes) {
+    function initNodes(treeContainer, nodes, root) {
       let i = 0;
       return treeContainer.selectAll('g.node')
-        .data(nodes, function(d) {
-          this.lastNodeId = d.id || (d.id = ++i);
-          return this.lastNodeId; 
+        .data(nodes, (d) => {
+          root.lastNodeId = d.id || (d.id = ++i);
+          return root.lastNodeId; 
         })
         .attr('background-color', d3.rgb('#151515'));
     }
@@ -322,7 +321,8 @@ class ElonComponent {
   }
 
   createNewChild() {
-    this.textManager.onCreateNewChild();
+    let newNodeId = ++this.root.lastNodeId;
+    this.textManager.onCreateNewChild(newNodeId);
     this.update(this.textManager.selectedNode, this.root);
   }
 }
