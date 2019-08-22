@@ -77,7 +77,7 @@ class ElonComponent {
     let nodeUpdate = nodeEnter.merge(node);
     animateNodePosition(nodeUpdate, duration);
     updateCircleNode(nodeUpdate);
-    updateTextNode(nodeUpdate, width, wrap);
+    updateTextNode(nodeUpdate, width, wrap, this);
     let nodeExit = removeExistingNodes(node, source, duration);
     exitCircle(nodeExit);
     exitText(nodeExit);
@@ -112,7 +112,7 @@ class ElonComponent {
       e.update(d, root);
     }
 
-    function wrap(text, width) {
+    function wrap(text, width, ec) {
       text.each(function () {
         var text = d3.select(this),
           words = text.text().split(/\s+/).reverse(),
@@ -127,6 +127,13 @@ class ElonComponent {
                       .append("tspan")
                       .attr("x", x)
                       .attr("y", y)
+                      .on('click', (d) => {
+                        ec.textManager.onNodeSelected(d);
+                      })
+                      .on('dblclick', (d) => {
+                        ec.textManager.onOpenTextEdit(d);
+                        ec.state = State.EDIT_NODE;
+                      })
                       .attr("dy", dy + "em");
         
         let tspan = tspan1;
@@ -142,6 +149,13 @@ class ElonComponent {
                         .attr("x", x)
                         .attr("y", y)
                         .attr("dy", lineHeight + "em")
+                        .on('click', (d) => {
+                          ec.textManager.onNodeSelected(d);
+                        })
+                        .on('dblclick', (d) => {
+                          ec.textManager.onOpenTextEdit(d);
+                          ec.state = State.EDIT_NODE;
+                        })
                         .text(word);
           }
         }
@@ -155,8 +169,6 @@ class ElonComponent {
       let i = 0;
       return treeContainer.selectAll('g.node')
         .data(nodes, (d) => {
-          // if (root.lastNodeId == undefined)
-          //   return root.lastNodeId = d.id || (d.id = ++i);
           return d.id || (d.id = ++i); 
         })
         .attr('background-color', d3.rgb('#151515'));
@@ -187,12 +199,11 @@ class ElonComponent {
     }
 
     function initTextArea(nodeEnter, ec, width) {
-      let textManager = ec.textManager;
       let height = 25;
-      initRect(nodeEnter, textManager, ec, width, height);
-      initLabels(nodeEnter, textManager, ec, width);
+      initRect(nodeEnter, ec, width, height);
+      initLabels(nodeEnter, ec, width);
 
-      function initRect(nodeEnter, textManager, ec, width, height) {
+      function initRect(nodeEnter, ec, width, height) {
         nodeEnter.append("rect")
         .attr("width", width)
         .attr("height", height)
@@ -202,14 +213,15 @@ class ElonComponent {
         })
         .attr('class', 'text-rect')
         .on('click', (d) => {
-          textManager.onNodeSelected(d);
+          ec.textManager.onNodeSelected(d);
         })
         .on('dblclick', function(d) {
-          textManager.onOpenTextEdit(ec, d);
+          ec.textManager.onOpenTextEdit(d);
+          ec.state = State.EDIT_NODE;
         });
       }
   
-      function initLabels(nodeEnter, textManager, ec, width) {
+      function initLabels(nodeEnter, ec, width) {
         nodeEnter.append('text')
         .attr('class', 'node')
         .attr("dy", ".35em")
@@ -223,11 +235,12 @@ class ElonComponent {
           
         })
         .on('dblclick', function(d) {
-          textManager.onOpenTextEdit(ec, d);
+          ec.textManager.onOpenTextEdit(d);
+          ec.state = State.EDIT_NODE;
         })
         .text(function(d) { return d.data.name; })
         .style("fill", "white")
-        .call(wrap, width);
+        .call(wrap, width, ec.textManager);
       }
     }
 
@@ -248,10 +261,10 @@ class ElonComponent {
       .attr('cursor', 'pointer');
     }
 
-    function updateTextNode(nodeUpdate, width, wrapFn) {
+    function updateTextNode(nodeUpdate, width, wrapFn, ec) {
       nodeUpdate.select('text.node')
       .text(function(d) { return d.data.name; })
-      .call(wrapFn, width);
+      .call(wrapFn, width, ec);
     }
 
     function removeExistingNodes(node, source, duration) {
@@ -316,15 +329,35 @@ class ElonComponent {
   processTextInput() {
     let t = jQuery(`#text-input`)
     if (t.length > 0) {
-      this.textManager.onTextEdit();
+      let data;
+      switch (this.state) {
+        case State.EDIT_NODE:
+          this.textManager.onTextEdit();
+          data = this.textManager.nodeToEdit;
+          break;
+        case State.CREATE_CHILD_NODE:
+          let newNodeId = ++this.root.lastNodeId;
+          this.textManager.onCreateNewChild(newNodeId);
+          data = this.textManager.selectedNode;
+          break;
+        default:
+      }
+        
       t.remove();
-      this.update(this.textManager.d, this.root);
+      this.update(data, this.root);
     }
   }
 
   createNewChild() {
-    let newNodeId = ++this.root.lastNodeId;
-    this.textManager.onCreateNewChild(newNodeId);
-    this.update(this.textManager.selectedNode, this.root);
+    // Show text input
+    // If there is a text inputted, create child
+    // Else, cancel
+
+    this.textManager.createTextInput();
+    this.state = State.CREATE_CHILD_NODE;
+
+    // let newNodeId = ++this.root.lastNodeId;
+    // this.textManager.onCreateNewChild(newNodeId);
+    // this.update(this.textManager.selectedNode, this.root);
   }
 }

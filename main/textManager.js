@@ -2,16 +2,23 @@ class TextManager {
 
   constructor() {}
 
-  onOpenTextEdit(e, d) {
+  onOpenTextEdit(d) {
     this.nodeToEdit = d;
-    // let p = d3.select(e.parentNode);
-    // let id = p.attr('id');
+    let t = jQuery(`#text-input`)
+    if (t.length > 0) {
+      t.remove();
+    }
+    this.createTextInput();
+  }
+
+  createTextInput() {
     jQuery(`#tree-container`).prepend(`
       <input type="text" id="text-input"/>
     `);
+    jQuery('#text-input').focus();
   }
 
-  onTextEdit() {
+  onTextEdit(state) {
     let text = jQuery('#text-input').val();
     this.nodeToEdit.data.name = text;
   }
@@ -26,29 +33,15 @@ class TextManager {
       return;
 
     let s = this.selectedNode;
-    // console.log(s);
     if (s.children == undefined) {
-      // Create array of children
       let children = [
         new Node(s, nodeId, "Test New Child")
       ];
       this.selectedNode.children = children;
       console.log(this.selectedNode);
     } else {
-      // Add to existing children
-      // Have to handle hidden children
-      // Currently it is _children
       s.children.push(new Node(s, nodeId, "Existing Test New Child"));
     }
-    // then update the tree
-
-
-    // Add children
-    // Then update the tree
-    // if (this.selectedNode.chi)
-    // console.log(this.selectedNode.children);
-    // console.log('onCreateNewChild');
-    // console.log(this.selectedNode);
   }
 
 }

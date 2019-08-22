@@ -23,10 +23,10 @@ function start() {
     // console.log(ev);
     switch (ev.key) {
       case "Enter": elonComponent.processTextInput();
-      ev.preventDefault();
+        ev.preventDefault();
       break;
       case "Tab": elonComponent.createNewChild();
-      ev.preventDefault();
+        ev.preventDefault();
       break;
       default:
     }
