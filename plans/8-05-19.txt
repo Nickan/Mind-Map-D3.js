@@ -1,5 +1,5 @@
 Todo
-  Create new node
+  Save
   Delete node
   Drag node
 
@@ -8,6 +8,7 @@ Implemented
   Edit node
   Text wrapping
   Drag screen
+  Create new node
   
 Drag screen
   Study how to drag the whole svg?
@@ -26,3 +27,8 @@ Create new node
     How?
       
   Need unique data ID
+
+Delete node
+  Select data
+  Remove
+  Update

@@ -24,10 +24,13 @@ function start() {
     switch (ev.key) {
       case "Enter": elonComponent.processTextInput();
         ev.preventDefault();
-      break;
+        break;
       case "Tab": elonComponent.createNewChild();
         ev.preventDefault();
-      break;
+        break;
+      case "Delete": elonComponent.deleteNode();
+        ev.preventDefault();
+        break;
       default:
     }
   }

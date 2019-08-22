@@ -44,4 +44,21 @@ class TextManager {
     }
   }
 
+  deleteNode() {
+    let p = this.selectedNode.parent;
+    if (p == undefined)
+      return;
+
+    let c = p.children;
+    for (let i = 0; i < c.length; i++) {
+      if (c[i].id == this.selectedNode.id) {
+        c.splice(i, 1);
+        break;
+      }
+    }
+    if (c.length == 0) {
+      p.children = undefined;
+    }
+  }
+
 }

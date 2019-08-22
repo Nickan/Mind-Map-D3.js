@@ -349,15 +349,16 @@ class ElonComponent {
   }
 
   createNewChild() {
-    // Show text input
-    // If there is a text inputted, create child
-    // Else, cancel
-
     this.textManager.createTextInput();
     this.state = State.CREATE_CHILD_NODE;
+  }
 
-    // let newNodeId = ++this.root.lastNodeId;
-    // this.textManager.onCreateNewChild(newNodeId);
-    // this.update(this.textManager.selectedNode, this.root);
+  deleteNode() {
+    if (this.textManager.selectedNode != undefined) {
+      console.log('delete');
+      this.textManager.deleteNode();
+      this.update(this.textManager.selectedNode, this.root);
+      this.selectedNode = undefined;
+    }
   }
 }
