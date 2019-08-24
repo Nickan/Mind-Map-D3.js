@@ -16,6 +16,9 @@ class DragManager {
           dragScreen(this);
           
         })
+        .on("end", function() {
+
+        })
       );
 
     function dragScreen(owner) {

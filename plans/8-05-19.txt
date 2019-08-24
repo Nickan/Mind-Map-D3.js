@@ -32,3 +32,6 @@ Delete node
   Select data
   Remove
   Update
+
+Drag node
+  Study how it was done in existing outdated code
