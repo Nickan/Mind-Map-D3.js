@@ -332,7 +332,7 @@ class ElonComponent {
 
 
   processTextInput() {
-    let t = jQuery(`#text-input`)
+    let t = jQuery(`#text-input`);
     if (t.length > 0) {
       let data;
       switch (this.state) {
@@ -342,7 +342,7 @@ class ElonComponent {
           break;
         case State.CREATE_CHILD_NODE:
           let newNodeId = ++this.root.lastNodeId;
-          this.textManager.onCreateNewChild(newNodeId);
+          this.textManager.onCreateNewChild(newNodeId, t.val());
           data = this.textManager.selectedNode;
           break;
         default:

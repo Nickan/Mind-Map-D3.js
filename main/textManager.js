@@ -28,19 +28,19 @@ class TextManager {
     console.log("selected node id: " + d.id);
   }
 
-  onCreateNewChild(nodeId) {
+  onCreateNewChild(nodeId, text) {
     if (this.selectedNode == undefined)
       return;
 
     let s = this.selectedNode;
     if (s.children == undefined) {
       let children = [
-        new Node(s, nodeId, "Test New Child")
+        new Node(s, nodeId, text)
       ];
       this.selectedNode.children = children;
       console.log(this.selectedNode);
     } else {
-      s.children.push(new Node(s, nodeId, "Existing Test New Child"));
+      s.children.push(new Node(s, nodeId, text));
     }
   }
 
