@@ -128,7 +128,6 @@ class ElonComponent {
     nodes = storeOldPositionForTransition(nodes);
 
     root.nodes = nodes;
-    console.log("update");
     return root;
   
     // Creates a curved (diagonal) path from parent to the child nodes
