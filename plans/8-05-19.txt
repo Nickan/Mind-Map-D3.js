@@ -5,6 +5,9 @@ Todo
     Fix no parent found
   Reference selected node
     Able to select specific nodes to create a new node
+  Edit node
+    Fix, make it compatible with drag node
+    Fix when the cursor was out then back in, then enter, it malfunction(Fixed?)
 
 Implemented
   Show text input
@@ -12,6 +15,8 @@ Implemented
   Text wrapping
   Drag screen
   Create new node
+  Drag node
+    Fix no parent found
   
 Drag screen
   Study how to drag the whole svg?
