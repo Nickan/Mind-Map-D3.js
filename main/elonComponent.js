@@ -52,7 +52,6 @@ class ElonComponent {
 
   initEventListeners() {
     window.addEventListener(Event.UPDATE_TREE, (e) => {
-      // this.update()
       this.update(e.detail.nodeSource, this.root);
     });
 

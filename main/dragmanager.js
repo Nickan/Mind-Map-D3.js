@@ -6,6 +6,10 @@ class DragManager {
     let currentPos = [];
     let globalConnection = this.globalConnection;
     this.initEventListeners();
+
+    let defaultX;
+    let defaultY;
+
     d3.select('body')
       .call(d3.drag()
         .on('start', function() {
@@ -25,11 +29,10 @@ class DragManager {
     d3.selectAll('g.node')
     .call(d3.drag()
       .on("start", function(d) {
-        // ???
-
+        defaultX = d.x;
+        defaultY = d.y;
         showDetectorCircle();
         disableTextPointerEvent(d, this);
-        console.log('start');
 
         function showDetectorCircle() {
           d3.selectAll(".detectorCircle")
@@ -47,7 +50,6 @@ class DragManager {
         }
       })
       .on("drag", function(d) {
-        console.log('drag ' + d.data.name);
         // Set the position of the dragged circle to the mouse coord
           // Set circle position
           // To mouse coord
@@ -82,15 +84,12 @@ class DragManager {
         
         function setToMousePosition(d, t) {
           let node = d3.select(t);
-          d.x0 += d3.event.dy;
-          d.y0 += d3.event.dx;
-          node.attr("transform", `translate(${d.y0},${d.x0})`);
+          d.x += d3.event.dy;
+          d.y += d3.event.dx;
+          node.attr("transform", `translate(${d.y},${d.x})`);
         }
       })
       .on("end", function(d) {
-        console.log("end");
-        // Detect cancellation of changing parent
-          // How to detect
         hideDetectorCircle();
         enableTextPointerEvent(d, this);
         setNewParent(d, this, globalConnection);
@@ -121,7 +120,11 @@ class DragManager {
               toAppend: d
             });
           } else {
-            console.log("selected node undefined");
+            // console.log("selected node undefined");
+            let node = d3.select(t);
+            d.x = defaultX;
+            d.y = defaultY;
+            node.attr("transform", `translate(${defaultY},${defaultX})`);
           }
           
         }
