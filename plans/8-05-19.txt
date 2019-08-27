@@ -2,6 +2,8 @@ Todo
   Save
   Delete node
   Drag node
+  Reference selected node
+    Able to select specific nodes to create a new node
 
 Implemented
   Show text input

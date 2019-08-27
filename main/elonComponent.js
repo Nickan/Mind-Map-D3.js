@@ -4,6 +4,8 @@ class ElonComponent {
   }
 
   init() {
+    this.textManager.globalConnection = this.globalConnection;
+    this.initEventListeners();
     return d3.json('testing.json')
     .then((json) => {
       let margin = {
@@ -45,7 +47,17 @@ class ElonComponent {
       root.treemap = treemap;
       return root;
     });
+    
   }
+
+  initEventListeners() {
+    window.addEventListener(Event.UPDATE_TREE, (e) => {
+      // this.update()
+      this.update(e.detail.nodeSource, this.root);
+    });
+  }
+
+
 
   update(source, root) {
     this.root = root;
@@ -72,6 +84,7 @@ class ElonComponent {
     let nodeEnter = positionNewNodeInParentPreviousPosition(node, source);
     let width = 100;
     initCircle(nodeEnter, root, this);
+    initNearestNodeDetectorCircle(nodeEnter, root, this);
     initTextArea(nodeEnter, this, width);
 
     let nodeUpdate = nodeEnter.merge(node);
@@ -125,6 +138,7 @@ class ElonComponent {
           dy = 0.25, //parseFloat(text.attr("dy")),
           tspan1 = text.text(null)
                       .append("tspan")
+                      .attr("class", "text-wrap")
                       .attr("x", x)
                       .attr("y", y)
                       .on('click', (d) => {
@@ -146,6 +160,7 @@ class ElonComponent {
             tspan.text(line.join(" "));
             line = [word];
             tspan = text.append("tspan")
+                        .attr("class", "text-wrap")
                         .attr("x", x)
                         .attr("y", y)
                         .attr("dy", lineHeight + "em")
@@ -198,6 +213,22 @@ class ElonComponent {
       });
     }
 
+    function initNearestNodeDetectorCircle(nodeEnter, root, ec) {
+      nodeEnter.append("circle")
+      .attr('class', 'detectorCircle')
+      .attr("r", 30)
+      .attr("opacity", 0.2) // change this to zero to hide the target area
+      .style("fill", "red")
+      .style("display", "none")
+      .attr('pointer-events', 'mouseover')
+      .on("mouseover", function(d) {
+        ec.globalConnection.selectedNode = d;
+      })
+      .on("mouseout", function(d) {
+        ec.globalConnection.selectedNode = undefined;
+      });
+    }
+
     function initTextArea(nodeEnter, ec, width) {
       let height = 25;
       initRect(nodeEnter, ec, width, height);
@@ -223,7 +254,7 @@ class ElonComponent {
   
       function initLabels(nodeEnter, ec, width) {
         nodeEnter.append('text')
-        .attr('class', 'node')
+        .attr('class', 'text-wrap')
         .attr("dy", ".35em")
         .attr("x", function(d) {
           return 15;
@@ -271,7 +302,7 @@ class ElonComponent {
       return node.exit().transition()
       .duration(duration)
       .attr("transform", function(d) {
-          return "translate(" + source.y + "," + source.x + ")";
+        return "translate(" + source.y + "," + source.x + ")";
       })
       .remove();
     }
@@ -336,8 +367,7 @@ class ElonComponent {
           data = this.textManager.nodeToEdit;
           break;
         case State.CREATE_CHILD_NODE:
-          let newNodeId = ++this.root.lastNodeId;
-          this.textManager.onCreateNewChild(newNodeId, t.val());
+          this.textManager.onCreateNewChild(t.val());
           data = this.textManager.selectedNode;
           break;
         default:

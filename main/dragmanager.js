@@ -4,6 +4,7 @@ class DragManager {
 
   init(root) {
     let currentPos = [];
+    let globalConnection = this.globalConnection;
 
     d3.select('body')
       .call(d3.drag()
@@ -25,16 +26,52 @@ class DragManager {
     .call(d3.drag()
       .on("start", function(d) {
         // ???
+
+        showDetectorCircle();
+        disableTextPointerEvent(d, this);
         console.log('start');
-        d.x0 = d.x;
-        d.y0 = d.y;
-        console.log(`${d.x0}, ${d.y0}`);
+
+        function showDetectorCircle() {
+          d3.selectAll(".detectorCircle")
+          .style("display", "block");
+        }
+
+        function disableTextPointerEvent(d, node) {
+          d3.selectAll(".text-rect")
+          .style("pointer-events", "none");
+          d3.selectAll(".text-wrap")
+          .style("pointer-events", "none");
+
+          d3.select(node)
+          .style("pointer-events", "none");
+        }
       })
       .on("drag", function(d) {
-        console.log('drag');
+        console.log('drag ' + d.data.name);
         // Set the position of the dragged circle to the mouse coord
           // Set circle position
           // To mouse coord
+        // Get the nearest new parent
+          // How?
+            // Study the existing code
+              // It used the mouseover pointer-events of the existing ghostCircle
+                // Process
+                  // For node detection!
+                    // Create ghost circle
+                    // Invisible by default
+                    // Will show when a node is being dragged
+                    // Then set the data if mouse is over it
+                  // Line drawing
+                    // Can be defer later?
+                      // Alternative
+                        // Make the new potential parent glow?
+                      // Or just make it now
+          // Should be compatible with change of sibling level
+            // Implementation
+              // If draggedNode.x < newParent.x
+                // Swap sibling level
+              // Has to be 
+
         // UI to identify which will be the potential parent
           // UI
             // Ghost aura?
@@ -42,20 +79,49 @@ class DragManager {
         // Cancellable
           // Return to its previous state
         setToMousePosition(d, this);
-
+        
         function setToMousePosition(d, t) {
           let node = d3.select(t);
           d.x0 += d3.event.dy;
           d.y0 += d3.event.dx;
           node.attr("transform", `translate(${d.y0},${d.x0})`);
-          // console.log(d3.event.dy);
-          // console.log(`${d.x}, ${d.y}`);
         }
       })
-      .on("end", function() {
+      .on("end", function(d) {
         console.log("end");
         // Detect cancellation of changing parent
           // How to detect
+        hideDetectorCircle();
+        enableTextPointerEvent(d, this);
+        setNewParent(d, this, globalConnection);
+
+        function hideDetectorCircle() {
+          d3.selectAll(".detectorCircle")
+          .style("display", "none");
+        }
+
+        function enableTextPointerEvent(d, node) {
+          d3.selectAll(".text-rect")
+          .style("pointer-events", "auto");
+          d3.selectAll(".text-wrap")
+          .style("pointer-events", "auto");
+          d3.select(node)
+          .style("pointer-events", "auto");
+        }
+
+        function setNewParent(d, t, globalConnection) {
+          let p = globalConnection.selectedNode;
+          if (p != undefined && p != d) {
+            console.log("parent " + p.data.name);
+            globalConnection.deleteNodeData(d);
+            globalConnection.onCreateNewChild(p, d.data.name);
+            let e = new CustomEvent(Event.UPDATE_TREE, {detail: {nodeSource: d.parent}});
+            window.dispatchEvent(e);
+          } else {
+            console.log("selected node undefined");
+          }
+          
+        }
       })
     );
 
