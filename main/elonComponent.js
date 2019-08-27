@@ -195,12 +195,7 @@ class ElonComponent {
       })
       .on('click', (d) => {
         click(d, root, ec);
-      })
-      .call(d3.drag()
-        .on("start", function() {
-          console.log('start');
-        })
-      );
+      });
     }
 
     function initTextArea(nodeEnter, ec, width) {

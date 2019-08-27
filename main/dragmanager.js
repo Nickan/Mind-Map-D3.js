@@ -21,6 +21,44 @@ class DragManager {
         })
       );
 
+    d3.selectAll('g.node')
+    .call(d3.drag()
+      .on("start", function(d) {
+        // ???
+        console.log('start');
+        d.x0 = d.x;
+        d.y0 = d.y;
+        console.log(`${d.x0}, ${d.y0}`);
+      })
+      .on("drag", function(d) {
+        console.log('drag');
+        // Set the position of the dragged circle to the mouse coord
+          // Set circle position
+          // To mouse coord
+        // UI to identify which will be the potential parent
+          // UI
+            // Ghost aura?
+            // Potential line
+        // Cancellable
+          // Return to its previous state
+        setToMousePosition(d, this);
+
+        function setToMousePosition(d, t) {
+          let node = d3.select(t);
+          d.x0 += d3.event.dy;
+          d.y0 += d3.event.dx;
+          node.attr("transform", `translate(${d.y0},${d.x0})`);
+          // console.log(d3.event.dy);
+          // console.log(`${d.x}, ${d.y}`);
+        }
+      })
+      .on("end", function() {
+        console.log("end");
+        // Detect cancellation of changing parent
+          // How to detect
+      })
+    );
+
     function dragScreen(owner) {
       let g = d3.select('g')
       let t = getTranslation(g);
