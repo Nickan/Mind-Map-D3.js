@@ -26,19 +26,12 @@ class DragManager {
 
         })
       );
-
-    d3.selectAll('g.node')
+    
+    let dx = 0;
+    let dy = 0;
+    d3.selectAll('circle.node')
     .call(d3.drag()
       .on("start", function(d) {
-
-        if (d3.event.dx > 3 || d3.event.dy > 3)
-          dragStart = true;
-
-        if (!dragStart)
-          return;
-
-        defaultX = d.x;
-        defaultY = d.y;
         showDetectorCircle();
         disableTextPointerEvent(d, this);
 
@@ -56,58 +49,30 @@ class DragManager {
           d3.select(node)
           .style("pointer-events", "none");
         }
+          
       })
       .on("drag", function(d) {
-        if (!dragStart)
-          return;
-
         setToMousePosition(d, this);
         
         function setToMousePosition(d, t) {
           let node = d3.select(t);
-          d.x += d3.event.dy;
-          d.y += d3.event.dx;
-          node.attr("transform", `translate(${d.y},${d.x})`);
+          dx += d3.event.dy;
+          dy += d3.event.dx;
+          node.attr("transform", `translate(${dy},${dx})`);
         }
-
-        // Set the position of the dragged circle to the mouse coord
-          // Set circle position
-          // To mouse coord
-        // Get the nearest new parent
-          // How?
-            // Study the existing code
-              // It used the mouseover pointer-events of the existing ghostCircle
-                // Process
-                  // For node detection!
-                    // Create ghost circle
-                    // Invisible by default
-                    // Will show when a node is being dragged
-                    // Then set the data if mouse is over it
-                  // Line drawing
-                    // Can be defer later?
-                      // Alternative
-                        // Make the new potential parent glow?
-                      // Or just make it now
-          // Should be compatible with change of sibling level
-            // Implementation
-              // If draggedNode.x < newParent.x
-                // Swap sibling level
-              // Has to be 
-
-        // UI to identify which will be the potential parent
-          // UI
-            // Ghost aura?
-            // Potential line
-        // Cancellable
-          // Return to its previous state
       })
       .on("end", function(d) {
-        if (!dragStart)
-          return;
-
+        resetCirclePosition(this);
         hideDetectorCircle();
         enableTextPointerEvent(d, this);
         setNewParent(d, this, globalConnection);
+
+        function resetCirclePosition(dNode) {
+          dx = 0;
+          dy = 0;
+          let e = d3.select(dNode);
+          e.attr("transform", `translate(${dy},${dx})`);
+        }
 
         function hideDetectorCircle() {
           d3.selectAll(".detectorCircle")

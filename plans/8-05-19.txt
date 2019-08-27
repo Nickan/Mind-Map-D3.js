@@ -3,6 +3,8 @@ Todo
   Delete node
   Drag node
     Fix no parent found
+    Fix showing descendants of the dragged nodes
+    Fix Main node can be dragged
   Reference selected node
     Able to select specific nodes to create a new node
   Edit node
