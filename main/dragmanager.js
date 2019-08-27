@@ -7,10 +7,6 @@ class DragManager {
     let globalConnection = this.globalConnection;
     this.initEventListeners();
 
-    let defaultX;
-    let defaultY;
-    let dragStart = false;
-
     d3.select('body')
       .call(d3.drag()
         .on('start', function() {
@@ -53,6 +49,7 @@ class DragManager {
       })
       .on("drag", function(d) {
         setToMousePosition(d, this);
+        setDescendantsVisibility(d, false);
         
         function setToMousePosition(d, t) {
           let node = d3.select(t);
@@ -62,10 +59,12 @@ class DragManager {
         }
       })
       .on("end", function(d) {
+        // setDescendantsVisibility(d, true);
         resetCirclePosition(this);
         hideDetectorCircle();
         enableTextPointerEvent(d, this);
         setNewParent(d, this, globalConnection);
+        
 
         function resetCirclePosition(dNode) {
           dx = 0;
@@ -98,14 +97,40 @@ class DragManager {
             });
           } else {
             let node = d3.select(t);
-            d.x = defaultX;
-            d.y = defaultY;
-            node.attr("transform", `translate(${defaultY},${defaultX})`);
+            d.x = 0;
+            d.y = 0;
+            node.attr("transform", `translate(${d.y},${d.x})`);
           }
           
         }
       })
     );
+
+    function setDescendantsVisibility(nodeD, visible) {
+      setNodeDDescendantsVisibility(nodeD, visible);
+      d3.selectAll(".detectorCircle")
+      .style("display", function(d) {
+        if (d.data.visible == undefined)
+          return "block";
+
+        if (d.data.visible)
+          return "block";
+        return "none";
+      });
+      
+      function setNodeDDescendantsVisibility(nodeD, visible) {
+        let c = nodeD.children;
+        if (c != undefined) {
+          for (let i = 0; i < c.length; i++) {
+            let child = c[i];
+            child.data.visible = visible;
+            setNodeDDescendantsVisibility(child, visible);
+          }
+        }
+      }
+    }
+
+    
 
     function dragScreen(owner) {
       let g = d3.select('g')
