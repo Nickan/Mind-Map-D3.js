@@ -29,12 +29,12 @@
   stroke-width: 3px;
 }
 
-.ghostCircle.show{
-    display:block;
+.detectorCircle.show{
+  display:block;
 }
 
-.ghostCircle, .activeDrag .ghostCircle{
-     display: none;
+.activeDrag {
+  display: none;
 }
 
 

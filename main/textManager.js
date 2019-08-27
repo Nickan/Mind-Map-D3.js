@@ -28,37 +28,39 @@ class TextManager {
     console.log("selected node id: " + d.id);
   }
 
-  onCreateNewChild(nodeId, text) {
-    if (this.selectedNode == undefined)
-      return;
+  onCreateNewChild(text) {
+    this.globalConnection.onCreateNewChild(this.selectedNode, text);
+    // if (this.selectedNode == undefined)
+    //   return;
 
-    let s = this.selectedNode;
-    if (s.children == undefined) {
-      let children = [
-        new Node(s, nodeId, text)
-      ];
-      this.selectedNode.children = children;
-      console.log(this.selectedNode);
-    } else {
-      s.children.push(new Node(s, nodeId, text));
-    }
+    // let s = this.selectedNode;
+    // if (s.children == undefined) {
+    //   let children = [
+    //     new Node(s, nodeId, text)
+    //   ];
+    //   this.selectedNode.children = children;
+    //   // console.log(this.selectedNode);
+    // } else {
+    //   s.children.push(new Node(s, nodeId, text));
+    // }
   }
 
   deleteNode() {
-    let p = this.selectedNode.parent;
-    if (p == undefined)
-      return;
+    this.globalConnection.deleteNodeData(this.selectedNode);
+    // let p = this.selectedNode.parent;
+    // if (p == undefined)
+    //   return;
 
-    let c = p.children;
-    for (let i = 0; i < c.length; i++) {
-      if (c[i].id == this.selectedNode.id) {
-        c.splice(i, 1);
-        break;
-      }
-    }
-    if (c.length == 0) {
-      p.children = undefined;
-    }
+    // let c = p.children;
+    // for (let i = 0; i < c.length; i++) {
+    //   if (c[i].id == this.selectedNode.id) {
+    //     c.splice(i, 1);
+    //     break;
+    //   }
+    // }
+    // if (c.length == 0) {
+    //   p.children = undefined;
+    // }
   }
 
 }
