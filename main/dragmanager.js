@@ -5,7 +5,7 @@ class DragManager {
   init(root) {
     let currentPos = [];
     let globalConnection = this.globalConnection;
-
+    this.initEventListeners();
     d3.select('body')
       .call(d3.drag()
         .on('start', function() {
@@ -114,9 +114,12 @@ class DragManager {
           if (p != undefined && p != d) {
             console.log("parent " + p.data.name);
             globalConnection.deleteNodeData(d);
-            globalConnection.onCreateNewChild(p, d.data.name);
-            let e = new CustomEvent(Event.UPDATE_TREE, {detail: {nodeSource: d.parent}});
-            window.dispatchEvent(e);
+            // globalConnection.onCreateNewChild(p, d.data.name);
+
+            Event.dispatchEvent(Event.APPEND_NODE, {
+              appendTo: p,
+              toAppend: d
+            });
           } else {
             console.log("selected node undefined");
           }
@@ -157,5 +160,13 @@ class DragManager {
         return [matrix.e, matrix.f];
       }
     }
+  }
+
+  initEventListeners() {
+    // window.addEventListener(Event.APPEND_NODE_SUCCESS, (e) => {
+    //   Event.dispatchEvent(Event.UPDATE_TREE, )
+    //   let e = new CustomEvent(Event.UPDATE_TREE, {detail: {nodeSource: d.parent}});
+    //   window.dispatchEvent(e);
+    // });
   }
 }
