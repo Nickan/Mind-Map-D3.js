@@ -128,6 +128,7 @@ class ElonComponent {
     nodes = storeOldPositionForTransition(nodes);
 
     root.nodes = nodes;
+    console.log("update");
     return root;
   
     // Creates a curved (diagonal) path from parent to the child nodes
@@ -270,6 +271,7 @@ class ElonComponent {
         .attr('class', 'text-rect')
         .on('click', (d) => {
           ec.textManager.onNodeSelected(d);
+          console.log("selected");
         })
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
@@ -296,7 +298,7 @@ class ElonComponent {
         })
         .text(function(d) { return d.data.name; })
         .style("fill", "white")
-        .call(wrap, width, ec.textManager);
+        .call(wrap, width, ec);
       }
     }
 
@@ -318,8 +320,9 @@ class ElonComponent {
     }
 
     function updateTextNode(nodeUpdate, width, wrapFn, ec) {
-      nodeUpdate.select('text.node')
-      .text(function(d) { return d.data.name; })
+      nodeUpdate.selectAll('.text-wrap')
+      .text(function(d) {
+        return d.data.name; })
       .call(wrapFn, width, ec);
     }
 
@@ -385,21 +388,21 @@ class ElonComponent {
   processTextInput() {
     let t = jQuery(`#text-input`);
     if (t.length > 0) {
-      let data;
+      let node;
       switch (this.state) {
         case State.EDIT_NODE:
           this.textManager.onTextEdit();
-          data = this.textManager.nodeToEdit;
+          node = this.textManager.nodeToEdit;
           break;
         case State.CREATE_CHILD_NODE:
           this.textManager.onCreateNewChild(t.val());
-          data = this.textManager.selectedNode;
+          node = this.textManager.selectedNode;
           break;
         default:
+          break;
       }
-        
       t.remove();
-      this.update(data, this.root);
+      this.update(node, this.root);
     }
   }
 

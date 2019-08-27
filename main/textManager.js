@@ -18,17 +18,17 @@ class TextManager {
     jQuery('#text-input').focus();
   }
 
-  onTextEdit(state) {
+  onTextEdit() {
     let text = jQuery('#text-input').val();
     this.nodeToEdit.data.name = text;
   }
 
   onNodeSelected(d) {
     this.selectedNode = d;
-    console.log("selected node id: " + d.id);
   }
 
   onCreateNewChild(text) {
+    console.log("onCreateNewChild " + text);
     this.globalConnection.onCreateNewChild(this.selectedNode, text);
     // if (this.selectedNode == undefined)
     //   return;

@@ -9,6 +9,7 @@ class DragManager {
 
     let defaultX;
     let defaultY;
+    let dragStart = false;
 
     d3.select('body')
       .call(d3.drag()
@@ -29,6 +30,13 @@ class DragManager {
     d3.selectAll('g.node')
     .call(d3.drag()
       .on("start", function(d) {
+
+        if (d3.event.dx > 3 || d3.event.dy > 3)
+          dragStart = true;
+
+        if (!dragStart)
+          return;
+
         defaultX = d.x;
         defaultY = d.y;
         showDetectorCircle();
@@ -50,6 +58,18 @@ class DragManager {
         }
       })
       .on("drag", function(d) {
+        if (!dragStart)
+          return;
+
+        setToMousePosition(d, this);
+        
+        function setToMousePosition(d, t) {
+          let node = d3.select(t);
+          d.x += d3.event.dy;
+          d.y += d3.event.dx;
+          node.attr("transform", `translate(${d.y},${d.x})`);
+        }
+
         // Set the position of the dragged circle to the mouse coord
           // Set circle position
           // To mouse coord
@@ -80,16 +100,11 @@ class DragManager {
             // Potential line
         // Cancellable
           // Return to its previous state
-        setToMousePosition(d, this);
-        
-        function setToMousePosition(d, t) {
-          let node = d3.select(t);
-          d.x += d3.event.dy;
-          d.y += d3.event.dx;
-          node.attr("transform", `translate(${d.y},${d.x})`);
-        }
       })
       .on("end", function(d) {
+        if (!dragStart)
+          return;
+
         hideDetectorCircle();
         enableTextPointerEvent(d, this);
         setNewParent(d, this, globalConnection);
@@ -111,16 +126,12 @@ class DragManager {
         function setNewParent(d, t, globalConnection) {
           let p = globalConnection.selectedNode;
           if (p != undefined && p != d) {
-            console.log("parent " + p.data.name);
             globalConnection.deleteNodeData(d);
-            // globalConnection.onCreateNewChild(p, d.data.name);
-
             Event.dispatchEvent(Event.APPEND_NODE, {
               appendTo: p,
               toAppend: d
             });
           } else {
-            // console.log("selected node undefined");
             let node = d3.select(t);
             d.x = defaultX;
             d.y = defaultY;
