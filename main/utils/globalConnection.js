@@ -10,14 +10,17 @@ class GlobalConnection {
       return;
 
     let c = p.children;
+    let cd = p.data.children;
     for (let i = 0; i < c.length; i++) {
       if (c[i].id == nodeData.id) {
         c.splice(i, 1);
+        cd.splice(i, 1);
         break;
       }
     }
     if (c.length == 0) {
       p.children = undefined;
+      p.data.children = undefined;
     }
   }
 
@@ -33,9 +36,10 @@ class GlobalConnection {
         new Node(p, nodeId, text)
       ];
       p.children = children;
-      // console.log(parentNode);
+      p.data.children = [{name: text, id: nodeId}]
     } else {
       p.children.push(new Node(p, nodeId, text));
+      p.data.push({name: text, id: nodeId});
     }
   }
 
