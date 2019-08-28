@@ -85,10 +85,11 @@ class DragManager {
           activatedOnce = true;
           showDetectorCircle();
           disableTextPointerEvent(d, this);
+          setDescendantsVisibility(d, false);
         }
 
         setToMousePosition(d, this);
-        setDescendantsVisibility(d, false);
+        
         
         function setToMousePosition(d, t) {
           let node = d3.select(t);
@@ -118,7 +119,7 @@ class DragManager {
         hideDetectorCircle();
         enableTextPointerEvent(d, this);
         setNewParent(d, this, globalConnection);
-        
+        setNodeDDescendantsVisibility(d, true);
 
         function resetCirclePosition(dNode) {
           dx = 0;
@@ -171,15 +172,15 @@ class DragManager {
           return "block";
         return "none";
       });
-      
-      function setNodeDDescendantsVisibility(nodeD, visible) {
-        let c = nodeD.children;
-        if (c != undefined) {
-          for (let i = 0; i < c.length; i++) {
-            let child = c[i];
-            child.data.visible = visible;
-            setNodeDDescendantsVisibility(child, visible);
-          }
+    }
+
+    function setNodeDDescendantsVisibility(nodeD, visible) {
+      let c = nodeD.children;
+      if (c != undefined) {
+        for (let i = 0; i < c.length; i++) {
+          let child = c[i];
+          child.data.visible = visible;
+          setNodeDDescendantsVisibility(child, visible);
         }
       }
     }
