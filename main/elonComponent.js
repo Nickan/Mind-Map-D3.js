@@ -87,7 +87,6 @@ class ElonComponent {
 
   update(source, root) {
     console.log(root);
-    console.log(source);
     this.root = root;
     let treeContainer = root.treeContainer;
     let treemap = root.treemap;
@@ -101,6 +100,7 @@ class ElonComponent {
   
     // Normalize for fixed-depth.
     nodes.forEach(function(d) {
+      console.log(d.data.name);
       // d.x = d.height * 180;
       // d.y = d.depth * 120;
     });
@@ -377,7 +377,7 @@ class ElonComponent {
     }
 
     function storeOldPositionForTransition(nodes) {
-      nodes.forEach(function(d){
+      nodes.forEach(function(d) {
         d.x0 = d.x;
         d.y0 = d.y;
       });
@@ -408,6 +408,7 @@ class ElonComponent {
   }
 
   createNewChild() {
+    this.globalConnection.root = this.root;
     this.textManager.createTextInput();
     this.state = State.CREATE_CHILD_NODE;
   }

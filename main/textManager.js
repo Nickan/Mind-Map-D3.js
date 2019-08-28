@@ -12,6 +12,8 @@ class TextManager {
   }
 
   createTextInput(name) {
+    if (name == undefined)
+      name = "";
     jQuery(`#tree-container`).prepend(`
       <textarea type="text" id="text-input" autofocus="autofocus">${name}</textarea
     `);
