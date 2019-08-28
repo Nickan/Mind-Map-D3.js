@@ -8,12 +8,12 @@ class TextManager {
     if (t.length > 0) {
       t.remove();
     }
-    this.createTextInput();
+    this.createTextInput(d.data.name);
   }
 
-  createTextInput() {
+  createTextInput(name) {
     jQuery(`#tree-container`).prepend(`
-      <input type="text" id="text-input"/>
+      <textarea type="text" id="text-input" autofocus="autofocus">${name}</textarea
     `);
     jQuery('#text-input').focus();
   }
