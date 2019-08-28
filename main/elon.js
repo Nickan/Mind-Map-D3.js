@@ -1,17 +1,25 @@
 
 let elonComponent;
 let dragManager;
-start();
 
-function start() {
+$(document).ready(() => {
+  start(JSON.parse(`{
+    "name": "Main",
+    "id": 1
+  }`));
+});
+
+
+function start(json) {
   globalConnection = new GlobalConnection();
   elonComponent = new ElonComponent();
   dragManager = new DragManager();
   saveManager = new SaveManager();
+  loadManager = new LoadManager();
   elonComponent.globalConnection = globalConnection;
   dragManager.globalConnection = globalConnection;
 
-  elonComponent.init()
+  elonComponent.init(json)
   .then((root) => {
     return elonComponent.update(root, root);
   })
@@ -42,6 +50,12 @@ function start() {
       case "s":
       case "S": if (controlDown) {
           Event.dispatchEvent(Event.SAVE, {root: elonComponent.root});
+          ev.preventDefault();
+        }
+        break;
+      case "o":
+      case "O": if (controlDown) {
+          Event.dispatchEvent(Event.LOAD, {});
           ev.preventDefault();
         }
         break;

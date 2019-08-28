@@ -7,7 +7,9 @@ class Node {
       id: id,
       name: name
     };
-    parent.data.children = [this.data];
+    if (parent.data.children == undefined)
+      parent.data.children = [];
+    parent.data.children.push(this.data);
     this.depth = parent.depth + 1;
   }
 
