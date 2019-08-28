@@ -7,15 +7,18 @@ $(document).ready(() => {
     "name": "Main",
     "id": 1
   }`));
+
+  let loadManager = new LoadManager(start);
 });
 
 
 function start(json) {
+  $("#tree-container").empty();
   globalConnection = new GlobalConnection();
   elonComponent = new ElonComponent();
   dragManager = new DragManager();
   saveManager = new SaveManager();
-  loadManager = new LoadManager();
+  
   elonComponent.globalConnection = globalConnection;
   dragManager.globalConnection = globalConnection;
 

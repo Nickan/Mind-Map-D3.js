@@ -38,7 +38,6 @@ class GlobalConnection {
       p.children = children;
     } else {
       p.children.push(new Node(p, nodeId, text));
-      // p.data.children.push({name: text, id: nodeId});
     }
   }
 
