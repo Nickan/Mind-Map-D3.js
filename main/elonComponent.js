@@ -53,6 +53,7 @@ class ElonComponent {
   initEventListeners() {
     window.addEventListener(Event.UPDATE_TREE, (e) => {
       this.update(e.detail.nodeSource, this.root);
+      Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
     });
 
     window.addEventListener(Event.APPEND_NODE, (e) => {
@@ -235,6 +236,7 @@ class ElonComponent {
       })
       .on('click', (d) => {
         click(d, root, ec);
+        console.log("clicked");
       });
     }
 
@@ -401,7 +403,8 @@ class ElonComponent {
           break;
       }
       t.remove();
-      this.update(node, this.root);
+      // this.update(node, this.root);
+      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: node});
     }
   }
 
@@ -414,7 +417,8 @@ class ElonComponent {
     if (this.textManager.selectedNode != undefined) {
       console.log('delete');
       this.textManager.deleteNode();
-      this.update(this.textManager.selectedNode, this.root);
+      // this.update(this.textManager.selectedNode, this.root);
+      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: this.textManager.selectedNode});
       this.selectedNode = undefined;
     }
   }

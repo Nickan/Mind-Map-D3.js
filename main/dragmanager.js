@@ -23,6 +23,55 @@ class DragManager {
         })
       );
     
+    this.initCircleNode();
+
+    function dragScreen(owner) {
+      let g = d3.select('g')
+      let t = getTranslation(g);
+      let diff = getDiffVar(currentPos, owner);
+
+      let newX = t[0] + diff[0];
+      let newY = t[1] + diff[1];
+      g.attr('transform', `translate(${newX}, ${newY})`);
+
+
+      function getDiffVar(currentPos, owner) {
+        let m = d3.mouse(owner);
+        let diff = getDiff(currentPos, m);
+        currentPos[0] = m[0];
+        currentPos[1] = m[1];
+        return diff;
+      }
+
+      function getDiff(currentPos, mPos) {
+        let xDiff = mPos[0] - currentPos[0];
+        let yDiff = mPos[1] - currentPos[1];
+        return [xDiff, yDiff];
+      }
+  
+      function getTranslation(owner) {
+        let transform = owner.attr('transform');
+        var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        g.setAttributeNS(null, "transform", transform);
+        var matrix = g.transform.baseVal.consolidate().matrix;
+        return [matrix.e, matrix.f];
+      }
+    }
+  }
+
+  initEventListeners() {
+    window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
+      this.initCircleNode();
+    });
+
+    // window.addEventListener(Event.APPEND_NODE_SUCCESS, (e) => {
+    //   Event.dispatchEvent(Event.UPDATE_TREE, )
+    //   let e = new CustomEvent(Event.UPDATE_TREE, {detail: {nodeSource: d.parent}});
+    //   window.dispatchEvent(e);
+    // });
+  }
+
+  initCircleNode() {
     let dx = 0;
     let dy = 0;
     let activatedOnce = false;
@@ -134,48 +183,5 @@ class DragManager {
         }
       }
     }
-
-    
-
-    function dragScreen(owner) {
-      let g = d3.select('g')
-      let t = getTranslation(g);
-      let diff = getDiffVar(currentPos, owner);
-
-      let newX = t[0] + diff[0];
-      let newY = t[1] + diff[1];
-      g.attr('transform', `translate(${newX}, ${newY})`);
-
-
-      function getDiffVar(currentPos, owner) {
-        let m = d3.mouse(owner);
-        let diff = getDiff(currentPos, m);
-        currentPos[0] = m[0];
-        currentPos[1] = m[1];
-        return diff;
-      }
-
-      function getDiff(currentPos, mPos) {
-        let xDiff = mPos[0] - currentPos[0];
-        let yDiff = mPos[1] - currentPos[1];
-        return [xDiff, yDiff];
-      }
-  
-      function getTranslation(owner) {
-        let transform = owner.attr('transform');
-        var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        g.setAttributeNS(null, "transform", transform);
-        var matrix = g.transform.baseVal.consolidate().matrix;
-        return [matrix.e, matrix.f];
-      }
-    }
-  }
-
-  initEventListeners() {
-    // window.addEventListener(Event.APPEND_NODE_SUCCESS, (e) => {
-    //   Event.dispatchEvent(Event.UPDATE_TREE, )
-    //   let e = new CustomEvent(Event.UPDATE_TREE, {detail: {nodeSource: d.parent}});
-    //   window.dispatchEvent(e);
-    // });
   }
 }

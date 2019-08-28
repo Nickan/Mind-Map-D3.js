@@ -29,7 +29,6 @@ class TextManager {
 
   onCreateNewChild(text) {
     this.globalConnection.onCreateNewChild(this.selectedNode, text);
-
   }
 
   deleteNode() {
