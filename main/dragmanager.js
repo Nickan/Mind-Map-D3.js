@@ -2,9 +2,8 @@ class DragManager {
   constructor() {
   }
 
-  init(root) {
+  init() {
     let currentPos = [];
-    let globalConnection = this.globalConnection;
     this.initEventListeners();
 
     d3.select('body')
@@ -72,6 +71,7 @@ class DragManager {
   }
 
   initCircleNode() {
+    let globalConnection = this.globalConnection;
     let dx = 0;
     let dy = 0;
     let activatedOnce = false;

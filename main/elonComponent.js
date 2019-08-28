@@ -1,11 +1,12 @@
 class ElonComponent {
   constructor() {
     this.textManager = new TextManager();
+    this.initEventListeners();
   }
 
   init(json) {
     this.textManager.globalConnection = this.globalConnection;
-    this.initEventListeners();
+    
     return new Promise(function(resolve, reject) {
       let margin = {
         top: 20,
@@ -16,9 +17,6 @@ class ElonComponent {
   
       let width = $(document).width();
       let height = $(document).height();
-  
-      // let width = 960 - margin.left - margin.right;
-      // let height = 500 - margin.top - margin.bottom;
   
       let treeContainer = d3.select('#tree-container')
         .append('svg')
@@ -141,9 +139,21 @@ class ElonComponent {
       if (d.children) {
         d._children = d.children;
         d.children = null;
+
+        // if (d.data.children != undefined) {
+        //   d._cdata = d.data.children;
+        //   d.data.children = undefined;
+        // }
+        
       } else {
         d.children = d._children;
         d._children = null;
+
+        // if (d._data != undefined) {
+        //   d.data.children = d._cdata;
+        //   d._cdata = undefined;
+        // }
+        
       }
       e.update(d, root);
     }
