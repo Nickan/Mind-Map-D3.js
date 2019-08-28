@@ -1,13 +1,9 @@
 class LoadManager {
 
-  constructor() {
-    this.initEventListeners();
-  }
-
-  initEventListeners() {
+  constructor(fn) {
     window.addEventListener(Event.LOAD, (e) => {
       this.getAsText((result) => {
-        let json = JSON.parse(result);
+        fn(JSON.parse(result));
       });
     });
   }
