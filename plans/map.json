@@ -1,0 +1,87 @@
+{
+  "name": "Implementation",
+  "id": 1,
+  "children": [
+    {
+      "id": 2,
+      "name": "Queue",
+      "children": [
+        {
+          "id": 3,
+          "name": "Implement undo",
+          "visible": true
+        },
+        {
+          "id": 4,
+          "name": "Redo",
+          "visible": true
+        },
+        {
+          "id": 5,
+          "name": "Cancel of create node",
+          "visible": true
+        },
+        {
+          "id": 6,
+          "name": "UI for active node",
+          "visible": true
+        },
+        {
+          "id": 9,
+          "name": "Referencing",
+          "children": [
+            {
+              "id": 11,
+              "name": "Need further info",
+              "visible": true
+            }
+          ],
+          "visible": true
+        },
+        {
+          "id": 10,
+          "name": "Advanced filtering",
+          "children": [
+            {
+              "id": 12,
+              "name": "Need further info",
+              "visible": true
+            }
+          ],
+          "visible": true
+        },
+        {
+          "id": 13,
+          "name": "Save the fold state",
+          "visible": true
+        }
+      ],
+      "visible": true
+    },
+    {
+      "id": 7,
+      "name": "In-progress",
+      "visible": true
+    },
+    {
+      "id": 8,
+      "name": "Implemented",
+      "visible": true
+    },
+    {
+      "id": 15,
+      "name": "Guidelines",
+      "children": [
+        {
+          "id": 14,
+          "name": "Define priorities",
+          "visible": true
+        },
+        {
+          "id": 16,
+          "name": "Prioritize usability over nice feature"
+        }
+      ]
+    }
+  ]
+}
