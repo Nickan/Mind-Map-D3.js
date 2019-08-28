@@ -7,6 +7,7 @@ function start() {
   globalConnection = new GlobalConnection();
   elonComponent = new ElonComponent();
   dragManager = new DragManager();
+  saveManager = new SaveManager();
   elonComponent.globalConnection = globalConnection;
   dragManager.globalConnection = globalConnection;
 
@@ -23,6 +24,7 @@ function start() {
     });
   });
 
+  let controlDown = false;
   document.onkeydown = function(ev) {
     // console.log(ev);
     switch (ev.key) {
@@ -35,9 +37,26 @@ function start() {
       case "Delete": elonComponent.deleteNode();
         ev.preventDefault();
         break;
+      case "Control": controlDown = true;
+        break;
+      case "s":
+      case "S": if (controlDown) {
+          Event.dispatchEvent(Event.SAVE, {root: elonComponent.root});
+          ev.preventDefault();
+        }
+        break;
       default:
     }
   }
+
+  document.onkeyup = function(ev) {
+    switch (ev.key) {
+      case "Control": controlDown = false;
+        break;
+      default:
+    }
+  }
+
 
   jQuery('#svg').keydown(function() {
     // console.log(event);

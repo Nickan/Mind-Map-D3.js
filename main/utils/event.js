@@ -3,6 +3,7 @@ class Event {
   static APPEND_NODE = 'APPEND_NODE';
   static APPEND_NODE_SUCCESS = 'APPEND_NODE_SUCCESS';
   static UPDATE_TREE_AFTER = "UPDATE_TREE_AFTER";
+  static SAVE = "SAVE";
 
   constructor() {
     Object.freeze(this);

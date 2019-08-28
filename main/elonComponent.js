@@ -86,6 +86,8 @@ class ElonComponent {
 
 
   update(source, root) {
+    console.log(root);
+    console.log(source);
     this.root = root;
     let treeContainer = root.treeContainer;
     let treemap = root.treemap;
@@ -236,7 +238,6 @@ class ElonComponent {
       })
       .on('click', (d) => {
         click(d, root, ec);
-        console.log("clicked");
       });
     }
 
@@ -272,7 +273,6 @@ class ElonComponent {
         .attr('class', 'text-rect')
         .on('click', (d) => {
           ec.textManager.onNodeSelected(d);
-          console.log("selected");
         })
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
@@ -403,7 +403,6 @@ class ElonComponent {
           break;
       }
       t.remove();
-      // this.update(node, this.root);
       Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: node});
     }
   }
@@ -415,9 +414,7 @@ class ElonComponent {
 
   deleteNode() {
     if (this.textManager.selectedNode != undefined) {
-      console.log('delete');
       this.textManager.deleteNode();
-      // this.update(this.textManager.selectedNode, this.root);
       Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: this.textManager.selectedNode});
       this.selectedNode = undefined;
     }
