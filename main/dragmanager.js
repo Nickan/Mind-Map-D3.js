@@ -25,11 +25,28 @@ class DragManager {
     
     let dx = 0;
     let dy = 0;
+    let activatedOnce = false;
     d3.selectAll('circle.node')
     .call(d3.drag()
       .on("start", function(d) {
-        showDetectorCircle();
-        disableTextPointerEvent(d, this);
+
+      })
+      .on("drag", function(d) {
+        if (!activatedOnce) {
+          activatedOnce = true;
+          showDetectorCircle();
+          disableTextPointerEvent(d, this);
+        }
+
+        setToMousePosition(d, this);
+        setDescendantsVisibility(d, false);
+        
+        function setToMousePosition(d, t) {
+          let node = d3.select(t);
+          dx += d3.event.dy;
+          dy += d3.event.dx;
+          node.attr("transform", `translate(${dy},${dx})`);
+        }
 
         function showDetectorCircle() {
           d3.selectAll(".detectorCircle")
@@ -45,21 +62,9 @@ class DragManager {
           d3.select(node)
           .style("pointer-events", "none");
         }
-          
-      })
-      .on("drag", function(d) {
-        setToMousePosition(d, this);
-        setDescendantsVisibility(d, false);
-        
-        function setToMousePosition(d, t) {
-          let node = d3.select(t);
-          dx += d3.event.dy;
-          dy += d3.event.dx;
-          node.attr("transform", `translate(${dy},${dx})`);
-        }
       })
       .on("end", function(d) {
-        // setDescendantsVisibility(d, true);
+        activatedOnce = false;
         resetCirclePosition(this);
         hideDetectorCircle();
         enableTextPointerEvent(d, this);
