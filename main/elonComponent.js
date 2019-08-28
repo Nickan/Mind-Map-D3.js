@@ -3,24 +3,23 @@ class ElonComponent {
     this.textManager = new TextManager();
   }
 
-  init() {
+  init(json) {
     this.textManager.globalConnection = this.globalConnection;
     this.initEventListeners();
-    return d3.json('testing.json')
-    .then((json) => {
+    return new Promise(function(resolve, reject) {
       let margin = {
         top: 20,
         right: 90,
         bottom: 30,
         left: 90
       }
-
+  
       let width = $(document).width();
       let height = $(document).height();
-
+  
       // let width = 960 - margin.left - margin.right;
       // let height = 500 - margin.top - margin.bottom;
-
+  
       let treeContainer = d3.select('#tree-container')
         .append('svg')
         .attr('width', width + margin.right + margin.left)
@@ -31,23 +30,20 @@ class ElonComponent {
           + margin.left + "," + margin.top + ")");
         // .attr('transform', "translate("
         //   + 0 + "," + 0 + ")");
-
+  
       let root;
-
-      // let treemap = d3.tree()
-      //   .size([height, width]);
+  
       let treemap = d3.tree()
         .nodeSize([30, 140]);
-
+  
       root = d3.hierarchy(json, function(d) { return d.children; });
       root.x0 = height / 2;
       root.y0 = 0;
-
+  
       root.treeContainer = treeContainer;
       root.treemap = treemap;
-      return root;
+      resolve(root);
     });
-    
   }
 
   initEventListeners() {
@@ -88,6 +84,7 @@ class ElonComponent {
 
   update(source, root) {
     this.root = root;
+    console.log(root);
     let treeContainer = root.treeContainer;
     let treemap = root.treemap;
 
