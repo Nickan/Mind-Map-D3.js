@@ -407,6 +407,8 @@ class ElonComponent {
   }
 
   createNewChild() {
+    if (this.textManager.selectedNode == undefined)
+      return;
     this.textManager.createTextInput();
     this.state = State.CREATE_CHILD_NODE;
   }
