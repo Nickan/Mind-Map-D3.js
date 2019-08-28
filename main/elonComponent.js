@@ -62,7 +62,8 @@ class ElonComponent {
       Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: e.detail.appendTo});
 
       function appendChild(parent, child) {
-        child.parent = parent;
+        Node.changeParent(child, parent);
+        
         if (parent.children == undefined) {
           parent.children = [child];
         } else {
@@ -86,7 +87,6 @@ class ElonComponent {
 
 
   update(source, root) {
-    console.log(root);
     this.root = root;
     let treeContainer = root.treeContainer;
     let treemap = root.treemap;
@@ -100,7 +100,6 @@ class ElonComponent {
   
     // Normalize for fixed-depth.
     nodes.forEach(function(d) {
-      console.log(d.data.name);
       // d.x = d.height * 180;
       // d.y = d.depth * 120;
     });
@@ -408,7 +407,6 @@ class ElonComponent {
   }
 
   createNewChild() {
-    this.globalConnection.root = this.root;
     this.textManager.createTextInput();
     this.state = State.CREATE_CHILD_NODE;
   }
