@@ -41,12 +41,14 @@ $(document).ready(() => {
         case "s":
         case "S": if (controlDown) {
             Event.dispatchEvent(Event.SAVE, {root: elonComponent.root});
+            controlDown = false;
             ev.preventDefault();
           }
           break;
         case "o":
         case "O": if (controlDown) {
             Event.dispatchEvent(Event.LOAD, {});
+            controlDown = false;
             ev.preventDefault();
           }
           break;
@@ -57,6 +59,8 @@ $(document).ready(() => {
     document.onkeyup = function(ev) {
       switch (ev.key) {
         case "Control": controlDown = false;
+          console.log("Control up");
+          ev.preventDefault();
           break;
         default:
       }
