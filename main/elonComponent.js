@@ -34,7 +34,9 @@ class ElonComponent {
       let treemap = d3.tree()
         .nodeSize([30, 140]);
   
-      root = d3.hierarchy(json, function(d) { return d.children; });
+      root = d3.hierarchy(json, function(d) {
+        return d.children; 
+      });
       root.x0 = height / 2;
       root.y0 = 0;
   
@@ -46,7 +48,12 @@ class ElonComponent {
 
   initEventListeners() {
     window.addEventListener(Event.UPDATE_TREE, (e) => {
-      this.update(e.detail.nodeSource, this.root);
+      if (e.detail.nodeSource) {
+        this.update(e.detail.nodeSource, this.root);
+      } else {
+        this.update(this.root, this.root);
+      }
+      
       Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
     });
 
@@ -77,8 +84,6 @@ class ElonComponent {
       }
     });
   }
-
-
 
   update(source, root) {
     this.root = root;
@@ -136,13 +141,8 @@ class ElonComponent {
   
     // Toggle children on click.
     function click(d, root, e) {
-      if (d.children) {
-        d._children = d.children;
-        d.children = null;
-      } else {
-        d.children = d._children;
-        d._children = null;
-      }
+      d.data.foldDescendants = d.data.foldDescendants ? undefined: true;
+      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {clickedNodeData: d});
       e.update(d, root);
       Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
     }
@@ -321,7 +321,6 @@ class ElonComponent {
       return node.exit().transition()
       .duration(duration)
       .attr("transform", function(d) {
-        console.log(d.data.name);
         return "translate(" + source.y + "," + source.x + ")";
       })
       .remove();
