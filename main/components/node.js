@@ -19,4 +19,8 @@ class Node {
       parent.data.children = [];
     parent.data.children.push(node.data);
   }
+
+  static siblings(a, b) {
+    return (a.parent === b.parent);
+  }
 }
