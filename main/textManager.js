@@ -76,8 +76,8 @@ class TextManager {
   deleteNode() {
     if (this.selectedData == undefined)
       return;
-    this.selectedData = this.selectedData.parent
     this.globalConnection.deleteNodeData(this.selectedData);
+    this.selectedData = this.selectedData.parent
   }
 
 }
