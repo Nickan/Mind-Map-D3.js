@@ -142,6 +142,7 @@ class TextManager {
       return;
 
     this.deleteNodeData(this.selectedData);
+    this.selectedData.data.selected = undefined;
     this.selectedData.parent.data.selected = true;
     Event.dispatchEvent(Event.UPDATE_TREE, 
       {nodeSource: this.selectedData});
