@@ -110,11 +110,12 @@ class DragManager {
       })
       .on("end", function(d) {
         activatedOnce = false;
-        resetCirclePosition(this);
+        
         hideDetectorCircle();
         enableTextPointerEvent(d, this);
         setNewParent(d, this, globalConnection);
         setNodeDDescendantsVisibility(d, true);
+        resetCirclePosition(this);
 
         function resetCirclePosition(dNode) {
           dx = 0;
@@ -140,7 +141,7 @@ class DragManager {
         function setNewParent(d, t, globalConnection) {
           let p = globalConnection.selectedData;
           if (p != undefined && p != d) {
-            if (Node.siblings(p, d)) {
+            if (Node.siblings(p, d) && dy < 0) {
               switchPosition(p, d);
             } else {
               Event.dispatchEvent(Event.APPEND_NODE, {
@@ -148,11 +149,6 @@ class DragManager {
                 toAppend: d
               });
             }
-          } else {
-            let node = d3.select(t);
-            d.x = 0;
-            d.y = 0;
-            node.attr("transform", `translate(${d.y},${d.x})`);
           }
           
           function switchPosition(a, b) {
