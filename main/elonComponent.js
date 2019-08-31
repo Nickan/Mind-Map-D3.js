@@ -146,14 +146,6 @@ class ElonComponent {
                 ${d.y} ${d.x}`;
     }
   
-    // Toggle children on click.
-    function click(d, root, ec) {
-      d.data.foldDescendants = d.data.foldDescendants ? undefined: true;
-      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {clickedNodeData: d});
-      ec.update(d, root);
-      Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
-    }
-
     function wrap(text, width, ec) {
       text.each(function () {
         var text = d3.select(this),
@@ -170,9 +162,6 @@ class ElonComponent {
                       .attr("class", "span-text")
                       .attr("x", x)
                       .attr("y", y)
-                      // .on('click', (d) => {
-                      //   ec.textManager.onNodeSelected(d);
-                      // })
                       .on('dblclick', (d) => {
                         ec.textManager.onOpenTextEdit(d);
                       })
@@ -192,9 +181,6 @@ class ElonComponent {
                         .attr("x", x)
                         .attr("y", y)
                         .attr("dy", lineHeight + "em")
-                        // .on('click', (d) => {
-                        //   ec.textManager.onNodeSelected(d);
-                        // })
                         .on('dblclick', (d) => {
                           ec.textManager.onOpenTextEdit(d);
                         })
@@ -228,15 +214,11 @@ class ElonComponent {
     }
 
     function initCircle(nodeEnter, root, ec) {
-      // Add Circle for the nodes
       nodeEnter.append('circle')
       .attr('class', 'node')
       .attr('r', 1e-6)
       .style("fill", function(d) {
           return d._children ? "lightsteelblue" : "#fff";
-      })
-      .on('click', (d) => {
-        click(d, root, ec);
       });
     }
 
@@ -270,9 +252,6 @@ class ElonComponent {
           return height * -0.5;
         })
         .attr('class', 'text-rect')
-        .on('click', (d) => {
-          // ec.textManager.onNodeSelected(d);
-        })
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
         });
@@ -288,9 +267,6 @@ class ElonComponent {
         .attr("text-anchor", function(d) {
           return "start";
         })
-        // .on('click', (d) => {
-          
-        // })
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
         })

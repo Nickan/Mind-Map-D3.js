@@ -5,6 +5,7 @@ $(document).ready(() => {
   let dragManager = new DragManager();
   let globalConnection = new GlobalConnection();
   let saveManager = new SaveManager();
+  let foldDescendants = new FoldDescendants();
   let foldAncentors = new FoldAncentors();
 
   start(JSON.parse(`{
@@ -70,9 +71,7 @@ $(document).ready(() => {
       }
     }
 
-
     jQuery('#svg').keydown(function() {
-      // console.log(event);
     });
     
   }
@@ -85,6 +84,8 @@ $(document).ready(() => {
     .then((root) => {
       Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
       dragManager.init();
+      
+      Event.dispatchEvent(Event.FOLD_ANCESTORS, {root: root});
       Event.dispatchEvent(Event.FOLD_DESCENDANTS, {root: root});
     });
   }
