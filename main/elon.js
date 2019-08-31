@@ -33,7 +33,7 @@ $(document).ready(() => {
         case "Tab": elonComponent.createNewChild();
           ev.preventDefault();
           break;
-        case "Delete": elonComponent.deleteNode();
+        case "Delete": Event.dispatchEvent(Event.DELETE_NODE, {});
           ev.preventDefault();
           break;
         case "Control": controlDown = true;

@@ -11,38 +11,47 @@ class TextManager {
 
       d3.selectAll("g.node")
       .on("click", (d) => {
-        this.handleClickEvent(d, this);
+        this.handleClickEvent(d);
       });
       this.updateTextHighlight();
     });
 
     window.addEventListener(Event.ON_DRAG_UPDATE_ONCE, (e) => {
-      this.handleClickEvent(e.detail.selectedData, this);
+      this.handleClickEvent(e.detail.selectedData);
+    });
+
+    window.addEventListener(Event.DELETE_NODE, (e) => {
+      this.deleteNode();
     });
   }
 
-  handleClickEvent(d, tm) {
-    console.log("handle");
+  handleClickEvent(d) {
     d3.selectAll(".text-wrap")
     .each(function(d) {
       d.data.selected = undefined;
     });
 
-    tm.selectedData = d;
+    this.selectedData = d;
     d.data.selected = true;
     this.updateTextHighlight();
   }
 
   updateTextHighlight() {
+    let tm = this;
     d3.selectAll(".text-wrap")
     .style("font-weight", function(d) {
-      if (d.data.selected)
+      if (d.data.selected) {
+        tm.selectedData = d;
         return "800";
+      }
+        
       return "initial";
     })
     .style("font-size", function(d) {
-      if (d.data.selected)
+      if (d.data.selected) {
+        tm.selectedData = d;
         return "11px";
+      }
       return "10px";
     });
   }
@@ -81,8 +90,33 @@ class TextManager {
   deleteNode() {
     if (this.selectedData == undefined)
       return;
-    this.globalConnection.deleteNodeData(this.selectedData);
-    this.selectedData = this.selectedData.parent
+
+    this.deleteNodeData(this.selectedData);
+    this.selectedData.parent.data.selected = true;
+    Event.dispatchEvent(Event.UPDATE_TREE, 
+      {nodeSource: this.selectedData});
+  }
+
+  deleteNodeData(nodeData) {
+    let p = nodeData.parent;
+    if (p == undefined)
+      return;
+
+    let c = p.children;
+    if (c == undefined)
+      return;
+    let cd = p.data.children;
+    for (let i = 0; i < c.length; i++) {
+      if (c[i].id == nodeData.id) {
+        c.splice(i, 1);
+        cd.splice(i, 1);
+        break;
+      }
+    }
+    if (c.length == 0) {
+      p.children = undefined;
+      p.data.children = undefined;
+    }
   }
 
 }
