@@ -22,11 +22,6 @@
           "visible": true
         },
         {
-          "id": 6,
-          "name": "UI for active node",
-          "visible": true
-        },
-        {
           "id": 9,
           "name": "Referencing",
           "children": [
@@ -54,6 +49,10 @@
           "id": 13,
           "name": "Save the fold state",
           "visible": true
+        },
+        {
+          "id": 17,
+          "name": "Select Breadth level"
         }
       ],
       "visible": true
@@ -61,7 +60,40 @@
     {
       "id": 7,
       "name": "In-progress",
-      "visible": true
+      "visible": true,
+      "children": [
+        {
+          "id": 6,
+          "name": "UI for active node",
+          "visible": true,
+          "children": [
+            {
+              "id": 18,
+              "name": "Implementation",
+              "children": [
+                {
+                  "id": 19,
+                  "name": "Change the color of the rect",
+                  "visible": true
+                }
+              ],
+              "visible": true
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "Improvements"
+        },
+        {
+          "id": 21,
+          "name": "Streamline update of dom nodes"
+        },
+        {
+          "id": 22,
+          "name": "testing"
+        }
+      ]
     },
     {
       "id": 8,

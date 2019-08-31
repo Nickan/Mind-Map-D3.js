@@ -79,6 +79,7 @@ $(document).ready(() => {
       return elonComponent.update(root, root);
     })
     .then((root) => {
+      Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
       dragManager.init();
 
       // Initiate only once

@@ -139,23 +139,12 @@ class ElonComponent {
       if (d.children) {
         d._children = d.children;
         d.children = null;
-
-        // if (d.data.children != undefined) {
-        //   d._cdata = d.data.children;
-        //   d.data.children = undefined;
-        // }
-        
       } else {
         d.children = d._children;
         d._children = null;
-
-        // if (d._data != undefined) {
-        //   d.data.children = d._cdata;
-        //   d._cdata = undefined;
-        // }
-        
       }
       e.update(d, root);
+      Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
     }
 
     function wrap(text, width, ec) {
@@ -171,12 +160,12 @@ class ElonComponent {
           dy = 0.25, //parseFloat(text.attr("dy")),
           tspan1 = text.text(null)
                       .append("tspan")
-                      .attr("class", "text-wrap")
+                      .attr("class", "span-text")
                       .attr("x", x)
                       .attr("y", y)
-                      .on('click', (d) => {
-                        ec.textManager.onNodeSelected(d);
-                      })
+                      // .on('click', (d) => {
+                      //   ec.textManager.onNodeSelected(d);
+                      // })
                       .on('dblclick', (d) => {
                         ec.textManager.onOpenTextEdit(d);
                         ec.state = State.EDIT_NODE;
@@ -193,13 +182,13 @@ class ElonComponent {
             tspan.text(line.join(" "));
             line = [word];
             tspan = text.append("tspan")
-                        .attr("class", "text-wrap")
+                        .attr("class", "span-text")
                         .attr("x", x)
                         .attr("y", y)
                         .attr("dy", lineHeight + "em")
-                        .on('click', (d) => {
-                          ec.textManager.onNodeSelected(d);
-                        })
+                        // .on('click', (d) => {
+                        //   ec.textManager.onNodeSelected(d);
+                        // })
                         .on('dblclick', (d) => {
                           ec.textManager.onOpenTextEdit(d);
                           ec.state = State.EDIT_NODE;
@@ -255,10 +244,10 @@ class ElonComponent {
       .style("display", "none")
       .attr('pointer-events', 'mouseover')
       .on("mouseover", function(d) {
-        ec.globalConnection.selectedNode = d;
+        ec.globalConnection.selectedData = d;
       })
       .on("mouseout", function(d) {
-        ec.globalConnection.selectedNode = undefined;
+        ec.globalConnection.selectedData = undefined;
       });
     }
 
@@ -277,7 +266,7 @@ class ElonComponent {
         })
         .attr('class', 'text-rect')
         .on('click', (d) => {
-          ec.textManager.onNodeSelected(d);
+          // ec.textManager.onNodeSelected(d);
         })
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
@@ -295,9 +284,9 @@ class ElonComponent {
         .attr("text-anchor", function(d) {
           return "start";
         })
-        .on('click', (d) => {
+        // .on('click', (d) => {
           
-        })
+        // })
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
           ec.state = State.EDIT_NODE;
@@ -402,7 +391,7 @@ class ElonComponent {
           break;
         case State.CREATE_CHILD_NODE:
           this.textManager.onCreateNewChild(t.val());
-          node = this.textManager.selectedNode;
+          node = this.textManager.selectedData;
           break;
         default:
           break;
@@ -413,17 +402,17 @@ class ElonComponent {
   }
 
   createNewChild() {
-    if (this.textManager.selectedNode == undefined)
+    if (this.textManager.selectedData == undefined)
       return;
     this.textManager.createTextInput();
     this.state = State.CREATE_CHILD_NODE;
   }
 
   deleteNode() {
-    if (this.textManager.selectedNode != undefined) {
+    if (this.textManager.selectedData != undefined) {
       this.textManager.deleteNode();
-      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: this.textManager.selectedNode});
-      this.selectedNode = undefined;
+      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: this.textManager.selectedData});
+      this.selectedData = undefined;
     }
   }
 

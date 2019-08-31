@@ -1,0 +1,108 @@
+{
+  "name": "August 29 test",
+  "id": 1,
+  "children": [
+    {
+      "id": 18,
+      "name": "Pros",
+      "visible": true,
+      "children": [
+        {
+          "id": 20,
+          "name": "text field available",
+          "visible": true,
+          "children": [
+            {
+              "id": 28,
+              "name": "hopefully someday this text field is in the location where the text will be placed",
+              "visible": true
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "nice animation and design",
+          "visible": true,
+          "children": [
+            {
+              "id": 27,
+              "name": "cute!",
+              "visible": true
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "easy saving method",
+          "children": [
+            {
+              "id": 26,
+              "name": "thanks",
+              "visible": true
+            }
+          ],
+          "visible": true
+        },
+        {
+          "id": 29,
+          "name": "wow! it's folding and unfolding.",
+          "children": [
+            {
+              "id": 30,
+              "name": "does these have shortcuts too? - like the one you made before?"
+            },
+            {
+              "id": 31,
+              "name": "can I also fold the grandparents, not just the grandchildren?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Cons",
+      "children": [
+        {
+          "id": 21,
+          "name": "2 step child node creation",
+          "children": [
+            {
+              "id": 22,
+              "name": "but sibling node creation is good",
+              "visible": true
+            }
+          ],
+          "visible": true
+        },
+        {
+          "id": 23,
+          "name": "branch line is striking the texts",
+          "visible": true
+        },
+        {
+          "id": 32,
+          "name": "too much texts overlaps the other node, haha!",
+          "children": [
+            {
+              "id": 33,
+              "name": "maybe you can increase the range of text field.",
+              "visible": true
+            }
+          ],
+          "visible": true
+        },
+        {
+          "id": 34,
+          "name": "control + S function saves new file, not overwrites the currently opened file",
+          "children": [
+            {
+              "id": 35,
+              "name": "is there a way to just save the changes in the currently open file"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
