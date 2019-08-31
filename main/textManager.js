@@ -57,6 +57,9 @@ class TextManager {
       d3.selectAll('g.node')
       .each(function(d) {
         if (d.data.foldDescendants) {
+          if (d.children == undefined) {
+            return;
+          }
           d._children = d.children;
           d.children = null;
         } else {

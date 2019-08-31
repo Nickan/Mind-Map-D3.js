@@ -8,8 +8,6 @@ class SaveManager {
     window.addEventListener(Event.SAVE, (e) => {
       this.save(e.detail.root);
     });
-
-    
   }
 
   save(root) {

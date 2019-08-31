@@ -162,8 +162,6 @@ class DragManager {
             p.children[index1] = b;
             p.children[index2] = a;
             Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: p});
-            // console.log(index1);
-            // console.log(index2);
           }
         }
       })
