@@ -81,11 +81,6 @@ $(document).ready(() => {
     .then((root) => {
       Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
       dragManager.init();
-
-      // Initiate only once
-      root.nodes.forEach(function(d){
-        globalConnection.lastNodeId = d.id;
-      });
     });
   }
 });
