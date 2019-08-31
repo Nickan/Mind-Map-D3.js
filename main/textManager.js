@@ -45,6 +45,10 @@ class TextManager {
     window.addEventListener(Event.ON_DRAG, (e) => {
       this.cancelTextInputProcess();
     })
+
+    window.addEventListener(Event.APPEND_NODE, (e) => {
+      this.deleteNodeData(e.detail.toAppend);
+    });
   }
 
   processTextInput() {
