@@ -9,9 +9,11 @@ class FoldAncentors {
     });
     window.addEventListener(Event.MAIN_ROOT, (e) => {
       this.root = e.detail.root;
-    });   
-
+    }); 
     window.addEventListener(Event.FOLD_ANCESTORS, (e) => {
+      if (this.selectedData == undefined)
+        this.selectedData = e.detail.root;
+
       if (this.selectedData == undefined)
         return;
 
@@ -26,6 +28,7 @@ class FoldAncentors {
           root = d;
         }
       });
+      Event.dispatchEvent(Event.FOLD_ANCESTORS_ROOT, {root: root});
       source = this.selectedData;
 
       Event.dispatchEvent(Event.UPDATE_TREE, {
