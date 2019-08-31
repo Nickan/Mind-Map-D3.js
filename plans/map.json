@@ -26,7 +26,8 @@
               "visible": true
             }
           ],
-          "visible": true
+          "visible": true,
+          "foldDescendants": true
         },
         {
           "id": 10,
@@ -38,6 +39,12 @@
               "visible": true
             }
           ],
+          "visible": true,
+          "foldDescendants": true
+        },
+        {
+          "id": 34,
+          "name": "Fold ancestor",
           "visible": true
         }
       ],
@@ -91,6 +98,7 @@
               "visible": true
             }
           ],
+          "visible": true,
           "foldDescendants": true
         },
         {
@@ -107,28 +115,53 @@
                   "children": [
                     {
                       "id": 36,
-                      "name": "But detect if the node is sibling"
+                      "name": "But detect if the node is sibling",
+                      "visible": true
                     }
-                  ]
-                },
+                  ],
+                  "visible": true
+                }
+              ],
+              "visible": true,
+              "foldDescendants": true
+            },
+            {
+              "id": 35,
+              "name": "Fix",
+              "visible": true
+            },
+            {
+              "id": 36,
+              "name": "Fix can't make sibling as a new parent",
+              "children": [
                 {
                   "id": 37,
-                  "name": "If sibling",
-                  "selected": true,
+                  "name": "How to fix it?",
                   "children": [
                     {
-                      "id": 38,
-                      "name": "Detect if draggedNode < siblingNode"
-                    },
-                    {
-                      "id": 39,
-                      "name": "Then swap array position"
+                      "id": 37,
+                      "name": "If sibling",
+                      "children": [
+                        {
+                          "id": 38,
+                          "name": "Detect if draggedNode < siblingNode",
+                          "visible": true
+                        },
+                        {
+                          "id": 39,
+                          "name": "Then swap array position",
+                          "visible": true
+                        }
+                      ],
+                      "visible": true
                     }
                   ]
                 }
-              ]
+              ],
+              "selected": true
             }
-          ]
+          ],
+          "visible": true
         }
       ]
     },
@@ -154,7 +187,8 @@
               ],
               "visible": true
             }
-          ]
+          ],
+          "foldDescendants": true
         },
         {
           "id": 5,
@@ -166,12 +200,14 @@
               "name": "Click outside textarea should cancel creation or edit",
               "visible": true
             }
-          ]
+          ],
+          "foldDescendants": true
         },
         {
           "id": 13,
           "name": "Save the fold state",
-          "visible": true
+          "visible": true,
+          "foldDescendants": true
         }
       ]
     },
@@ -186,9 +222,11 @@
         },
         {
           "id": 16,
-          "name": "Prioritize usability over nice feature"
+          "name": "Prioritize usability over nice feature",
+          "visible": true
         }
-      ]
+      ],
+      "visible": true
     }
   ]
 }
