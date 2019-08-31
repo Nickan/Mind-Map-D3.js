@@ -236,7 +236,7 @@ class ElonComponent {
     function initNearestNodeDetectorCircle(nodeEnter, root, ec) {
       nodeEnter.append("circle")
       .attr('class', 'detectorCircle')
-      .attr("r", 30)
+      .attr("r", 15)
       .attr("opacity", 0.2) // change this to zero to hide the target area
       .style("fill", "red")
       .style("display", "none")

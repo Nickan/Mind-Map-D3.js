@@ -140,11 +140,14 @@ class DragManager {
         function setNewParent(d, t, globalConnection) {
           let p = globalConnection.selectedData;
           if (p != undefined && p != d) {
-            // globalConnection.deleteNodeData(d);
-            Event.dispatchEvent(Event.APPEND_NODE, {
-              appendTo: p,
-              toAppend: d
-            });
+            if (Node.siblings(p, d)) {
+              switchPosition(p, d);
+            } else {
+              Event.dispatchEvent(Event.APPEND_NODE, {
+                appendTo: p,
+                toAppend: d
+              });
+            }
           } else {
             let node = d3.select(t);
             d.x = 0;
@@ -152,6 +155,16 @@ class DragManager {
             node.attr("transform", `translate(${d.y},${d.x})`);
           }
           
+          function switchPosition(a, b) {
+            let p = a.parent;
+            let index1 = p.children.indexOf(a);
+            let index2 = p.children.indexOf(b);
+            p.children[index1] = b;
+            p.children[index2] = a;
+            Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: p});
+            // console.log(index1);
+            // console.log(index2);
+          }
         }
       })
     );

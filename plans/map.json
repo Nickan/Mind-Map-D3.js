@@ -39,10 +39,6 @@
             }
           ],
           "visible": true
-        },
-        {
-          "id": 17,
-          "name": "Select Breadth level"
         }
       ],
       "visible": true
@@ -95,8 +91,44 @@
               "visible": true
             }
           ],
-          "selected": true,
           "foldDescendants": true
+        },
+        {
+          "id": 17,
+          "name": "Select Breadth level",
+          "children": [
+            {
+              "id": 34,
+              "name": "How?",
+              "children": [
+                {
+                  "id": 35,
+                  "name": "Same as dragging to find new parent",
+                  "children": [
+                    {
+                      "id": 36,
+                      "name": "But detect if the node is sibling"
+                    }
+                  ]
+                },
+                {
+                  "id": 37,
+                  "name": "If sibling",
+                  "selected": true,
+                  "children": [
+                    {
+                      "id": 38,
+                      "name": "Detect if draggedNode < siblingNode"
+                    },
+                    {
+                      "id": 39,
+                      "name": "Then swap array position"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
