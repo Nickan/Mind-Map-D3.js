@@ -138,7 +138,7 @@ class DragManager {
         }
 
         function setNewParent(d, t, globalConnection) {
-          let p = globalConnection.selectedNode;
+          let p = globalConnection.selectedData;
           if (p != undefined && p != d) {
             globalConnection.deleteNodeData(d);
             Event.dispatchEvent(Event.APPEND_NODE, {
