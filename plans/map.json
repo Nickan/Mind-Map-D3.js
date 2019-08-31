@@ -79,19 +79,46 @@
               ],
               "visible": true
             }
-          ]
+          ],
+          "selected": true
         },
         {
           "id": 20,
-          "name": "Improvements"
-        },
-        {
-          "id": 21,
-          "name": "Streamline update of dom nodes"
-        },
-        {
-          "id": 22,
-          "name": "testing"
+          "name": "Improvements",
+          "children": [
+            {
+              "id": 21,
+              "name": "Streamline update of dom nodes",
+              "children": [
+                {
+                  "id": 23,
+                  "name": "Pros",
+                  "children": [
+                    {
+                      "id": 24,
+                      "name": "Easier implementation"
+                    }
+                  ]
+                },
+                {
+                  "id": 25,
+                  "name": "Cons",
+                  "children": [
+                    {
+                      "id": 26,
+                      "name": "Possible performance hit",
+                      "children": [
+                        {
+                          "id": 27,
+                          "name": "As everything has to be updated instead of only target node"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },

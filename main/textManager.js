@@ -13,6 +13,7 @@ class TextManager {
       .on("click", (d) => {
         this.handleClickEvent(d, this);
       });
+      this.updateTextHighlight();
     });
 
     window.addEventListener(Event.ON_DRAG_UPDATE_ONCE, (e) => {
@@ -21,22 +22,26 @@ class TextManager {
   }
 
   handleClickEvent(d, tm) {
+    console.log("handle");
     d3.selectAll(".text-wrap")
     .each(function(d) {
-      d.selected = undefined;
+      d.data.selected = undefined;
     });
 
     tm.selectedData = d;
-    d.selected = true;
+    d.data.selected = true;
+    this.updateTextHighlight();
+  }
 
+  updateTextHighlight() {
     d3.selectAll(".text-wrap")
     .style("font-weight", function(d) {
-      if (d.selected)
+      if (d.data.selected)
         return "800";
       return "initial";
     })
     .style("font-size", function(d) {
-      if (d.selected)
+      if (d.data.selected)
         return "11px";
       return "10px";
     });
