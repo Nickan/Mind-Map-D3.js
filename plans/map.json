@@ -44,21 +44,26 @@
         },
         {
           "id": 42,
-          "name": "Ellipsis when text is over 3 lines"
+          "name": "Ellipsis when text is over 3 lines",
+          "visible": true
         },
         {
           "id": 43,
           "name": "Fix bug when creating child to the foldDescendants",
-          "selected": true,
           "children": [
             {
               "id": 44,
-              "name": "Remove foldDescendants to prevent bugs"
+              "name": "Remove foldDescendants to prevent bugs",
+              "visible": true
             }
-          ]
+          ],
+          "visible": true
         }
       ],
-      "visible": true
+      "visible": true,
+      "selected": true,
+      "foldAncestors": true,
+      "foldDescendants": true
     },
     {
       "id": 7,

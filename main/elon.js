@@ -85,8 +85,9 @@ $(document).ready(() => {
       Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
       dragManager.init();
       
+      Event.dispatchEvent(Event.FOLD_ANCESTORS, {root: root, init: true});
+      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {root: root, init: true});
       Event.dispatchEvent(Event.FOLD_ANCESTORS, {root: root});
-      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {root: root});
     });
   }
 });
