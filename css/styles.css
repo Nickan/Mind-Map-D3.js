@@ -19,7 +19,7 @@
  
 .link {
   fill: none;
-  stroke: #ccc;
+  stroke: rgba(255, 255, 255, 0.3);
   stroke-width: 1.5px;
 }
 

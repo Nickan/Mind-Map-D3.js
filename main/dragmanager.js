@@ -62,12 +62,6 @@ class DragManager {
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
       this.initCircleNode();
     });
-
-    // window.addEventListener(Event.APPEND_NODE_SUCCESS, (e) => {
-    //   Event.dispatchEvent(Event.UPDATE_TREE, )
-    //   let e = new CustomEvent(Event.UPDATE_TREE, {detail: {nodeSource: d.parent}});
-    //   window.dispatchEvent(e);
-    // });
   }
 
   initCircleNode() {
@@ -86,10 +80,11 @@ class DragManager {
           showDetectorCircle();
           disableTextPointerEvent(d, this);
           setDescendantsVisibility(d, false);
+          d.selected = true;
+          Event.dispatchEvent(Event.ON_DRAG_UPDATE_ONCE, {selectedData: d});
         }
 
         setToMousePosition(d, this);
-        
         
         function setToMousePosition(d, t) {
           let node = d3.select(t);

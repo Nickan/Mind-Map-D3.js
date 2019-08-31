@@ -1,6 +1,46 @@
 class TextManager {
 
-  constructor() {}
+  constructor() {
+    this.initEventListeners();
+  }
+
+  initEventListeners() {
+    window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
+      d3.selectAll(".text-wrap")
+      .style("pointer-events", "none");
+
+      d3.selectAll("g.node")
+      .on("click", (d) => {
+        this.handleClickEvent(d, this);
+      });
+    });
+
+    window.addEventListener(Event.ON_DRAG_UPDATE_ONCE, (e) => {
+      this.handleClickEvent(e.detail.selectedData, this);
+    });
+  }
+
+  handleClickEvent(d, tm) {
+    d3.selectAll(".text-wrap")
+    .each(function(d) {
+      d.selected = undefined;
+    });
+
+    tm.selectedData = d;
+    d.selected = true;
+
+    d3.selectAll(".text-wrap")
+    .style("font-weight", function(d) {
+      if (d.selected)
+        return "800";
+      return "initial";
+    })
+    .style("font-size", function(d) {
+      if (d.selected)
+        return "11px";
+      return "10px";
+    });
+  }
 
   onOpenTextEdit(d) {
     this.nodeToEdit = d;
@@ -26,15 +66,18 @@ class TextManager {
   }
 
   onNodeSelected(d) {
-    this.selectedNode = d;
+    this.selectedData = d;
   }
 
   onCreateNewChild(text) {
-    this.globalConnection.onCreateNewChild(this.selectedNode, text);
+    this.globalConnection.onCreateNewChild(this.selectedData, text);
   }
 
   deleteNode() {
-    this.globalConnection.deleteNodeData(this.selectedNode);
+    if (this.selectedData == undefined)
+      return;
+    this.selectedData = this.selectedData.parent
+    this.globalConnection.deleteNodeData(this.selectedData);
   }
 
 }
