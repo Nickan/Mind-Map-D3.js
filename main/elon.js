@@ -5,6 +5,7 @@ $(document).ready(() => {
   let dragManager = new DragManager();
   let globalConnection = new GlobalConnection();
   let saveManager = new SaveManager();
+  let foldAncentors = new FoldAncentors();
 
   start(JSON.parse(`{
     "name": "Main",
@@ -52,6 +53,9 @@ $(document).ready(() => {
             ev.preventDefault();
           }
           break;
+        case "F1": Event.dispatchEvent(Event.FOLD_ANCESTORS, {});
+          ev.preventDefault();
+          break;
         default:
       }
     }
@@ -81,7 +85,7 @@ $(document).ready(() => {
     .then((root) => {
       Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
       dragManager.init();
-      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {});
+      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {root: root});
     });
   }
 });
