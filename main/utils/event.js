@@ -12,6 +12,9 @@ class Event {
   static PROCESS_TEXT_INPUT = "PROCESS_TEXT_INPUT";
   static CREATE_CHILD_NODE = "CREATE_CHILD_NODE";
   static FOLD_DESCENDANTS = "FOLD_DESCENDANTS";
+  static FOLD_ANCESTORS = "FOLD_ANCESTORS";
+  static SELECTED_NODE_DATA = "SELECTED_NODE_DATA";
+  static MAIN_ROOT = "MAIN_ROOT";
 
   constructor() {
     Object.freeze(this);

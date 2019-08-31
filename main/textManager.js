@@ -69,7 +69,16 @@ class TextManager {
           }
         }
       });
-      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: e.detail.clickedNodeData});
+
+      let source = e.detail.clickedNodeData;
+      let root = e.detail.root;
+
+      if (source == undefined)
+        source = root;
+      Event.dispatchEvent(Event.UPDATE_TREE, {
+        nodeSource: source,
+        root: root
+      });
     });
   }
 
@@ -111,6 +120,7 @@ class TextManager {
     .style("font-weight", function(d) {
       if (d.data.selected) {
         tm.selectedData = d;
+        Event.dispatchEvent(Event.SELECTED_NODE_DATA, {selectedData: d});
         return "800";
       }
         

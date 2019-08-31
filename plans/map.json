@@ -43,9 +43,19 @@
           "foldDescendants": true
         },
         {
-          "id": 34,
-          "name": "Fold ancestor",
-          "visible": true
+          "id": 42,
+          "name": "Ellipsis when text is over 3 lines"
+        },
+        {
+          "id": 43,
+          "name": "Fix bug when creating child to the foldDescendants",
+          "selected": true,
+          "children": [
+            {
+              "id": 44,
+              "name": "Remove foldDescendants to prevent bugs"
+            }
+          ]
         }
       ],
       "visible": true
@@ -98,6 +108,77 @@
               "visible": true
             }
           ],
+          "visible": true,
+          "foldDescendants": true
+        },
+        {
+          "id": 34,
+          "name": "Fold ancestor",
+          "visible": true,
+          "children": [
+            {
+              "id": 38,
+              "name": "How?",
+              "children": [
+                {
+                  "id": 39,
+                  "name": "Set d.data.foldAncestors"
+                },
+                {
+                  "id": 40,
+                  "name": "The deepest node with foldAncestor should be the root"
+                },
+                {
+                  "id": 41,
+                  "name": "Save the real root to prevent bug?"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Implemented",
+      "visible": true,
+      "children": [
+        {
+          "id": 6,
+          "name": "UI for active node",
+          "visible": true,
+          "children": [
+            {
+              "id": 18,
+              "name": "Implementation",
+              "children": [
+                {
+                  "id": 19,
+                  "name": "Change the color of the rect",
+                  "visible": true
+                }
+              ],
+              "visible": true
+            }
+          ],
+          "foldDescendants": true
+        },
+        {
+          "id": 5,
+          "name": "Cancel of create node",
+          "visible": true,
+          "children": [
+            {
+              "id": 27,
+              "name": "Click outside textarea should cancel creation or edit",
+              "visible": true
+            }
+          ],
+          "foldDescendants": true
+        },
+        {
+          "id": 13,
+          "name": "Save the fold state",
           "visible": true,
           "foldDescendants": true
         },
@@ -155,57 +236,14 @@
                       ],
                       "visible": true
                     }
-                  ]
-                }
-              ],
-              "selected": true
-            }
-          ],
-          "visible": true
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "name": "Implemented",
-      "visible": true,
-      "children": [
-        {
-          "id": 6,
-          "name": "UI for active node",
-          "visible": true,
-          "children": [
-            {
-              "id": 18,
-              "name": "Implementation",
-              "children": [
-                {
-                  "id": 19,
-                  "name": "Change the color of the rect",
+                  ],
                   "visible": true
                 }
               ],
+              "foldDescendants": true,
               "visible": true
             }
           ],
-          "foldDescendants": true
-        },
-        {
-          "id": 5,
-          "name": "Cancel of create node",
-          "visible": true,
-          "children": [
-            {
-              "id": 27,
-              "name": "Click outside textarea should cancel creation or edit",
-              "visible": true
-            }
-          ],
-          "foldDescendants": true
-        },
-        {
-          "id": 13,
-          "name": "Save the fold state",
           "visible": true,
           "foldDescendants": true
         }

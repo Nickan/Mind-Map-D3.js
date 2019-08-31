@@ -6,7 +6,7 @@ class ElonComponent {
 
   init(json) {
     this.textManager.globalConnection = this.globalConnection;
-    
+    let ec = this;
     return new Promise(function(resolve, reject) {
       let margin = {
         top: 20,
@@ -39,21 +39,28 @@ class ElonComponent {
       });
       root.x0 = height / 2;
       root.y0 = 0;
-  
-      root.treeContainer = treeContainer;
-      root.treemap = treemap;
+      
+      ec.treeContainer = treeContainer;
+      ec.treemap = treemap;
+      ec.root = root;
+      Event.dispatchEvent(Event.MAIN_ROOT, {root: root});
       resolve(root);
     });
   }
 
   initEventListeners() {
     window.addEventListener(Event.UPDATE_TREE, (e) => {
-      if (e.detail.nodeSource) {
-        this.update(e.detail.nodeSource, this.root);
-      } else {
-        this.update(this.root, this.root);
+      let source = e.detail.nodeSource;
+      let root = e.detail.root;
+
+      if (source == undefined)
+        source = this.root;
+
+      if (root == undefined) {
+        root = this.root;
       }
-      
+
+      this.update(source, root);
       Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
     });
 
@@ -86,9 +93,9 @@ class ElonComponent {
   }
 
   update(source, root) {
-    this.root = root;
-    let treeContainer = root.treeContainer;
-    let treemap = root.treemap;
+    // this.root = root;
+    let treeContainer = this.treeContainer;
+    let treemap = this.treemap;
 
     // Assigns the x and y position for the nodes
     var treeData = treemap(root);
@@ -128,7 +135,7 @@ class ElonComponent {
     let linkExit = removeExitingLinks(link, duration, source, diagonal);
     nodes = storeOldPositionForTransition(nodes);
 
-    root.nodes = nodes;
+    // root.nodes = nodes;
     return root;
   
     // Creates a curved (diagonal) path from parent to the child nodes
@@ -140,10 +147,10 @@ class ElonComponent {
     }
   
     // Toggle children on click.
-    function click(d, root, e) {
+    function click(d, root, ec) {
       d.data.foldDescendants = d.data.foldDescendants ? undefined: true;
       Event.dispatchEvent(Event.FOLD_DESCENDANTS, {clickedNodeData: d});
-      e.update(d, root);
+      ec.update(d, root);
       Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
     }
 
