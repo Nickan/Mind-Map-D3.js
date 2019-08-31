@@ -409,11 +409,11 @@ class ElonComponent {
   }
 
   deleteNode() {
-    if (this.textManager.selectedData != undefined) {
-      this.textManager.deleteNode();
-      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: this.textManager.selectedData});
-      this.selectedData = undefined;
-    }
+    // if (this.textManager.selectedData != undefined) {
+    //   this.textManager.deleteNode();
+    //   Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: this.textManager.selectedData});
+    //   this.selectedData = undefined;
+    // }
   }
 
 
