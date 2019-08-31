@@ -12,6 +12,9 @@ class TextManager {
       d3.selectAll("g.node")
       .on("click", (d) => {
         this.handleClickEvent(d);
+      })
+      .each((d) => {
+        this.lastNodeId = d.id;
       });
       this.updateTextHighlight();
     });
