@@ -11,6 +11,7 @@ class Event {
   static CANCEL_NODE_CREATION = "CANCEL_NODE_CREATION";
   static PROCESS_TEXT_INPUT = "PROCESS_TEXT_INPUT";
   static CREATE_CHILD_NODE = "CREATE_CHILD_NODE";
+  static FOLD_DESCENDANTS = "FOLD_DESCENDANTS";
 
   constructor() {
     Object.freeze(this);

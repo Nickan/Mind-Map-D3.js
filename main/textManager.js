@@ -49,6 +49,22 @@ class TextManager {
     window.addEventListener(Event.APPEND_NODE, (e) => {
       this.deleteNodeData(e.detail.toAppend);
     });
+
+    window.addEventListener(Event.FOLD_DESCENDANTS, (e) => {
+      d3.selectAll('g.node')
+      .each(function(d) {
+        if (d.data.foldDescendants) {
+          d._children = d.children;
+          d.children = null;
+        } else {
+          if (d._children != undefined) {
+            d.children = d._children;
+            d._children = null;
+          }
+        }
+      });
+      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: e.detail.clickedNodeData});
+    });
   }
 
   processTextInput() {

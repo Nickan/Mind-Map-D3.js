@@ -41,11 +41,6 @@
           "visible": true
         },
         {
-          "id": 13,
-          "name": "Save the fold state",
-          "visible": true
-        },
-        {
           "id": 17,
           "name": "Select Breadth level"
         }
@@ -71,9 +66,11 @@
                   "children": [
                     {
                       "id": 24,
-                      "name": "Easier implementation"
+                      "name": "Easier implementation",
+                      "visible": true
                     }
-                  ]
+                  ],
+                  "visible": true
                 },
                 {
                   "id": 25,
@@ -85,27 +82,21 @@
                       "children": [
                         {
                           "id": 27,
-                          "name": "As everything has to be updated instead of only target node"
+                          "name": "As everything has to be updated instead of only target node",
+                          "visible": true
                         }
-                      ]
+                      ],
+                      "visible": true
                     }
-                  ]
+                  ],
+                  "visible": true
                 }
-              ]
+              ],
+              "visible": true
             }
-          ]
-        },
-        {
-          "id": 5,
-          "name": "Cancel of create node",
-          "visible": true,
+          ],
           "selected": true,
-          "children": [
-            {
-              "id": 27,
-              "name": "Click outside textarea should cancel creation or edit"
-            }
-          ]
+          "foldDescendants": true
         }
       ]
     },
@@ -132,6 +123,23 @@
               "visible": true
             }
           ]
+        },
+        {
+          "id": 5,
+          "name": "Cancel of create node",
+          "visible": true,
+          "children": [
+            {
+              "id": 27,
+              "name": "Click outside textarea should cancel creation or edit",
+              "visible": true
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "Save the fold state",
+          "visible": true
         }
       ]
     },
