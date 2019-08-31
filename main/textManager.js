@@ -1,6 +1,7 @@
 class TextManager {
 
   constructor() {
+    this.lastNodeId = 0;
     this.initEventListeners();
   }
 
@@ -14,7 +15,9 @@ class TextManager {
         this.handleClickEvent(d);
       })
       .each((d) => {
-        this.lastNodeId = d.id;
+        if (d.id > this.lastNodeId) {
+          this.lastNodeId = d.id;
+        }
       });
       this.updateTextHighlight();
     });
