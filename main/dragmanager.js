@@ -15,7 +15,7 @@ class DragManager {
         })
         .on("drag", function() {
           dragScreen(this);
-          
+          Event.dispatchEvent(Event.ON_DRAG, {});
         })
         .on("end", function() {
 

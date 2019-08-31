@@ -41,6 +41,10 @@ class TextManager {
       this.createTextInput();
       this.state = State.CREATE_CHILD_NODE;
     });
+
+    window.addEventListener(Event.ON_DRAG, (e) => {
+      this.cancelTextInputProcess();
+    })
   }
 
   processTextInput() {
@@ -93,16 +97,27 @@ class TextManager {
       }
       return "10px";
     });
+
+    this.cancelTextInputProcess();
   }
 
   onOpenTextEdit(d) {
     this.nodeToEdit = d;
+    this.deleteTextInputUI();
+    this.createTextInput(d.data.name);
+    this.state = State.EDIT_NODE;
+  }
+
+  cancelTextInputProcess() {
+    this.state = undefined;
+    this.deleteTextInputUI();
+  }
+
+  deleteTextInputUI() {
     let t = jQuery(`#text-input`)
     if (t.length > 0) {
       t.remove();
     }
-    this.createTextInput(d.data.name);
-    this.state = State.EDIT_NODE;
   }
 
   createTextInput(name) {
