@@ -23,6 +23,42 @@ class TextManager {
     window.addEventListener(Event.DELETE_NODE, (e) => {
       this.deleteNode();
     });
+
+    window.addEventListener(Event.PROCESS_TEXT_INPUT, (e) => {
+      if (this.selectedData == undefined) {
+        return;
+      }
+      this.processTextInput();
+    });
+
+    window.addEventListener(Event.CREATE_CHILD_NODE, (e) => {
+      if (this.selectedData == undefined) {
+        return;
+      }
+      this.createTextInput();
+      this.state = State.CREATE_CHILD_NODE;
+    });
+  }
+
+  processTextInput() {
+    let t = jQuery(`#text-input`);
+    if (t.length > 0) {
+      let node;
+      switch (this.state) {
+        case State.EDIT_NODE:
+          this.onTextEdit();
+          node = this.nodeToEdit;
+          break;
+        case State.CREATE_CHILD_NODE:
+          this.onCreateNewChild(this.selectedData, t.val());
+          node = this.selectedData;
+          break;
+        default:
+          break;
+      }
+      t.remove();
+      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: node});
+    }
   }
 
   handleClickEvent(d) {
@@ -63,6 +99,7 @@ class TextManager {
       t.remove();
     }
     this.createTextInput(d.data.name);
+    this.state = State.EDIT_NODE;
   }
 
   createTextInput(name) {
@@ -83,8 +120,18 @@ class TextManager {
     this.selectedData = d;
   }
 
-  onCreateNewChild(text) {
-    this.globalConnection.onCreateNewChild(this.selectedData, text);
+  onCreateNewChild(parentNode, text) {
+    let nodeId = ++this.lastNodeId;
+
+    let p = parentNode;
+    let c = new Node(p, nodeId, text);
+    if (p.children == undefined) {
+      let children = [c];
+      p.children = children;
+    } else {
+      p.children.push(c);
+    }
+    return c;
   }
 
   deleteNode() {

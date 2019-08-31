@@ -7,6 +7,9 @@ class Event {
   static ON_DRAG_UPDATE_ONCE = "ON_DRAG_UPDATE_ONCE";
   static SAVE = "SAVE";
   static LOAD = "LOAD";
+  static CANCEL_NODE_CREATION = "CANCEL_NODE_CREATION";
+  static PROCESS_TEXT_INPUT = "PROCESS_TEXT_INPUT";
+  static CREATE_CHILD_NODE = "CREATE_CHILD_NODE";
 
   constructor() {
     Object.freeze(this);

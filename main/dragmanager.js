@@ -72,7 +72,7 @@ class DragManager {
     d3.selectAll('circle.node')
     .call(d3.drag()
       .on("start", function(d) {
-
+        
       })
       .on("drag", function(d) {
         if (!activatedOnce) {

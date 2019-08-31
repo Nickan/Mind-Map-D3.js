@@ -168,7 +168,6 @@ class ElonComponent {
                       // })
                       .on('dblclick', (d) => {
                         ec.textManager.onOpenTextEdit(d);
-                        ec.state = State.EDIT_NODE;
                       })
                       .attr("dy", dy + "em");
         
@@ -191,7 +190,6 @@ class ElonComponent {
                         // })
                         .on('dblclick', (d) => {
                           ec.textManager.onOpenTextEdit(d);
-                          ec.state = State.EDIT_NODE;
                         })
                         .text(word);
           }
@@ -270,7 +268,6 @@ class ElonComponent {
         })
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
-          ec.state = State.EDIT_NODE;
         });
       }
   
@@ -289,7 +286,6 @@ class ElonComponent {
         // })
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
-          ec.state = State.EDIT_NODE;
         })
         .text(function(d) { return d.data.name; })
         .style("fill", "white")
@@ -325,6 +321,7 @@ class ElonComponent {
       return node.exit().transition()
       .duration(duration)
       .attr("transform", function(d) {
+        console.log(d.data.name);
         return "translate(" + source.y + "," + source.x + ")";
       })
       .remove();
@@ -378,43 +375,5 @@ class ElonComponent {
       return nodes;
     }
   }
-
-
-  processTextInput() {
-    let t = jQuery(`#text-input`);
-    if (t.length > 0) {
-      let node;
-      switch (this.state) {
-        case State.EDIT_NODE:
-          this.textManager.onTextEdit();
-          node = this.textManager.nodeToEdit;
-          break;
-        case State.CREATE_CHILD_NODE:
-          this.textManager.onCreateNewChild(t.val());
-          node = this.textManager.selectedData;
-          break;
-        default:
-          break;
-      }
-      t.remove();
-      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: node});
-    }
-  }
-
-  createNewChild() {
-    if (this.textManager.selectedData == undefined)
-      return;
-    this.textManager.createTextInput();
-    this.state = State.CREATE_CHILD_NODE;
-  }
-
-  deleteNode() {
-    // if (this.textManager.selectedData != undefined) {
-    //   this.textManager.deleteNode();
-    //   Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: this.textManager.selectedData});
-    //   this.selectedData = undefined;
-    // }
-  }
-
 
 }
