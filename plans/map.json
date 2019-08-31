@@ -17,11 +17,6 @@
           "visible": true
         },
         {
-          "id": 5,
-          "name": "Cancel of create node",
-          "visible": true
-        },
-        {
           "id": 9,
           "name": "Referencing",
           "children": [
@@ -63,26 +58,6 @@
       "visible": true,
       "children": [
         {
-          "id": 6,
-          "name": "UI for active node",
-          "visible": true,
-          "children": [
-            {
-              "id": 18,
-              "name": "Implementation",
-              "children": [
-                {
-                  "id": 19,
-                  "name": "Change the color of the rect",
-                  "visible": true
-                }
-              ],
-              "visible": true
-            }
-          ],
-          "selected": true
-        },
-        {
           "id": 20,
           "name": "Improvements",
           "children": [
@@ -119,13 +94,46 @@
               ]
             }
           ]
+        },
+        {
+          "id": 5,
+          "name": "Cancel of create node",
+          "visible": true,
+          "selected": true,
+          "children": [
+            {
+              "id": 27,
+              "name": "Click outside textarea should cancel creation or edit"
+            }
+          ]
         }
       ]
     },
     {
       "id": 8,
       "name": "Implemented",
-      "visible": true
+      "visible": true,
+      "children": [
+        {
+          "id": 6,
+          "name": "UI for active node",
+          "visible": true,
+          "children": [
+            {
+              "id": 18,
+              "name": "Implementation",
+              "children": [
+                {
+                  "id": 19,
+                  "name": "Change the color of the rect",
+                  "visible": true
+                }
+              ],
+              "visible": true
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 15,

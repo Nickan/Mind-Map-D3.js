@@ -27,10 +27,10 @@ $(document).ready(() => {
     document.onkeydown = function(ev) {
       // console.log(ev);
       switch (ev.key) {
-        case "Enter": elonComponent.processTextInput();
+        case "Enter": Event.dispatchEvent(Event.PROCESS_TEXT_INPUT, {});
           ev.preventDefault();
           break;
-        case "Tab": elonComponent.createNewChild();
+        case "Tab": Event.dispatchEvent(Event.CREATE_CHILD_NODE, {});
           ev.preventDefault();
           break;
         case "Delete": Event.dispatchEvent(Event.DELETE_NODE, {});
