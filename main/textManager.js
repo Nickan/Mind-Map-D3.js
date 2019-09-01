@@ -38,6 +38,7 @@ class TextManager {
     });
 
     window.addEventListener(Event.CREATE_CHILD_NODE, (e) => {
+      Event.dispatchEvent(Event.REMOVE_FOLD_DESCENDANTS, {node: this.selectedData});
       if (this.selectedData == undefined) {
         return;
       }
