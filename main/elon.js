@@ -7,6 +7,7 @@ $(document).ready(() => {
   let saveManager = new SaveManager();
   let foldDescendants = new FoldDescendants();
   let foldAncentors = new FoldAncentors();
+  let appendNode = new AppendNode();
 
   start(JSON.parse(`{
     "name": "Main",
