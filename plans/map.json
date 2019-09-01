@@ -46,24 +46,9 @@
           "id": 42,
           "name": "Ellipsis when text is over 3 lines",
           "visible": true
-        },
-        {
-          "id": 43,
-          "name": "Fix bug when creating child to the foldDescendants",
-          "children": [
-            {
-              "id": 44,
-              "name": "Remove foldDescendants to prevent bugs",
-              "visible": true
-            }
-          ],
-          "visible": true
         }
       ],
-      "visible": true,
-      "selected": true,
-      "foldAncestors": true,
-      "foldDescendants": true
+      "visible": true
     },
     {
       "id": 7,
@@ -115,31 +100,6 @@
           ],
           "visible": true,
           "foldDescendants": true
-        },
-        {
-          "id": 34,
-          "name": "Fold ancestor",
-          "visible": true,
-          "children": [
-            {
-              "id": 38,
-              "name": "How?",
-              "children": [
-                {
-                  "id": 39,
-                  "name": "Set d.data.foldAncestors"
-                },
-                {
-                  "id": 40,
-                  "name": "The deepest node with foldAncestor should be the root"
-                },
-                {
-                  "id": 41,
-                  "name": "Save the real root to prevent bug?"
-                }
-              ]
-            }
-          ]
         }
       ]
     },
@@ -250,6 +210,50 @@
             }
           ],
           "visible": true,
+          "foldDescendants": true
+        },
+        {
+          "id": 34,
+          "name": "Fold ancestor",
+          "visible": true,
+          "children": [
+            {
+              "id": 38,
+              "name": "How?",
+              "children": [
+                {
+                  "id": 39,
+                  "name": "Set d.data.foldAncestors",
+                  "visible": true
+                },
+                {
+                  "id": 40,
+                  "name": "The deepest node with foldAncestor should be the root",
+                  "visible": true
+                },
+                {
+                  "id": 41,
+                  "name": "Save the real root to prevent bug?",
+                  "visible": true
+                }
+              ],
+              "visible": true
+            }
+          ],
+          "foldDescendants": true
+        },
+        {
+          "id": 43,
+          "name": "Fix bug when creating child to the foldDescendants",
+          "children": [
+            {
+              "id": 44,
+              "name": "Remove foldDescendants to prevent bugs",
+              "visible": true
+            }
+          ],
+          "visible": true,
+          "selected": true,
           "foldDescendants": true
         }
       ]

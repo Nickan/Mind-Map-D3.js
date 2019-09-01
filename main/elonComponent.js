@@ -88,7 +88,7 @@ class ElonComponent {
     // Update the nodes...
     let node = initNodes(treeContainer, nodes, root);
     let nodeEnter = positionNewNodeInParentPreviousPosition(node, source);
-    let width = 100;
+    let width = 110;
     initCircle(nodeEnter, root, this);
     initNearestNodeDetectorCircle(nodeEnter, root, this);
     initTextArea(nodeEnter, this, width);
