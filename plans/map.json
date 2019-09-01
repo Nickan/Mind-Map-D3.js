@@ -48,7 +48,8 @@
           "visible": true
         }
       ],
-      "visible": true
+      "visible": true,
+      "foldDescendants": true
     },
     {
       "id": 7,
@@ -100,6 +101,343 @@
           ],
           "visible": true,
           "foldDescendants": true
+        },
+        {
+          "id": 45,
+          "name": "Node version",
+          "children": [
+            {
+              "id": 46,
+              "name": "Using json for each node"
+            },
+            {
+              "id": 47,
+              "name": "Build the master json",
+              "children": [
+                {
+                  "id": 48,
+                  "name": "Parser to add data and children for the root"
+                }
+              ]
+            },
+            {
+              "id": 49,
+              "name": "ID assignation",
+              "children": [
+                {
+                  "id": 50,
+                  "name": "Detects the highest ID set",
+                  "children": [
+                    {
+                      "id": 51,
+                      "name": "Then start using it",
+                      "visible": true
+                    }
+                  ],
+                  "visible": true
+                }
+              ],
+              "foldDescendants": true
+            },
+            {
+              "id": 52,
+              "name": "v2",
+              "children": [
+                {
+                  "id": 53,
+                  "name": "Each node will have a potential json file",
+                  "visible": true
+                },
+                {
+                  "id": 60,
+                  "name": "Questions",
+                  "children": [
+                    {
+                      "id": 61,
+                      "name": "How is it going to be loaded?",
+                      "children": [
+                        {
+                          "id": 62,
+                          "name": "Separate generated json",
+                          "visible": true
+                        },
+                        {
+                          "id": 63,
+                          "name": "Connection to the parent has to be defined",
+                          "children": [
+                            {
+                              "id": 64,
+                              "name": "V1",
+                              "children": [
+                                {
+                                  "id": 65,
+                                  "name": "main.json",
+                                  "visible": true
+                                }
+                              ],
+                              "visible": true
+                            }
+                          ],
+                          "visible": true
+                        }
+                      ],
+                      "visible": true
+                    },
+                    {
+                      "id": 66,
+                      "name": "v2",
+                      "visible": true
+                    }
+                  ],
+                  "visible": true
+                },
+                {
+                  "id": 68,
+                  "name": "Attributes",
+                  "children": [
+                    {
+                      "id": 71,
+                      "name": "Scalable",
+                      "children": [
+                        {
+                          "id": 72,
+                          "name": "Has to be extensibly used",
+                          "visible": true
+                        },
+                        {
+                          "id": 73,
+                          "name": "This is applied because basically everything is relative",
+                          "visible": true
+                        }
+                      ],
+                      "visible": true
+                    }
+                  ],
+                  "visible": true
+                },
+                {
+                  "id": 74,
+                  "name": "v1",
+                  "children": [
+                    {
+                      "id": 75,
+                      "name": "Load interconnected json"
+                    },
+                    {
+                      "id": 76,
+                      "name": "What freezes me up",
+                      "children": [
+                        {
+                          "id": 77,
+                          "name": "Want to use DB"
+                        },
+                        {
+                          "id": 78,
+                          "name": "Still have to define the relationship"
+                        },
+                        {
+                          "id": 79,
+                          "name": "Make decision now"
+                        },
+                        {
+                          "id": 80,
+                          "name": "Then improve it later"
+                        }
+                      ]
+                    },
+                    {
+                      "id": 81,
+                      "name": "It will be easier if using database",
+                      "children": [
+                        {
+                          "id": 82,
+                          "name": "Soon, we have to use database because of too many data"
+                        }
+                      ]
+                    },
+                    {
+                      "id": 83,
+                      "name": "Encapsulate data source",
+                      "children": [
+                        {
+                          "id": 84,
+                          "name": "v1",
+                          "children": [
+                            {
+                              "id": 85,
+                              "name": "By default, I need to use d3.hierarchy() which takes json object"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 86,
+                      "name": "Possible solutions",
+                      "children": [
+                        {
+                          "id": 87,
+                          "name": "v1",
+                          "children": [
+                            {
+                              "id": 88,
+                              "name": "JSON Structure",
+                              "children": [
+                                {
+                                  "id": 89,
+                                  "name": "map of json id",
+                                  "children": [
+                                    {
+                                      "id": 90,
+                                      "name": "naming convention",
+                                      "children": [
+                                        {
+                                          "id": 91,
+                                          "name": "[mainJSONName]",
+                                          "visible": true
+                                        },
+                                        {
+                                          "id": 92,
+                                          "name": "nodeId",
+                                          "visible": true
+                                        },
+                                        {
+                                          "id": 93,
+                                          "name": "Example",
+                                          "children": [
+                                            {
+                                              "id": 98,
+                                              "name": "node.data.reference",
+                                              "children": [
+                                                {
+                                                  "id": 100,
+                                                  "name": "How are we going to select a json?"
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": 99,
+                                              "name": "v1",
+                                              "children": [
+                                                {
+                                                  "id": 94,
+                                                  "name": "Main",
+                                                  "children": [
+                                                    {
+                                                      "id": 95,
+                                                      "name": "non-json node",
+                                                      "children": [
+                                                        {
+                                                          "id": 96,
+                                                          "name": "node.data.reference",
+                                                          "visible": true
+                                                        }
+                                                      ],
+                                                      "visible": true
+                                                    },
+                                                    {
+                                                      "id": 97,
+                                                      "name": "node.data.reference",
+                                                      "visible": true
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": 102,
+                                              "name": "v2",
+                                              "children": [
+                                                {
+                                                  "id": 103,
+                                                  "name": "Have to think about how to edit different json at the same time without conflicts",
+                                                  "children": [
+                                                    {
+                                                      "id": 104,
+                                                      "name": "Every operation edits the master json"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": 105,
+                                              "name": "v3",
+                                              "selected": true,
+                                              "children": [
+                                                {
+                                                  "id": 106,
+                                                  "name": "No master json"
+                                                },
+                                                {
+                                                  "id": 107,
+                                                  "name": "Every json is just connected to its parent json",
+                                                  "children": [
+                                                    {
+                                                      "id": 108,
+                                                      "name": "Naming will be based on it as well"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": 109,
+                                                  "name": "Master list of all the name of created json so far"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 54,
+              "name": "v3",
+              "children": [
+                {
+                  "id": 55,
+                  "name": "Create node data using MySQL",
+                  "visible": true
+                },
+                {
+                  "id": 56,
+                  "name": "Pros",
+                  "children": [
+                    {
+                      "id": 57,
+                      "name": "Don't have to think about creating a unique ID",
+                      "visible": true
+                    }
+                  ],
+                  "visible": true
+                },
+                {
+                  "id": 58,
+                  "name": "Cons",
+                  "children": [
+                    {
+                      "id": 59,
+                      "name": "Requires MySQL installation",
+                      "visible": true
+                    }
+                  ],
+                  "visible": true
+                }
+              ],
+              "foldDescendants": true
+            }
+          ]
         }
       ]
     },
@@ -253,10 +591,10 @@
             }
           ],
           "visible": true,
-          "selected": true,
           "foldDescendants": true
         }
-      ]
+      ],
+      "foldDescendants": true
     },
     {
       "id": 15,
@@ -271,6 +609,14 @@
           "id": 16,
           "name": "Prioritize usability over nice feature",
           "visible": true
+        },
+        {
+          "id": 69,
+          "name": "Simple"
+        },
+        {
+          "id": 70,
+          "name": "Easy"
         }
       ],
       "visible": true
