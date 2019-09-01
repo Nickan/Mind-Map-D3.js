@@ -49,8 +49,8 @@ class TextManager {
       this.cancelTextInputProcess();
     })
 
-    window.addEventListener(Event.APPEND_NODE, (e) => {
-      this.deleteNodeData(e.detail.toAppend);
+    window.addEventListener(Event.DELETE_NODE_DATA, (e) => {
+      this.deleteNodeData(e.detail.nodeData);
     });
   }
 
