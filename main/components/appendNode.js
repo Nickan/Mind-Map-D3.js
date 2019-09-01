@@ -6,7 +6,7 @@ class AppendNode {
   initEventListeners() {
     window.addEventListener(Event.APPEND_NODE, (e) => {
       Event.dispatchEvent(Event.DELETE_NODE_DATA, {nodeData: e.detail.toAppend});
-      removeFoldDescendants(e.detail.appendTo);
+      this.removeFoldDescendants(e.detail.appendTo);
       appendChild(e.detail.appendTo, e.detail.toAppend);
       setDescendantsDepth(e.detail.appendTo);
       Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: e.detail.appendTo});
@@ -31,18 +31,21 @@ class AppendNode {
           }
         }
       }
-
-      function removeFoldDescendants(nodeData) {
-        let data = nodeData.data;
-        if (data.foldDescendants) {
-          data.foldDescendants = undefined;
-          Event.dispatchEvent(Event.FOLD_DESCENDANTS, {
-            clickedNodeData: nodeData,
-            init: true
-          });
-          // Event.dispatchEvent(Event.ON_DRAG_UPDATE_ONCE, {selectedData: nodeData});
-        }
-      }
     });
+
+    window.addEventListener(Event.REMOVE_FOLD_DESCENDANTS, (e) => {
+      this.removeFoldDescendants(e.detail.node);
+    });
+  }
+
+  removeFoldDescendants(node) {
+    let data = node.data;
+    if (data.foldDescendants) {
+      data.foldDescendants = undefined;
+      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {
+        clickedNodeData: node,
+        init: true
+      });
+    }
   }
 }
