@@ -175,6 +175,9 @@ class TextManager {
     if (parent.data.children == undefined)
       parent.data.children = [];
     parent.data.children.push(data);
+
+    // node.x0 = parent.x;
+    // node.y0 = parent.y;
   }
 
   deleteNode() {
@@ -184,8 +187,10 @@ class TextManager {
     this.deleteNodeData(this.selectedData);
     this.selectedData.data.selected = undefined;
     this.selectedData.parent.data.selected = true;
-    Event.dispatchEvent(Event.UPDATE_TREE, 
-      {nodeSource: this.selectedData});
+    Event.dispatchEvent(Event.UPDATE_TREE, {
+      root: this.ancestorsRoot,
+      nodeSource: this.selectedData
+    });
   }
 
   deleteNodeData(nodeData) {
