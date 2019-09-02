@@ -53,6 +53,9 @@ class TextManager {
     window.addEventListener(Event.DELETE_NODE_DATA, (e) => {
       this.deleteNodeData(e.detail.nodeData);
     });
+    window.addEventListener(Event.FOLD_ANCESTORS_ROOT, (e) => {
+      this.ancestorsRoot = e.detail.root;
+    });
   }
 
   processTextInput() {
@@ -73,6 +76,7 @@ class TextManager {
       }
       t.remove();
       Event.dispatchEvent(Event.UPDATE_TREE, {
+        root: this.ancestorsRoot,
         nodeSource: node
       });
     }
@@ -149,18 +153,28 @@ class TextManager {
     this.selectedData = d;
   }
 
-  onCreateNewChild(parentNode, text) {
+  onCreateNewChild(parent, text) {
     let nodeId = ++this.lastNodeId;
-
-    let p = parentNode;
-    let c = new Node(p, nodeId, text);
-    if (p.children == undefined) {
-      let children = [c];
-      p.children = children;
-    } else {
-      p.children.push(c);
+    let data = {
+      id: nodeId,
+      name: text,
     }
-    return c;
+    let node = d3.hierarchy(data, function(d) {
+      return d.children; 
+    });
+    node.parent = parent;
+    node.depth = parent.depth + 1;
+    node.id = nodeId;
+
+    if (parent.children == undefined) {
+      parent.children = [node];
+    } else {
+      parent.children.push(node);
+    }
+
+    if (parent.data.children == undefined)
+      parent.data.children = [];
+    parent.data.children.push(data);
   }
 
   deleteNode() {

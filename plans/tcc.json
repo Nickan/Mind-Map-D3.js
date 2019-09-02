@@ -70,6 +70,32 @@
                 }
               ],
               "visible": true
+            },
+            {
+              "id": 18,
+              "name": "Implement Request for Quote",
+              "children": [
+                {
+                  "id": 19,
+                  "name": "Requirements",
+                  "children": [
+                    {
+                      "id": 22,
+                      "name": "Get the mock up"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 20,
+              "name": "Create a google sheet for breakdown of tasks",
+              "children": [
+                {
+                  "id": 21,
+                  "name": "Have to communicate the tasks to be tackle as simple yet effective"
+                }
+              ]
             }
           ],
           "visible": true
@@ -88,7 +114,8 @@
           "id": 15,
           "name": "Finished"
         }
-      ]
+      ],
+      "foldAncestors": true
     }
   ]
 }
