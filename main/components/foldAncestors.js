@@ -12,11 +12,10 @@ class FoldAncentors {
     }); 
     window.addEventListener(Event.FOLD_ANCESTORS, (e) => {
       if (this.selectedData == undefined || 
-        this.selectedData == e.detail.root) {
+        this.selectedData == this.root) {
         return;
       }
         
-
       let data = this.selectedData.data;
       data.foldAncestors = data.foldAncestors ? undefined: true;
 

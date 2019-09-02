@@ -66,7 +66,6 @@ class ElonComponent {
   }
 
   update(source, root) {
-    // this.root = root;
     let treeContainer = this.treeContainer;
     let treemap = this.treemap;
 
