@@ -5,7 +5,7 @@ class DataManager {
 
   initEventListeners() {
     let masterSettings = {
-      jsonFileNames = [
+      jsonFileNames: [
         "aabbcc",
         "asdfas",
         "dfadge"
@@ -16,11 +16,11 @@ class DataManager {
       v1: {
         name: "name1",
         id: 1, // ?
-        children = [ // With or without
+        children: [ // With or without
           {
             name: "name2",
             id: 2,
-            children = [
+            children: [
               {
                 name: "name3",
                 id: 3,
