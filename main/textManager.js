@@ -15,8 +15,8 @@ class TextManager {
         this.handleClickEvent(d);
       })
       .each((d) => {
-        if (d.id > this.lastNodeId) {
-          this.lastNodeId = d.id;
+        if (d.data.id > this.lastNodeId) {
+          this.lastNodeId = d.data.id;
         }
       });
       this.updateTextHighlight();
@@ -72,7 +72,9 @@ class TextManager {
           break;
       }
       t.remove();
-      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: node});
+      Event.dispatchEvent(Event.UPDATE_TREE, {
+        nodeSource: node
+      });
     }
   }
 
