@@ -8,7 +8,9 @@ class Event {
   static ON_DRAG_UPDATE_ONCE = "ON_DRAG_UPDATE_ONCE";
   static ON_DRAG = "ON_DRAG";
   static SAVE = "SAVE";
-  static LOAD = "LOAD";
+  static LOAD_DATA = "LOAD_DATA";
+  static LOAD_JSON_FILE = "LOAD_JSON_FILE";
+  static LOAD_JSON_FILE_SUCCESSFUL = "LOAD_JSON_FILE_SUCCESSFUL";
   static CANCEL_NODE_CREATION = "CANCEL_NODE_CREATION";
   static PROCESS_TEXT_INPUT = "PROCESS_TEXT_INPUT";
   static CREATE_CHILD_NODE = "CREATE_CHILD_NODE";
@@ -23,7 +25,12 @@ class Event {
     Object.freeze(this);
   }
 
-  static dispatchEvent(type, detail) {
+  static dispatch(type, detail) {
     window.dispatchEvent(new CustomEvent(type, {detail: detail}))
+  }
+
+  static disposeEvents() {
+    window.removeEventListener(Event.LOAD_JSON_FILE);
+    window.removeEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL);
   }
 }

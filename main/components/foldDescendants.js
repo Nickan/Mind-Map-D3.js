@@ -44,7 +44,7 @@ class FoldDescendants {
         source = root;
       
       if (e.detail.init == undefined) {
-        Event.dispatchEvent(Event.UPDATE_TREE, {
+        Event.dispatch(Event.UPDATE_TREE, {
           nodeSource: source,
           root: root
         });
@@ -56,7 +56,7 @@ class FoldDescendants {
     d3.selectAll("circle.node")
     .on("click", (d) => {
       d.data.foldDescendants = d.data.foldDescendants ? undefined: true;
-      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {clickedNodeData: d});
+      Event.dispatch(Event.FOLD_DESCENDANTS, {clickedNodeData: d});
     });
   }
 }

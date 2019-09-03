@@ -1,5 +1,4 @@
 
-
 $(document).ready(() => {
   let elonComponent = new ElonComponent();
   let dragManager = new DragManager();
@@ -9,54 +8,53 @@ $(document).ready(() => {
   let foldAncentors = new FoldAncentors();
   let appendNode = new AppendNode();
   let dataManager = new DataManager();
+  let loadManager = new LoadManager();
 
-  start(JSON.parse(`{
-    "name": "Main",
-    "id": 1
-  }`));
+  let controlDown = false;
 
-  let loadManager = new LoadManager((json) => {
-    d3.selectAll("svg > *").remove();
-    $("#tree-container").empty();
-    start(json);
-  });
+  start();
+  initEventListeners();
 
-  function start(json) {
+  // let loadManager = new LoadManager((json) => {
+  //   d3.selectAll("svg > *").remove();
+  //   $("#tree-container").empty();
+  //   start(json);
+  // });
+
+  function start() {
     elonComponent.globalConnection = globalConnection;
     dragManager.globalConnection = globalConnection;
 
-    initComponent(json);
-
-    let controlDown = false;
+    controlDown = false;
     document.onkeydown = function(ev) {
       // console.log(ev);
       switch (ev.key) {
-        case "Enter": Event.dispatchEvent(Event.PROCESS_TEXT_INPUT, {});
+        case "Enter": Event.dispatch(Event.PROCESS_TEXT_INPUT, {});
           ev.preventDefault();
           break;
-        case "Tab": Event.dispatchEvent(Event.CREATE_CHILD_NODE, {});
+        case "Tab": Event.dispatch(Event.CREATE_CHILD_NODE, {});
           ev.preventDefault();
           break;
-        case "Delete": Event.dispatchEvent(Event.DELETE_NODE, {});
+        case "Delete": Event.dispatch(Event.DELETE_NODE, {});
           ev.preventDefault();
           break;
         case "Control": controlDown = true;
           break;
         case "s":
         case "S": if (controlDown) {
-            Event.dispatchEvent(Event.SAVE, {root: elonComponent.root});
+            Event.dispatch(Event.SAVE, {root: elonComponent.root});
             controlDown = false;
             ev.preventDefault();
           }
           break;
         case "o":
         case "O": if (controlDown) {
-            Event.dispatchEvent(Event.LOAD, {});
+            Event.dispatch(Event.LOAD_JSON_FILE, {});
             controlDown = false;
             ev.preventDefault();
           }
           break;
-        case "F1": Event.dispatchEvent(Event.FOLD_ANCESTORS, {});
+        case "F1": Event.dispatch(Event.FOLD_ANCESTORS, {});
           ev.preventDefault();
           break;
         default:
@@ -78,18 +76,24 @@ $(document).ready(() => {
     
   }
 
+  function initEventListeners() {
+    window.addEventListener(Event.LOAD_DATA_SUCCESSFUL, (e) => {
+      initComponent(e.detail.data);
+    });
+  }
+
   function initComponent(json) {
     elonComponent.init(json)
     .then((root) => {
       return elonComponent.update(root, root);
     })
     .then((root) => {
-      Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
+      Event.dispatch(Event.UPDATE_TREE_AFTER, {});
       dragManager.init();
       
-      Event.dispatchEvent(Event.FOLD_ANCESTORS, {root: root, init: true});
-      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {root: root, init: true});
-      Event.dispatchEvent(Event.FOLD_ANCESTORS, {root: root});
+      Event.dispatch(Event.FOLD_ANCESTORS, {root: root, init: true});
+      Event.dispatch(Event.FOLD_DESCENDANTS, {root: root, init: true});
+      Event.dispatch(Event.FOLD_ANCESTORS, {root: root});
     });
   }
 });

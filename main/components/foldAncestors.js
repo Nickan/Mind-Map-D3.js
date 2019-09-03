@@ -27,10 +27,10 @@ class FoldAncentors {
           root = d;
         }
       });
-      Event.dispatchEvent(Event.FOLD_ANCESTORS_ROOT, {root: root});
+      Event.dispatch(Event.FOLD_ANCESTORS_ROOT, {root: root});
 
       if (e.detail.init == undefined) {
-        Event.dispatchEvent(Event.UPDATE_TREE, {
+        Event.dispatch(Event.UPDATE_TREE, {
           nodeSource: source,
           root: root
         });
