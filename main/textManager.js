@@ -56,6 +56,13 @@ class TextManager {
     window.addEventListener(Event.FOLD_ANCESTORS_ROOT, (e) => {
       this.ancestorsRoot = e.detail.root;
     });
+    window.addEventListener(Event.REPLACE_DATA, (e) => {
+      this.replaceData(e.detail.node, e.detail.data);
+      Event.dispatch(Event.UPDATE_TREE, {
+        // root: e.detail.node,
+        // source: e.detail.node
+      });
+    });
   }
 
   processTextInput() {
@@ -77,7 +84,7 @@ class TextManager {
       t.remove();
       Event.dispatch(Event.UPDATE_TREE, {
         root: this.ancestorsRoot,
-        nodeSource: node
+        source: node
       });
     }
   }
@@ -153,33 +160,6 @@ class TextManager {
     this.selectedData = d;
   }
 
-  onCreateNewChild(parent, text) {
-    let nodeId = ++this.lastNodeId;
-    let data = {
-      id: nodeId,
-      name: text,
-    }
-    let node = d3.hierarchy(data, function(d) {
-      return d.children; 
-    });
-    node.parent = parent;
-    node.depth = parent.depth + 1;
-    node.id = nodeId;
-
-    if (parent.children == undefined) {
-      parent.children = [node];
-    } else {
-      parent.children.push(node);
-    }
-
-    if (parent.data.children == undefined)
-      parent.data.children = [];
-    parent.data.children.push(data);
-
-    // node.x0 = parent.x;
-    // node.y0 = parent.y;
-  }
-
   deleteNode() {
     if (this.selectedData == undefined)
       return;
@@ -189,7 +169,7 @@ class TextManager {
     this.selectedData.parent.data.selected = true;
     Event.dispatch(Event.UPDATE_TREE, {
       root: this.ancestorsRoot,
-      nodeSource: this.selectedData
+      source: this.selectedData
     });
   }
 
@@ -214,5 +194,54 @@ class TextManager {
       p.data.children = undefined;
     }
   }
+
+  onCreateNewChild(parent, text) {
+    let nodeId = ++this.lastNodeId;
+    let data = {
+      id: nodeId,
+      text: text,
+    }
+    let node = d3.hierarchy(data, function(d) {
+      return d.children; 
+    });
+    node.parent = parent;
+    node.depth = parent.depth + 1;
+    node.id = nodeId;
+
+    if (parent.children == undefined) {
+      parent.children = [node];
+    } else {
+      parent.children.push(node);
+    }
+
+    if (parent.data.children == undefined)
+      parent.data.children = [];
+    parent.data.children.push(data);
+    Event.dispatch(Event.EDIT_DATA, {node: node});
+  }
+
+  replaceData(parent, data) {
+    this.appendData(parent, data);
+  }
+
+  appendData(parent, data) {
+    let node = d3.hierarchy(data, function(d) {
+      return d.children; 
+    });
+
+    if (parent.parent == undefined) {
+      Event.dispatch(Event.REPLACE_ROOT, {root: node});
+    } else {
+      
+      let pp = parent.parent;
+      parent.children = [node];
+      parent.data.children = [{
+        "text": node.data.text,
+        "id": node.data.id
+      }];
+    }
+  }
+
+  
 
 }

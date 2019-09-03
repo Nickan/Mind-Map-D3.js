@@ -50,7 +50,7 @@ class ElonComponent {
 
   initEventListeners() {
     window.addEventListener(Event.UPDATE_TREE, (e) => {
-      let source = e.detail.nodeSource;
+      let source = e.detail.source;
       let root = e.detail.root;
 
       if (source == undefined)
@@ -63,6 +63,11 @@ class ElonComponent {
       this.update(source, root);
       Event.dispatch(Event.UPDATE_TREE_AFTER, {});
     });
+    window.addEventListener(Event.REPLACE_ROOT, (e) => {
+      this.root
+      this.root = e.detail.root;
+      Event.dispatch(Event.MAIN_ROOT, {root: this.root});
+    })
   }
 
   update(source, root) {
@@ -107,7 +112,6 @@ class ElonComponent {
     let linkExit = removeExitingLinks(link, duration, source, diagonal);
     nodes = storeOldPositionForTransition(nodes);
 
-    // root.nodes = nodes;
     return root;
   
     // Creates a curved (diagonal) path from parent to the child nodes
@@ -169,7 +173,7 @@ class ElonComponent {
       let i = 0;
       return treeContainer.selectAll('g.node')
         .data(nodes, (d) => {
-          return d.id || (d.id = ++i); 
+          return d.data.id;
         })
         .attr('background-color', d3.rgb('#151515'));
     }

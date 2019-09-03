@@ -5,13 +5,16 @@ class SaveManager {
   }
 
   initEventListeners() {
+    window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
+      this.json = e.detail.json;
+    });
     window.addEventListener(Event.SAVE, (e) => {
-      this.save(e.detail.root);
+      this.save(this.json);
     });
   }
 
-  save(root) {
-    let str = JSON.stringify(root.data, null, 2);
+  save(json) {
+    let str = JSON.stringify(json, null, 2);
     download(str, "map.json", "text.json");
 
     function download(content, fileName, contentType) {

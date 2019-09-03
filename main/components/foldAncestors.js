@@ -31,7 +31,7 @@ class FoldAncentors {
 
       if (e.detail.init == undefined) {
         Event.dispatch(Event.UPDATE_TREE, {
-          nodeSource: source,
+          source: source,
           root: root
         });
       }
