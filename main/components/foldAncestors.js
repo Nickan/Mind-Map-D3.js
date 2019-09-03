@@ -5,7 +5,7 @@ class FoldAncentors {
 
   initEventListeners() {
     window.addEventListener(Event.SELECTED_NODE_DATA, (e) => {
-      this.selectedData = e.detail.selectedData;
+      this.selectedData = e.detail.data;
     });
     window.addEventListener(Event.MAIN_ROOT, (e) => {
       this.root = e.detail.root;

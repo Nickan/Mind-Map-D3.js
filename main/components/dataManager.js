@@ -7,8 +7,19 @@ class DataManager {
     // Load
     // Then send signal the data is ready
     window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
+      this.json = e.detail.json;
       let data = this.parseToData(e.detail.json);
       Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, {data: data});
+    });
+
+    window.addEventListener(Event.GET_NODE_VERSIONS, (e) => {
+      let v = this.getVersions(e.detail.id);
+      Event.dispatch(Event.SELECTED_NODE_VERSIONS, {versions: v});
+    });
+    window.addEventListener(Event.CHANGE_NODE_VERSION, (e) => {
+      let id = parseInt(e.detail.node.data.id);
+      let v = this.getVersions(id);
+      v.active = e.detail.versionName;
     });
   }
 
@@ -16,17 +27,9 @@ class DataManager {
     // Returns data ready to feed to UI
     // Solve the stitching of version
     // Setting the foldAncestors, foldDescendants, selected...
-    return parse(json);
+    let meta = this.getActiveMeta(json);
+    return convertToHierarchy(meta, json.nodes);
 
-    function parse(json) {
-      let meta = getActiveMeta(json);
-      return convertToHierarchy(meta, json.nodes);
-    }
-
-    function getActiveMeta(json) {
-      let meta = json.meta;
-      return meta[meta.active];
-    }
 
     function convertToHierarchy(activeMeta, nodes) {
       let id = parseInt(activeMeta.mainId)
@@ -62,18 +65,19 @@ class DataManager {
     }
   }
 
-
-
-  // Returns master json
-  parseJsonFromFile(fileName) {
-    
-
-
-    stichFileToJson();
-    function stichFileToJson() {
-
-    }
+  getVersions(id) {
+    let meta = this.getActiveMeta(this.json);
+    let mNode = meta.nodes[id];
+    return mNode.versions;
   }
+
+  getActiveMeta(json) {
+    let meta = json.meta;
+    return meta[meta.active];
+  }
+
+
+
 
   getUniqueName() {
     Math.random().toString(36).substring(7);
