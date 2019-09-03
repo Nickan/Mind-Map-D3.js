@@ -64,7 +64,6 @@ class ElonComponent {
       Event.dispatch(Event.UPDATE_TREE_AFTER, {});
     });
     window.addEventListener(Event.REPLACE_ROOT, (e) => {
-      this.root
       this.root = e.detail.root;
       Event.dispatch(Event.MAIN_ROOT, {root: this.root});
     })
@@ -297,7 +296,7 @@ class ElonComponent {
 
     function updateLinks(treeContainer, links) {
       return treeContainer.selectAll('path.link')
-      .data(links, function(d) { return d.id; });
+      .data(links, function(d) { return d.data.id; });
     }
 
     function enterLinkToParentPreviousPosition(link, source, diagonalFn) {
