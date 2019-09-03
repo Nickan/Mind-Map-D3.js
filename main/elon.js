@@ -8,6 +8,7 @@ $(document).ready(() => {
   let foldDescendants = new FoldDescendants();
   let foldAncentors = new FoldAncentors();
   let appendNode = new AppendNode();
+  let dataManager = new DataManager();
 
   start(JSON.parse(`{
     "name": "Main",

@@ -11,17 +11,16 @@ class FoldAncentors {
       this.root = e.detail.root;
     }); 
     window.addEventListener(Event.FOLD_ANCESTORS, (e) => {
-      if (this.selectedData == undefined)
-        this.selectedData = e.detail.root;
-
-      if (this.selectedData == undefined)
+      if (this.selectedData == undefined || 
+        this.selectedData == this.root) {
         return;
-
+      }
+        
       let data = this.selectedData.data;
       data.foldAncestors = data.foldAncestors ? undefined: true;
 
       let root = undefined;
-      let source = undefined;
+      let source = this.selectedData;
 
       each(this.root, function(d) {
         if (d.data.foldAncestors) {
@@ -29,7 +28,6 @@ class FoldAncentors {
         }
       });
       Event.dispatchEvent(Event.FOLD_ANCESTORS_ROOT, {root: root});
-      source = this.selectedData;
 
       if (e.detail.init == undefined) {
         Event.dispatchEvent(Event.UPDATE_TREE, {

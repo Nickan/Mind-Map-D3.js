@@ -15,8 +15,8 @@ class TextManager {
         this.handleClickEvent(d);
       })
       .each((d) => {
-        if (d.id > this.lastNodeId) {
-          this.lastNodeId = d.id;
+        if (d.data.id > this.lastNodeId) {
+          this.lastNodeId = d.data.id;
         }
       });
       this.updateTextHighlight();
@@ -53,6 +53,9 @@ class TextManager {
     window.addEventListener(Event.DELETE_NODE_DATA, (e) => {
       this.deleteNodeData(e.detail.nodeData);
     });
+    window.addEventListener(Event.FOLD_ANCESTORS_ROOT, (e) => {
+      this.ancestorsRoot = e.detail.root;
+    });
   }
 
   processTextInput() {
@@ -72,7 +75,10 @@ class TextManager {
           break;
       }
       t.remove();
-      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: node});
+      Event.dispatchEvent(Event.UPDATE_TREE, {
+        root: this.ancestorsRoot,
+        nodeSource: node
+      });
     }
   }
 
@@ -147,18 +153,31 @@ class TextManager {
     this.selectedData = d;
   }
 
-  onCreateNewChild(parentNode, text) {
+  onCreateNewChild(parent, text) {
     let nodeId = ++this.lastNodeId;
-
-    let p = parentNode;
-    let c = new Node(p, nodeId, text);
-    if (p.children == undefined) {
-      let children = [c];
-      p.children = children;
-    } else {
-      p.children.push(c);
+    let data = {
+      id: nodeId,
+      name: text,
     }
-    return c;
+    let node = d3.hierarchy(data, function(d) {
+      return d.children; 
+    });
+    node.parent = parent;
+    node.depth = parent.depth + 1;
+    node.id = nodeId;
+
+    if (parent.children == undefined) {
+      parent.children = [node];
+    } else {
+      parent.children.push(node);
+    }
+
+    if (parent.data.children == undefined)
+      parent.data.children = [];
+    parent.data.children.push(data);
+
+    // node.x0 = parent.x;
+    // node.y0 = parent.y;
   }
 
   deleteNode() {
@@ -168,8 +187,10 @@ class TextManager {
     this.deleteNodeData(this.selectedData);
     this.selectedData.data.selected = undefined;
     this.selectedData.parent.data.selected = true;
-    Event.dispatchEvent(Event.UPDATE_TREE, 
-      {nodeSource: this.selectedData});
+    Event.dispatchEvent(Event.UPDATE_TREE, {
+      root: this.ancestorsRoot,
+      nodeSource: this.selectedData
+    });
   }
 
   deleteNodeData(nodeData) {
