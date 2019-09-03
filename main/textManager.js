@@ -99,7 +99,7 @@ class TextManager {
     .style("font-weight", function(d) {
       if (d.data.selected) {
         tm.selectedData = d;
-        Event.dispatch(Event.SELECTED_NODE_DATA, {selectedData: d});
+        Event.dispatch(Event.SELECTED_NODE_DATA, {data: d});
         return "800";
       }
         
@@ -139,7 +139,7 @@ class TextManager {
     if (name == undefined)
       name = "";
     jQuery(`#tree-container`).prepend(`
-      <textarea type="text" id="text-input" autofocus="autofocus">${name}</textarea
+      <textarea type="text" id="text-input" autofocus="autofocus">${name}</textarea>
     `);
     jQuery('#text-input').focus();
   }

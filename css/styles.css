@@ -53,3 +53,14 @@
 .text-rect {
   fill: rgba(0, 0, 0, 0)
 }
+
+#nodeMenu {
+  position: absolute;
+  color: white;
+  right: 0;
+}
+
+#nodeMenu li {
+  color: black;
+  margin-left: 12px;
+}

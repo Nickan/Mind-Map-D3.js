@@ -9,6 +9,7 @@ $(document).ready(() => {
   let appendNode = new AppendNode();
   let dataManager = new DataManager();
   let loadManager = new LoadManager();
+  let nodeMenu = new NodeMenu();
 
   let controlDown = false;
 
@@ -57,6 +58,8 @@ $(document).ready(() => {
         case "F1": Event.dispatch(Event.FOLD_ANCESTORS, {});
           ev.preventDefault();
           break;
+        case "Alt": Event.dispatch(Event.SHOW_NODE_MENU, {});
+          break;
         default:
       }
     }
@@ -78,6 +81,8 @@ $(document).ready(() => {
 
   function initEventListeners() {
     window.addEventListener(Event.LOAD_DATA_SUCCESSFUL, (e) => {
+      d3.selectAll("svg > *").remove();
+      $("#tree-container").empty();
       initComponent(e.detail.data);
     });
   }
