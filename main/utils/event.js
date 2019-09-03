@@ -26,6 +26,9 @@ class Event {
   static SELECTED_NODE_VERSIONS = "SELECTED_NODE_VERSIONS";
 
   static CHANGE_NODE_VERSION = "CHANGE_NODE_VERSION";
+  static REPLACE_DATA = "REPLACE_DATA";
+  static REPLACE_ROOT = "REPLACE_ROOT";
+  static EDIT_DATA = "EDIT_DATA";
 
   constructor() {
     Object.freeze(this);

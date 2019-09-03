@@ -9,7 +9,7 @@ class AppendNode {
       this.removeFoldDescendants(e.detail.appendTo);
       appendChild(e.detail.appendTo, e.detail.toAppend);
       setDescendantsDepth(e.detail.appendTo);
-      Event.dispatch(Event.UPDATE_TREE, {nodeSource: e.detail.appendTo});
+      Event.dispatch(Event.UPDATE_TREE, {source: e.detail.appendTo});
 
       function appendChild(parent, child) {
         Node.changeParent(child, parent);

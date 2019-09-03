@@ -7,7 +7,7 @@ $(document).ready(() => {
   let foldDescendants = new FoldDescendants();
   let foldAncentors = new FoldAncentors();
   let appendNode = new AppendNode();
-  let dataManager = new DataManager();
+  
   let loadManager = new LoadManager();
   let nodeMenu = new NodeMenu();
 
@@ -16,11 +16,7 @@ $(document).ready(() => {
   start();
   initEventListeners();
 
-  // let loadManager = new LoadManager((json) => {
-  //   d3.selectAll("svg > *").remove();
-  //   $("#tree-container").empty();
-  //   start(json);
-  // });
+  let dataManager = new DataManager();
 
   function start() {
     elonComponent.globalConnection = globalConnection;

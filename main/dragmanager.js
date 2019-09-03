@@ -157,7 +157,7 @@ class DragManager {
             let index2 = p.children.indexOf(b);
             p.children[index1] = b;
             p.children[index2] = a;
-            Event.dispatch(Event.UPDATE_TREE, {nodeSource: p});
+            Event.dispatch(Event.UPDATE_TREE, {source: p});
           }
         }
       })
