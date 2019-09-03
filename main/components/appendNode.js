@@ -5,11 +5,11 @@ class AppendNode {
 
   initEventListeners() {
     window.addEventListener(Event.APPEND_NODE, (e) => {
-      Event.dispatchEvent(Event.DELETE_NODE_DATA, {nodeData: e.detail.toAppend});
+      Event.dispatch(Event.DELETE_NODE_DATA, {nodeData: e.detail.toAppend});
       this.removeFoldDescendants(e.detail.appendTo);
       appendChild(e.detail.appendTo, e.detail.toAppend);
       setDescendantsDepth(e.detail.appendTo);
-      Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: e.detail.appendTo});
+      Event.dispatch(Event.UPDATE_TREE, {nodeSource: e.detail.appendTo});
 
       function appendChild(parent, child) {
         Node.changeParent(child, parent);
@@ -42,7 +42,7 @@ class AppendNode {
     let data = node.data;
     if (data.foldDescendants) {
       data.foldDescendants = undefined;
-      Event.dispatchEvent(Event.FOLD_DESCENDANTS, {
+      Event.dispatch(Event.FOLD_DESCENDANTS, {
         clickedNodeData: node,
         init: true
       });

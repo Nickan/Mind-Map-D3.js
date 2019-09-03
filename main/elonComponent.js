@@ -43,7 +43,7 @@ class ElonComponent {
       ec.treeContainer = treeContainer;
       ec.treemap = treemap;
       ec.root = root;
-      Event.dispatchEvent(Event.MAIN_ROOT, {root: root});
+      Event.dispatch(Event.MAIN_ROOT, {root: root});
       resolve(root);
     });
   }
@@ -61,7 +61,7 @@ class ElonComponent {
       }
 
       this.update(source, root);
-      Event.dispatchEvent(Event.UPDATE_TREE_AFTER, {});
+      Event.dispatch(Event.UPDATE_TREE_AFTER, {});
     });
   }
 
@@ -268,7 +268,7 @@ class ElonComponent {
     function updateTextNode(nodeUpdate, width, wrapFn, ec) {
       nodeUpdate.selectAll('.text-wrap')
       .text(function(d) {
-        return d.data.name; })
+        return d.data.text; })
       .call(wrapFn, width, ec);
     }
 

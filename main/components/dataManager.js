@@ -4,84 +4,82 @@ class DataManager {
   }
 
   initEventListeners() {
-    let masterSettings = {
-      jsonFileNames: [
-        "aabbcc",
-        "asdfas",
-        "dfadge"
-      ]
-    }
-    let json1 = {
-      lastJsonIndex: 3,
-      v1: {
-        name: "name1",
-        id: 1, // ?
-        children: [ // With or without
-          {
-            name: "name2",
-            id: 2,
-            children: [
-              {
-                name: "name3",
-                id: 3,
-              },
-              {
-                json: "name_1.json"
-              }
-            ]
-          }
-        ] 
-      }
+    // Load
+    // Then send signal the data is ready
+    window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
+      let data = this.parseToData(e.detail.json);
+      Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, {data: data});
+    });
+  }
+
+  parseToData(json) {
+    // Returns data ready to feed to UI
+    // Solve the stitching of version
+    // Setting the foldAncestors, foldDescendants, selected...
+    return parse(json);
+
+    function parse(json) {
+      let meta = getActiveMeta(json);
+      return convertToHierarchy(meta, json.nodes);
     }
 
-    let name_1 = {
-      mainJson: "main.json",
-      v1: {
-        json: "name_2.json"
-      },
-      v2: {
-        json: "name_3.json"
-      }
+    function getActiveMeta(json) {
+      let meta = json.meta;
+      return meta[meta.active];
     }
 
-    let name_2 = {
-      mainJson: "main.json",
-      v1: {
-        name: "name4",
-        id: 4,
-        children: [
-          {
-            name: "name5",
-            id: 5
-          },
-          {
-            name: "name6",
-            id: 6
-          }
-        ]
-      },
-      v2: {
-        name: "name7",
-        id: 7
+    function convertToHierarchy(activeMeta, nodes) {
+      let id = parseInt(activeMeta.mainId)
+      let data = {
+        "text": nodes[id].text,
+        "id": id,
+        "children": getChildren(id, activeMeta, nodes)
       }
-    }
 
-    let name_3 = {
-      mainJson: "main.json",
-      v1: {
-        name: "name7",
-        id: 7,
-        children: [
-          {
-            name: "name8",
-            id: 8
-          },
-          {
-            name: "name9",
-            id: 9
+      return data;
+
+      function getChildren(id, activeMeta, nodes) {
+        let mNodes = activeMeta.nodes[id];
+        if (mNodes == undefined)
+          return;
+        let versions = mNodes.versions;
+        let version = versions[versions.active];
+        let children = [];
+
+        let childrenIds = version.children;
+        for (let i = 0; i < childrenIds.length; i++) {
+          let cId = parseInt(childrenIds[i]);
+          let node = nodes[cId];
+          let child = {
+            "text": node.text,
+            "id": cId,
+            "children": getChildren(cId, activeMeta, nodes)
           }
-        ]
+          children.push(child);
+        }
+        return children;
       }
     }
+  }
+
+
+
+  // Returns master json
+  parseJsonFromFile(fileName) {
+    
+
+
+    stichFileToJson();
+    function stichFileToJson() {
+
+    }
+  }
+
+  getUniqueName() {
+    Math.random().toString(36).substring(7);
+  }
+
+  getUniqueId() {
+    // Based on the highest number assigned so far
   }
 }

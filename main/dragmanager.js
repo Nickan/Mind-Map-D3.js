@@ -15,7 +15,7 @@ class DragManager {
         })
         .on("drag", function() {
           dragScreen(this);
-          Event.dispatchEvent(Event.ON_DRAG, {});
+          Event.dispatch(Event.ON_DRAG, {});
         })
         .on("end", function() {
 
@@ -81,7 +81,7 @@ class DragManager {
           disableTextPointerEvent(d, this);
           setDescendantsVisibility(d, false);
           d.selected = true;
-          Event.dispatchEvent(Event.ON_DRAG_UPDATE_ONCE, {selectedData: d});
+          Event.dispatch(Event.ON_DRAG_UPDATE_ONCE, {selectedData: d});
         }
 
         setToMousePosition(d, this);
@@ -144,7 +144,7 @@ class DragManager {
             if (Node.siblings(p, d) && dy < 0) {
               switchPosition(p, d);
             } else {
-              Event.dispatchEvent(Event.APPEND_NODE, {
+              Event.dispatch(Event.APPEND_NODE, {
                 appendTo: p,
                 toAppend: d
               });
@@ -157,7 +157,7 @@ class DragManager {
             let index2 = p.children.indexOf(b);
             p.children[index1] = b;
             p.children[index2] = a;
-            Event.dispatchEvent(Event.UPDATE_TREE, {nodeSource: p});
+            Event.dispatch(Event.UPDATE_TREE, {nodeSource: p});
           }
         }
       })

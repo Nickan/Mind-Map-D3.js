@@ -1,19 +1,18 @@
 class LoadManager {
 
-  constructor(fn) {
-    window.addEventListener(Event.LOAD, (e) => {
+  constructor() {
+    window.addEventListener(Event.LOAD_JSON_FILE, (e) => {
       this.getAsText((result) => {
-        fn(JSON.parse(result));
+        Event.dispatch(Event.LOAD_JSON_FILE_SUCCESSFUL, {json: JSON.parse(result)});
       });
     });
   }
 
   getAsText(fn) {
-    // let input = document.querySelector('input');
-    var input = document.createElement('input');
+    let input = document.createElement('input');
     input.setAttribute("id", "inputFile");
     input.setAttribute("type", "file");
-    var b = document.querySelector('body');
+    let b = document.querySelector('body');
     b.append(input); 
     input.click();
     input.onchange = function (event) {

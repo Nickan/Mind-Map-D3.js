@@ -38,7 +38,7 @@ class TextManager {
     });
 
     window.addEventListener(Event.CREATE_CHILD_NODE, (e) => {
-      Event.dispatchEvent(Event.REMOVE_FOLD_DESCENDANTS, {node: this.selectedData});
+      Event.dispatch(Event.REMOVE_FOLD_DESCENDANTS, {node: this.selectedData});
       if (this.selectedData == undefined) {
         return;
       }
@@ -75,7 +75,7 @@ class TextManager {
           break;
       }
       t.remove();
-      Event.dispatchEvent(Event.UPDATE_TREE, {
+      Event.dispatch(Event.UPDATE_TREE, {
         root: this.ancestorsRoot,
         nodeSource: node
       });
@@ -99,7 +99,7 @@ class TextManager {
     .style("font-weight", function(d) {
       if (d.data.selected) {
         tm.selectedData = d;
-        Event.dispatchEvent(Event.SELECTED_NODE_DATA, {selectedData: d});
+        Event.dispatch(Event.SELECTED_NODE_DATA, {selectedData: d});
         return "800";
       }
         
@@ -187,7 +187,7 @@ class TextManager {
     this.deleteNodeData(this.selectedData);
     this.selectedData.data.selected = undefined;
     this.selectedData.parent.data.selected = true;
-    Event.dispatchEvent(Event.UPDATE_TREE, {
+    Event.dispatch(Event.UPDATE_TREE, {
       root: this.ancestorsRoot,
       nodeSource: this.selectedData
     });
