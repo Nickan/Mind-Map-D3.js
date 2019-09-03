@@ -81,36 +81,42 @@ class DataManager {
     let data = {
       text: nodes[id].text,
       id: id,
-      children: getChildren(id, activeMeta, nodes),
+      children: this.getChildren(id, activeMeta, nodes),
       foldDescendants: rev.foldDescendants,
       foldAncestors: rev.foldAncestors
     }
 
     return data;
 
-    function getChildren(id, activeMeta, nodes) {
-      let mNodes = activeMeta.nodes[id];
-      if (mNodes == undefined)
-        return;
-
-      let revisions = mNodes.revisions;
-      let version = revisions[revisions.active];
-      let children = [];
-
-      let childrenIds = version.children;
-      for (let i = 0; i < childrenIds.length; i++) {
-        let cId = parseInt(childrenIds[i]);
-        let node = nodes[cId];
-        let child = {
-          "text": node.text,
-          "id": cId,
-          "children": getChildren(cId, activeMeta, nodes)
-        }
-        children.push(child);
-      }
-      return children;
-    }
+    
   }
+
+  getChildren(id, activeMeta, nodes) {
+    let mNodes = activeMeta.nodes[id];
+    if (mNodes == undefined)
+      return;
+
+    let revisions = mNodes.revisions;
+    let rev = revisions[revisions.active];
+    let children = [];
+
+    let childrenIds = rev.children;
+    for (let i = 0; i < childrenIds.length; i++) {
+      let cId = parseInt(childrenIds[i]);
+      let node = nodes[cId];
+      let cRev = this.getActiveRevision(cId);
+      let child = {
+        text: node.text,
+        id: cId,
+        children: this.getChildren(cId, activeMeta, nodes),
+        foldAncestors: cRev.foldAncestors,
+        foldDescendants: cRev.foldDescendants
+      }
+      children.push(child);
+    }
+    return children;
+  }
+
 
   getVersions(id) {
     let meta = this.getActiveMeta(this.json);
