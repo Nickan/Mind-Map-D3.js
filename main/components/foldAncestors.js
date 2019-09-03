@@ -11,22 +11,32 @@ class FoldAncentors {
       this.root = e.detail.root;
     }); 
     window.addEventListener(Event.FOLD_ANCESTORS, (e) => {
-      if (this.selectedData == undefined || 
-        this.selectedData == this.root) {
-        return;
+      if (e.detail.init != undefined) {
+        if (this.selectedData == undefined || 
+          this.selectedData == this.root) {
+          return;
+        }
       }
-        
-      let data = this.selectedData.data;
-      data.foldAncestors = data.foldAncestors ? undefined: true;
 
+      if (this.selectedData != undefined) {
+        let data = this.selectedData.data;
+        data.foldAncestors = data.foldAncestors ? undefined: true;
+      }
+      
       let root = undefined;
       let source = this.selectedData;
 
       each(this.root, function(d) {
         if (d.data.foldAncestors) {
           root = d;
+          source = d;
+          Event.dispatch(Event.EDIT_DATA, {node: d});
         }
       });
+
+      if (source == undefined)
+        return;
+
       Event.dispatch(Event.FOLD_ANCESTORS_ROOT, {root: root});
 
       if (e.detail.init == undefined) {
@@ -35,6 +45,7 @@ class FoldAncentors {
           root: root
         });
       }
+
       
       function each(node, fn) {
         fn(node);
