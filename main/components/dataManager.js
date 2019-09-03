@@ -7,6 +7,7 @@ class DataManager {
     window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
       this.json = e.detail.json;
       let data = this.parseToData(e.detail.json);
+      console.log(data);
       Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, {data: data});
     });
 
@@ -76,10 +77,13 @@ class DataManager {
   }
 
   convertToHierarchy(id, activeMeta, nodes) {
+    let rev = this.getActiveRevision(id);
     let data = {
-      "text": nodes[id].text,
-      "id": id,
-      "children": getChildren(id, activeMeta, nodes)
+      text: nodes[id].text,
+      id: id,
+      children: getChildren(id, activeMeta, nodes),
+      foldDescendants: rev.foldDescendants,
+      foldAncestors: rev.foldAncestors
     }
 
     return data;
@@ -139,17 +143,21 @@ class DataManager {
     rev.selected = data.selected;
     rev.foldAncestors = data.foldAncestors;
     rev.foldDescendants = data.foldDescendants;
+
+    // console.log(node);
+    // console.log(data);
     if (data.children == undefined) {
 
     } else {
-      data.children.foreach((e) => {
-        let id = parseInt(e.data.id);
-        rev.children.push(e.data.id);
+      for (let i = 0; i < data.children.length; i++) {
+        let e = data.children[i];
+        let id = parseInt(e.id);
+        rev.children.push(e.id);
   
         if (nodes[id] == undefined) {
-          nodes.push(e.data.text);
+          nodes.push(e.text);
         }
-      });
+      };
     }
 
     
@@ -186,6 +194,12 @@ class DataManager {
       meta.nodes.push(mNode);
     }
     return mNode;
+  }
+
+  getActiveRevision(id) {
+    let nId = parseInt(id);
+    let meta = this.getMeta(nId);
+    return meta.revisions[meta.revisions.active];
   }
 
   getVersion(id) {

@@ -95,6 +95,7 @@ $(document).ready(() => {
       Event.dispatch(Event.FOLD_ANCESTORS, {root: root, init: true});
       Event.dispatch(Event.FOLD_DESCENDANTS, {root: root, init: true});
       Event.dispatch(Event.FOLD_ANCESTORS, {root: root});
+      Event.dispatch(Event.FOLD_DESCENDANTS, {root: root});
     });
   }
 });
