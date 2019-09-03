@@ -49,12 +49,16 @@ class FoldDescendants {
           root: root
         });
       }
+      Event.dispatch(Event.EDIT_DATA, {node: source});
     });
   }
 
   initCircle() {
     d3.selectAll("circle.node")
     .on("click", (d) => {
+      let c = d.data.children;
+      if (c == undefined || c.length == 0)
+        return;
       d.data.foldDescendants = d.data.foldDescendants ? undefined: true;
       Event.dispatch(Event.FOLD_DESCENDANTS, {clickedNodeData: d});
     });

@@ -23,8 +23,6 @@ class NodeMenu {
     jQuery(document).ready(function() {
       jQuery(".versionList").click(function(e) {
         let versionName = jQuery(this).text();
-        // console.log(jQuery(this).text());
-        // Redraw the node based on the selected version
         Event.dispatch(Event.CHANGE_NODE_VERSION, {
           node: selectedNode,
           versionName: versionName
