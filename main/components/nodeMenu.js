@@ -11,16 +11,16 @@ class NodeMenu {
       if (this.selectedData == undefined)
         return;
       Event.dispatch(Event.GET_NODE_REVISIONS, 
-        { id: parseInt(this.selectedData.data.id) });
+        { id: this.selectedData.data.id });
     });
     window.addEventListener(Event.SELECTED_NODE_REVISIONS, (e) => {
-      this.showNodeMenu(e.detail.revisions);
-      this.revisions = e.detail.revisions;
+      this.showNodeMenu(e.detail.metaRevisions);
+      this.metaRevisions = e.detail.metaRevisions;
     });
 
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
       if (jQuery("#nodeMenu").length) {
-        this.showNodeMenu(this.revisions);
+        this.showNodeMenu(this.metaRevisions);
       }
     });
   }
@@ -38,12 +38,12 @@ class NodeMenu {
     })
   }
 
-  showNodeMenu(revisions) {
-    if (revisions == undefined)
+  showNodeMenu(metaRevisions) {
+    if (metaRevisions == undefined)
       return;
 
-    let revisionNames = Object.keys(revisions);
-    revisionNames.splice(revisionNames.indexOf("active"), 1);
+    let revisionNames = Object.keys(metaRevisions.revisions);
+    revisionNames.splice(revisionNames.indexOf("active"));
 
     jQuery("#nodeMenu").remove();
     jQuery(`#tree-container`).prepend(`
@@ -54,7 +54,7 @@ class NodeMenu {
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li>${revisions.active}</li>`
+            <li>${metaRevisions.active}</li>`
             + getList(revisionNames) +
           `
             <li id="addRevision">+</li>
