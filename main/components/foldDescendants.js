@@ -52,6 +52,9 @@ class FoldDescendants {
       }
       
     });
+    window.addEventListener(Event.REPLACE_ROOT, (e) => {
+      this.ancestorsRoot = e.detail.root;
+    });
   }
 
   initCircle() {
