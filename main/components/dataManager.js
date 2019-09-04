@@ -33,10 +33,14 @@ class DataManager {
     });
     window.addEventListener(Event.EDIT_DATA, (e) => {
       this.editData(e.detail.node);
-      this.json
     });
     window.addEventListener(Event.ADD_REVISION, (e) => {
       this.addRevision(e.detail.node);
+      let data = this.getData(e.detail.node);
+      Event.dispatch(Event.REPLACE_DATA, {
+        node: e.detail.node,
+        data: data
+      });
     });
     this.createMainNode();
   }
@@ -276,9 +280,13 @@ class DataManager {
 
   addRevision(node) {
     let gm = this.getActiveMetaById(node.data.id);
-    gm.active = "default" + (Object.keys(gm.revisions).length - 1);
+    gm.active = "default" + (Object.keys(gm.revisions).length);
     gm.revisions[gm.active] = { selected: true };
     let rev = gm.revisions[gm.active];
+    Event.dispatch(Event.CHANGE_NODE_VERSION, {
+      node: node,
+      versionName: gm.active
+    });
   }
 
   getActiveMetaById(id) {

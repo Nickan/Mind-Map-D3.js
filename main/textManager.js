@@ -62,7 +62,7 @@ class TextManager {
     });
     window.addEventListener(Event.REPLACE_ROOT, (e) => {
       this.ancestorsRoot = e.detail.root;
-    })
+    });
     window.addEventListener(Event.REPLACE_DATA, (e) => {
       this.replaceData(e.detail.node, e.detail.data);
       Event.dispatch(Event.UPDATE_TREE, {
@@ -251,7 +251,6 @@ class TextManager {
       let i = p.children.indexOf(selectedNode);
       p.children[i] = newNode;
       p.data.children[i] = newNode.data;
-      // newNode.depth = p.depth + 1;
       setDepth(newNode);
 
       function setDepth(node) {

@@ -43,13 +43,14 @@ class FoldDescendants {
       if (source == undefined)
         source = root;
       
+      Event.dispatch(Event.EDIT_DATA, {node: source});
       if (e.detail.init == undefined) {
         Event.dispatch(Event.UPDATE_TREE, {
           source: source,
           root: root
         });
       }
-      Event.dispatch(Event.EDIT_DATA, {node: source});
+      
     });
   }
 

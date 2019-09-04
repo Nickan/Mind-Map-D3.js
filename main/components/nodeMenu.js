@@ -70,6 +70,9 @@ class NodeMenu {
       jQuery(document).ready(function() {
         jQuery("#addRevision").click(function(e) {
           Event.dispatch(Event.ADD_REVISION, {node: node});
+          Event.dispatch(Event.UPDATE_TREE, {
+            source: node
+          });
           Event.dispatch(Event.SHOW_NODE_MENU, {});
         });
       })
