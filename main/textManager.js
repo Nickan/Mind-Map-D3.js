@@ -60,6 +60,9 @@ class TextManager {
     window.addEventListener(Event.FOLD_ANCESTORS_ROOT, (e) => {
       this.ancestorsRoot = e.detail.root;
     });
+    window.addEventListener(Event.REPLACE_ROOT, (e) => {
+      this.ancestorsRoot = e.detail.root;
+    })
     window.addEventListener(Event.REPLACE_DATA, (e) => {
       this.replaceData(e.detail.node, e.detail.data);
       Event.dispatch(Event.UPDATE_TREE, {

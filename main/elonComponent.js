@@ -63,6 +63,7 @@ class ElonComponent {
     });
     window.addEventListener(Event.REPLACE_ROOT, (e) => {
       this.root = e.detail.root;
+      
       Event.dispatch(Event.MAIN_ROOT, {
         root: this.root
       });

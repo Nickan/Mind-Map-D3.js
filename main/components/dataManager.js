@@ -7,15 +7,16 @@ class DataManager {
     window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
       this.json = e.detail.json;
       let data = this.parseToData(e.detail.json);
-      Event.dispatch(Event.SET_GLOBAL_META, {meta: this.getGlobalActiveMeta(this.json)})
-      Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, {data: data});
+      Event.dispatch(Event.SET_GLOBAL_META, { meta: this.getGlobalActiveMeta(this.json) })
+      Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, { data: data });
     });
 
     window.addEventListener(Event.GET_NODE_REVISIONS, (e) => {
       let r = this.getRevisions(e.detail.id);
       let gMeta = this.getGlobalActiveMeta(this.json);
-      r.active = gMeta[e.detail.id].active;
-      Event.dispatch(Event.SELECTED_NODE_REVISIONS, {metaRevisions: gMeta[e.detail.id]});
+      let metaRevisions = gMeta[e.detail.id];
+      metaRevisions.active = gMeta[e.detail.id].active;
+      Event.dispatch(Event.SELECTED_NODE_REVISIONS, { metaRevisions: metaRevisions });
     });
     window.addEventListener(Event.CHANGE_NODE_VERSION, (e) => {
       let id = parseInt(e.detail.node.data.id);
@@ -114,7 +115,7 @@ class DataManager {
         }
       }
     `;
-    Event.dispatch(Event.LOAD_JSON_FILE_SUCCESSFUL, {json: JSON.parse(jsonString)});
+    Event.dispatch(Event.LOAD_JSON_FILE_SUCCESSFUL, { json: JSON.parse(jsonString) });
   }
 
   getData(id) {
@@ -143,7 +144,7 @@ class DataManager {
 
     return data;
 
-    
+
   }
 
   getChildren(id, activeMeta, nodes, revision) {
@@ -236,14 +237,14 @@ class DataManager {
         let e = data.children[i];
         let id = e.id;
         rev.children.push(id);
-  
+
         if (nodes[id] == undefined) {
           nodes.push(e.text);
         }
       };
     }
 
-    
+
     let p = node.parent;
     if (p != undefined) {
       let pRev = this.getActiveRevision(p.data.id);
@@ -276,7 +277,7 @@ class DataManager {
   addRevision(node) {
     let gm = this.getActiveMetaById(node.data.id);
     gm.active = "default" + (Object.keys(gm.revisions).length - 1);
-    gm.revisions[gm.active] = {selected: true};
+    gm.revisions[gm.active] = { selected: true };
     let rev = gm.revisions[gm.active];
   }
 
