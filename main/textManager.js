@@ -25,22 +25,18 @@ class TextManager {
       });
       this.updateTextHighlight();
     });
-
     window.addEventListener(Event.ON_DRAG_UPDATE_ONCE, (e) => {
       this.handleClickEvent(e.detail.selectedData);
     });
-
     window.addEventListener(Event.DELETE_NODE, (e) => {
       this.deleteNode();
     });
-
     window.addEventListener(Event.PROCESS_TEXT_INPUT, (e) => {
       if (this.selectedData == undefined) {
         return;
       }
       this.processTextInput();
     });
-
     window.addEventListener(Event.CREATE_CHILD_NODE, (e) => {
       Event.dispatch(Event.REMOVE_FOLD_DESCENDANTS, {node: this.selectedData});
       if (this.selectedData == undefined) {
@@ -49,11 +45,9 @@ class TextManager {
       this.createTextInput();
       this.state = State.CREATE_CHILD_NODE;
     });
-
     window.addEventListener(Event.ON_DRAG, (e) => {
       this.cancelTextInputProcess();
     })
-
     window.addEventListener(Event.DELETE_NODE_DATA, (e) => {
       this.deleteNodeData(e.detail.nodeData);
     });
@@ -80,6 +74,7 @@ class TextManager {
         case State.EDIT_NODE:
           this.onTextEdit();
           node = this.nodeToEdit;
+          Event.dispatch(Event.EDIT_DATA, {node: node});
           break;
         case State.CREATE_CHILD_NODE:
           this.onCreateNewChild(this.selectedData, t.val());
@@ -161,7 +156,7 @@ class TextManager {
 
   onTextEdit() {
     let text = jQuery('#text-input').val();
-    this.nodeToEdit.data.name = text;
+    this.nodeToEdit.data.text = text;
   }
 
   onNodeSelected(d) {

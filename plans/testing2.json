@@ -26,6 +26,12 @@
     },
     "8": {
       "text": "8"
+    },
+    "9": {
+      "text": "9"
+    },
+    "10": {
+      "text": "10"
     }
   },
   "meta": {
@@ -69,7 +75,8 @@
               5,
               6
             ],
-            "selected": true
+            "selected": true,
+            "foldAncestors": true
           }
         }
       },
@@ -86,7 +93,8 @@
             "children": [
               7,
               8
-            ]
+            ],
+            "selected": true
           }
         }
       },
@@ -118,12 +126,31 @@
         "active": "default",
         "revisions": {
           "default": {
+            "children": [
+              9,
+              10
+            ]
+          }
+        }
+      },
+      "9": {
+        "active": "default",
+        "revisions": {
+          "default": {
+            "children": []
+          }
+        }
+      },
+      "10": {
+        "active": "default",
+        "revisions": {
+          "default": {
             "children": []
           }
         }
       },
       "mainId": 0,
-      "lastNodeId": 8
+      "lastNodeId": 10
     }
   }
 }

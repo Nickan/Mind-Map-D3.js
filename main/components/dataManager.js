@@ -226,6 +226,8 @@ class DataManager {
       nodes[id] = {
         text: data.text
       };
+    } else {
+      nodes[id].text = data.text;
     }
 
     let rev = this.getActiveRevision(id);
