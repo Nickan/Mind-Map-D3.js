@@ -6,6 +6,9 @@ class TextManager {
   }
 
   initEventListeners() {
+    window.addEventListener(Event.SET_GLOBAL_META, (e) => {
+      this.lastNodeId = parseInt(e.detail.meta.lastNodeId);
+    });
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
       d3.selectAll(".text-wrap")
       .style("pointer-events", "none");
@@ -15,9 +18,9 @@ class TextManager {
         this.handleClickEvent(d);
       })
       .each((d) => {
-        if (d.data.id > this.lastNodeId) {
-          this.lastNodeId = d.data.id;
-        }
+        // if (d.data.id > this.lastNodeId) {
+        //   this.lastNodeId = d.data.id;
+        // }
       });
       this.updateTextHighlight();
     });
@@ -60,7 +63,7 @@ class TextManager {
       this.replaceData(e.detail.node, e.detail.data);
       Event.dispatch(Event.UPDATE_TREE, {
         // root: e.detail.node,
-        // source: e.detail.node
+        source: e.detail.node
       });
     });
   }
@@ -98,6 +101,7 @@ class TextManager {
     this.selectedData = d;
     d.data.selected = true;
     this.updateTextHighlight();
+    Event.dispatch(Event.SHOW_NODE_MENU, {});
   }
 
   updateTextHighlight() {
@@ -224,21 +228,42 @@ class TextManager {
     this.appendData(parent, data);
   }
 
-  appendData(parent, data) {
-    let node = d3.hierarchy(data, function(d) {
+  appendData(selectedNode, data) {
+    let newNode = d3.hierarchy(data, function(d) {
       return d.children; 
     });
 
-    if (parent.parent == undefined) {
-      Event.dispatch(Event.REPLACE_ROOT, {root: node});
+    if (selectedNode.parent == undefined) {
+      Event.dispatch(Event.REPLACE_ROOT, {root: newNode});
     } else {
-      
-      let pp = parent.parent;
-      parent.children = [node];
-      parent.data.children = [{
-        "text": node.data.text,
-        "id": node.data.id
-      }];
+      replaceNodeInParent(selectedNode, newNode);
+    }
+
+    function replaceNodeInParent(selectedNode, newNode) {
+      let p = selectedNode.parent;
+      newNode.parent = p;
+
+      let i = p.children.indexOf(selectedNode);
+      p.children[i] = newNode;
+      p.data.children[i] = newNode.data;
+      // newNode.depth = p.depth + 1;
+      setDepth(newNode);
+
+      function setDepth(node) {
+        node.depth = node.parent.depth + 1;
+        if (node.children) {
+          for(let i = 0; i < node.children.length; i++) {
+            setDepth(node.children[i]);
+          }
+        }
+      }
+
+
+      // // pp.children = [newNode];
+      // pp.data.children = [{
+      //   "text": node.data.text,
+      //   "id": node.data.id
+      // }];
     }
   }
 

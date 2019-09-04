@@ -25,9 +25,7 @@ class ElonComponent {
         .attr('id', 'svg')
         .append('g')
         .attr('transform', "translate("
-          + margin.left + "," + margin.top + ")");
-        // .attr('transform', "translate("
-        //   + 0 + "," + 0 + ")");
+          + width * 0.5 + "," + height * 0.5 + ")");
   
       let root;
   
@@ -65,7 +63,11 @@ class ElonComponent {
     });
     window.addEventListener(Event.REPLACE_ROOT, (e) => {
       this.root = e.detail.root;
-      Event.dispatch(Event.MAIN_ROOT, {root: this.root});
+      Event.dispatch(Event.MAIN_ROOT, {
+        root: this.root
+      });
+      Event.dispatch(Event.UPDATE_TREE_AFTER, {});
+      
     })
   }
 
@@ -78,7 +80,8 @@ class ElonComponent {
   
     // Compute the new tree layout.
     var nodes = treeData.descendants(),
-        links = treeData.descendants().slice(1);
+      links = treeData.descendants().slice(1);
+    // console.log(links);
   
     // Normalize for fixed-depth.
     nodes.forEach(function(d) {
@@ -104,7 +107,7 @@ class ElonComponent {
     exitCircle(nodeExit);
     exitText(nodeExit);
 
-    let link = updateLinks(treeContainer, links);
+    let link = updateLinks(treeContainer, links, root);
     let linkEnter = enterLinkToParentPreviousPosition(link, source, diagonal);
     let linkUpdate = linkEnter.merge(link);
     linkTransitionBackToParentElementPosition(linkUpdate, duration);
@@ -180,9 +183,9 @@ class ElonComponent {
     function positionNewNodeInParentPreviousPosition(node, source) {
       return node.enter().append('g')
       .attr('class', 'node')
-      .attr('id', function(d) {
-        return "g-" + d.id;
-      })
+      // .attr('id', function(d) {
+      //   return "g-" + d.id;
+      // })
       .attr("transform", function(d) {
         return "translate(" + source.y0 + "," + source.x0 + ")";
       })
@@ -270,13 +273,17 @@ class ElonComponent {
 
     function updateTextNode(nodeUpdate, width, wrapFn, ec) {
       nodeUpdate.selectAll('.text-wrap')
+      .data(nodes, (d) => {
+        return d.data.id;
+      })
       .text(function(d) {
         return d.data.text; })
       .call(wrapFn, width, ec);
     }
 
     function removeExistingNodes(node, source, duration) {
-      return node.exit().transition()
+      return node.exit()
+      .transition()
       .duration(duration)
       .attr("transform", function(d) {
         return "translate(" + source.y + "," + source.x + ")";
@@ -294,9 +301,13 @@ class ElonComponent {
       .style('fill-opacity', 1e-6);
     }
 
-    function updateLinks(treeContainer, links) {
+    function updateLinks(treeContainer, links, root) {
       return treeContainer.selectAll('path.link')
-      .data(links, function(d) { return d.data.id; });
+      .data(links, function(d) { 
+        // if (root.new != undefined)
+        //   return d.data.id + "-" + root.new;
+        return d.data.id; 
+      });
     }
 
     function enterLinkToParentPreviousPosition(link, source, diagonalFn) {
@@ -315,7 +326,8 @@ class ElonComponent {
     }
 
     function removeExitingLinks(link, duration, source, diagonalFn) {
-      return link.exit().transition()
+      return link.exit()
+      .transition()
       .duration(duration)
       .attr('d', function(d) {
         var o = {x: source.x, y: source.y}
