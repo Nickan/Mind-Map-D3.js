@@ -8,6 +8,7 @@ class TextManager {
   initEventListeners() {
     window.addEventListener(Event.SET_GLOBAL_META, (e) => {
       this.lastNodeId = parseInt(e.detail.meta.lastNodeId);
+      this.globalMeta = e.detail.meta;
     });
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
       d3.selectAll(".text-wrap")
@@ -201,6 +202,7 @@ class TextManager {
 
   onCreateNewChild(parent, text) {
     let nodeId = ++this.lastNodeId;
+    this.globalMeta.lastNodeId = nodeId;
     let data = {
       id: nodeId,
       text: text,

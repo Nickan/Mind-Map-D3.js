@@ -1,0 +1,95 @@
+{
+  "nodes": {
+    "0": {
+      "text": "Main"
+    },
+    "1": {
+      "text": "1"
+    },
+    "2": {
+      "text": "2"
+    },
+    "3": {
+      "text": "3"
+    },
+    "4": {
+      "text": "4"
+    },
+    "5": {
+      "text": "5"
+    }
+  },
+  "meta": {
+    "active": "meta1"
+  },
+  "metaSettings": {
+    "active": "metaGlobal"
+  },
+  "metas": {
+    "metaGlobal": {
+      "0": {
+        "active": "default",
+        "revisions": {
+          "default": {
+            "children": [
+              1,
+              2
+            ],
+            "selected": true,
+            "foldAncestors": true
+          },
+          "default1": {
+            "children": [
+              3,
+              4
+            ]
+          }
+        }
+      },
+      "1": {
+        "active": "default",
+        "revisions": {
+          "default": {
+            "children": [
+              5
+            ],
+            "selected": true
+          },
+          "active": "default1",
+          "default1": {
+            "selected": true
+          }
+        }
+      },
+      "2": {
+        "active": "default",
+        "revisions": {
+          "default": {}
+        }
+      },
+      "3": {
+        "active": "default",
+        "revisions": {
+          "default": {}
+        }
+      },
+      "4": {
+        "active": "default",
+        "revisions": {
+          "default": {}
+        }
+      },
+      "5": {
+        "active": "default",
+        "revisions": {
+          "default": {
+            "children": []
+          },
+          "active": "default"
+        }
+      },
+      "mainId": 0,
+      "lastNodeId": 5
+    }
+  }
+}
