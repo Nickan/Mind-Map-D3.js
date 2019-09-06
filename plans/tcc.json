@@ -10,7 +10,6 @@
     {
       "id": 13,
       "name": "Tasks",
-      "selected": true,
       "children": [
         {
           "id": 2,
@@ -19,81 +18,134 @@
             {
               "id": 7,
               "name": "Create estimates",
-              "visible": true
-            },
-            {
-              "id": 8,
-              "name": "Implement WP Live Chat",
+              "visible": true,
               "children": [
                 {
-                  "id": 9,
-                  "name": "Have to test on stage",
+                  "id": 27,
+                  "name": "Tasks",
                   "children": [
                     {
-                      "id": 10,
-                      "name": "Check if:",
+                      "id": 8,
+                      "name": "Implement WP Live Chat",
                       "children": [
                         {
-                          "id": 11,
-                          "name": "Working",
+                          "id": 9,
+                          "name": "Have to test on stage",
+                          "children": [
+                            {
+                              "id": 10,
+                              "name": "Check if:",
+                              "children": [
+                                {
+                                  "id": 11,
+                                  "name": "Working",
+                                  "visible": true
+                                }
+                              ],
+                              "visible": true
+                            },
+                            {
+                              "id": 12,
+                              "name": "Set basic communication",
+                              "visible": true
+                            }
+                          ],
+                          "visible": true,
+                          "foldDescendants": true
+                        },
+                        {
+                          "id": 25,
+                          "name": "Notes",
+                          "children": [
+                            {
+                              "id": 26,
+                              "name": "The offline message seems doesn't have any notification",
+                              "visible": true
+                            }
+                          ],
+                          "visible": true,
+                          "foldDescendants": true
+                        }
+                      ],
+                      "visible": true,
+                      "foldDescendants": true
+                    },
+                    {
+                      "id": 14,
+                      "name": "Implement Cable Assembly builder",
+                      "children": [
+                        {
+                          "id": 15,
+                          "name": "Resources",
+                          "children": [
+                            {
+                              "id": 16,
+                              "name": "https://www.pasternack.com/t-cable-creator.aspx",
+                              "visible": true,
+                              "foldDescendants": true
+                            }
+                          ],
+                          "visible": true,
+                          "foldDescendants": true
+                        }
+                      ],
+                      "visible": true,
+                      "foldDescendants": true
+                    },
+                    {
+                      "id": 18,
+                      "name": "Implement Request for Quote",
+                      "children": [
+                        {
+                          "id": 19,
+                          "name": "Requirements",
+                          "children": [
+                            {
+                              "id": 22,
+                              "name": "Get the mock up",
+                              "foldDescendants": true,
+                              "visible": true
+                            }
+                          ],
+                          "visible": true,
+                          "foldDescendants": true
+                        }
+                      ],
+                      "visible": true,
+                      "foldDescendants": true
+                    },
+                    {
+                      "id": 20,
+                      "name": "Create a google sheet for breakdown of tasks",
+                      "children": [
+                        {
+                          "id": 21,
+                          "name": "Have to communicate the tasks to be tackle as simple yet effective",
                           "visible": true
                         }
                       ],
-                      "visible": true
-                    },
+                      "visible": true,
+                      "foldDescendants": true
+                    }
+                  ],
+                  "visible": true
+                },
+                {
+                  "id": 28,
+                  "name": "Have a meeting",
+                  "visible": true
+                },
+                {
+                  "id": 29,
+                  "name": "Fill out the estimated dev time",
+                  "children": [
                     {
-                      "id": 12,
-                      "name": "Set basic communication",
+                      "id": 30,
+                      "name": "On Google Drive",
                       "visible": true
                     }
                   ],
                   "visible": true
-                }
-              ],
-              "visible": true
-            },
-            {
-              "id": 14,
-              "name": "Implement Cable Assembly builder",
-              "children": [
-                {
-                  "id": 15,
-                  "name": "Resources",
-                  "children": [
-                    {
-                      "id": 16,
-                      "name": "https://www.pasternack.com/t-cable-creator.aspx",
-                      "visible": true
-                    }
-                  ],
-                  "visible": true
-                }
-              ],
-              "visible": true
-            },
-            {
-              "id": 18,
-              "name": "Implement Request for Quote",
-              "children": [
-                {
-                  "id": 19,
-                  "name": "Requirements",
-                  "children": [
-                    {
-                      "id": 22,
-                      "name": "Get the mock up"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": 20,
-              "name": "Create a google sheet for breakdown of tasks",
-              "children": [
-                {
-                  "id": 21,
-                  "name": "Have to communicate the tasks to be tackle as simple yet effective"
                 }
               ]
             }
@@ -103,16 +155,88 @@
         {
           "id": 14,
           "name": "In-Progress",
+          "visible": true,
           "children": [
             {
-              "id": 17,
-              "name": "Create plans"
+              "id": 31,
+              "name": "Meeting confirmation pending"
+            },
+            {
+              "id": 32,
+              "name": "Prepare the meeting topics",
+              "children": [
+                {
+                  "id": 33,
+                  "name": "Implement Cable Assembly builder",
+                  "children": [
+                    {
+                      "id": 34,
+                      "name": "Final results",
+                      "children": [
+                        {
+                          "id": 35,
+                          "name": "Does it have just one result regardless of combination?"
+                        },
+                        {
+                          "id": 36,
+                          "name": "Will there be a suggestion like in pasternack?"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": 37,
+                  "name": "WP Live Chat",
+                  "children": [
+                    {
+                      "id": 38,
+                      "name": "Doesn't have notification for offline message",
+                      "children": [
+                        {
+                          "id": 39,
+                          "name": "Agent has to open the offline messages"
+                        }
+                      ]
+                    },
+                    {
+                      "id": 40,
+                      "name": "Seems like new updates made it slower and clunky"
+                    },
+                    {
+                      "id": 41,
+                      "name": "Alternative would be Bitrix24",
+                      "selected": true
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
           "id": 15,
-          "name": "Finished"
+          "name": "Finished",
+          "visible": true,
+          "children": [
+            {
+              "id": 23,
+              "name": "History",
+              "children": [
+                {
+                  "id": 17,
+                  "name": "Create plans",
+                  "foldDescendants": true,
+                  "visible": true
+                }
+              ],
+              "visible": true
+            },
+            {
+              "id": 24,
+              "name": "Create a draft of estimate in Google Drive"
+            }
+          ]
         }
       ],
       "foldAncestors": true
