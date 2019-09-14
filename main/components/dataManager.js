@@ -304,21 +304,34 @@ class DataManager {
 
   getConvertedD3JsonFormat(json) {
     let mainId = json.meta.mainId;
-    let data = this.getData(mainId);
+    let mData = undefined;
+    // MainId or the deepest node with foldAncestors attribute;
+    let data = this.getData(mainId, (activeRev, id, d) => {
+      if (activeRev.foldAncestors) {
+        mainId = id;
+        mData = d;
+        mData.parentId = undefined;
+      }
+    });
+    if (mData != undefined) {
+      return mData;
+    }
     return data;
   }
 
-  getData(id) {
+  getData(id, fn = function(ar, id, d){}) {
     let nodes = this.json.nodes;
-    let am = this.getActiveRevision(id);
-    return {
+    let ar = this.getActiveRevision(id);
+    let data = {
       id: id,
-      parentId: am.parentId,
+      parentId: ar.parentId,
       text: nodes[id].text,
-      children: this.getChildren(id, this.json),
-      foldAncestors: am.foldDescendants,
-      foldDescendants: am.foldDescendants
+      foldAncestors: ar.foldDescendants,
+      foldDescendants: ar.foldDescendants
     }
+    fn(ar, id, data);
+    data.children = this.getChildren(id, this.json, fn);
+    return data;
   }
 
   convertToHierarchy(id, activeMeta, nodes) {
@@ -334,12 +347,12 @@ class DataManager {
     return data;
   }
 
-  getChildren(id, json) {
+  getChildren(id, json, fn) {
     let children = [];
-    let am = this.getActiveRevision(id);
-    if (am.children && am.children.length > 0) {
-      am.children.forEach((childId) => {
-        children.push(this.getData(childId));
+    let ar = this.getActiveRevision(id);
+    if (ar.children && ar.children.length > 0) {
+      ar.children.forEach((childId) => {
+        children.push(this.getData(childId, fn));
       });
     }
     return children;
