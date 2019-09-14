@@ -92,10 +92,10 @@ $(document).ready(() => {
       Event.dispatch(Event.UPDATE_TREE_AFTER, {});
       dragManager.init();
       
-      Event.dispatch(Event.FOLD_ANCESTORS, {root: root, init: true});
-      Event.dispatch(Event.FOLD_DESCENDANTS, {root: root, init: true});
-      Event.dispatch(Event.FOLD_ANCESTORS, {root: root});
-      Event.dispatch(Event.FOLD_DESCENDANTS, {root: root});
+      // Event.dispatch(Event.FOLD_ANCESTORS, {root: root, init: true});
+      // Event.dispatch(Event.FOLD_DESCENDANTS, {root: root, init: true});
+      // Event.dispatch(Event.FOLD_ANCESTORS, {root: root});
+      // Event.dispatch(Event.FOLD_DESCENDANTS, {root: root});
     });
   }
 });

@@ -4,15 +4,9 @@ class DataManager {
   }
 
   initEventListeners() {
-    window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
-      this.json = e.detail.json;
-      let data = this.parseToData(e.detail.json);
-      Event.dispatch(Event.SET_GLOBAL_META, { meta: this.getGlobalActiveMeta(this.json) })
-      Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, { data: data });
-    });
-
+    this.initLoadJsonFileSuccessful();
     window.addEventListener(Event.GET_NODE_REVISIONS, (e) => {
-      let r = this.getRevisions(e.detail.id);
+      let r = this.getRevisionsMeta(e.detail.id);
       let gMeta = this.getGlobalActiveMeta(this.json);
       let metaRevisions = gMeta[e.detail.id];
       metaRevisions.active = gMeta[e.detail.id].active;
@@ -20,11 +14,10 @@ class DataManager {
     });
     window.addEventListener(Event.CHANGE_NODE_VERSION, (e) => {
       let id = parseInt(e.detail.node.data.id);
-      let v = this.getRevisions(id);
+      let v = this.getRevisionsMeta(id);
       let gm = this.getGlobalActiveMeta(this.json);
       gm[id].active = e.detail.versionName;
       let r = this.getActiveRevision(id);
-      // r.selected = true;
       let data = this.getData(id);
       Event.dispatch(Event.REPLACE_DATA, {
         node: e.detail.node,
@@ -45,94 +38,161 @@ class DataManager {
     this.createMainNode();
   }
 
+  initLoadJsonFileSuccessful() {
+    window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
+      this.json = e.detail.json;
+      let data = this.getConvertedD3JsonFormat(e.detail.json);
+      Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, { data: data });
+    });
+  }
+
   createMainNode() {
     let jsonString = `
-      {
-        "nodes": {
-          "0": {
-            "text": "Main"
-          },
-          "1": {
-            "text": "1"
-          },
-          "2": {
-            "text": "2"
-          },
-          "3": {
-            "text": "3"
-          },
-          "4": {
-            "text": "4"
+    {
+      "nodes": {
+        "0": {
+          "text": "Main"
+        },
+        "1": {
+          "text": "1"
+        },
+        "2": {
+          "text": "2"
+        },
+        "3": {
+          "text": "3"
+        },
+        "4": {
+          "text": "4"
+        },
+        "5": {
+          "text": "5"
+        },
+        "6": {
+          "text": "6"
+        },
+        "7": {
+          "text": "7"
+        },
+        "8": {
+          "text": "8"
+        },
+        "9": {
+          "text": "9"
+        },
+        "10": {
+          "text": "10"
+        }
+      },
+      "meta": {
+        "main": 0,
+        "0": {
+          "active": "default",
+          "revisions": {
+            "default": {
+              "children": [1, 2, 3]
+            },
+            "default1": {
+              "children": [4, 5]
+            }
           }
         },
-        "meta": {
-          "active": "meta1"
+        "1": {
+          "active": "default",
+          "revisions": {
+            "default": {
+              "children": [6, 7],
+              "foldDescendants": true
+            }
+          }
         },
-        "metaSettings": {
-          "active": "metaGlobal"
+        "2": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
+          }
         },
-        "metas": {
-          "metaGlobal": {
-            "0": {
-              "active": "default",
-              "revisions": {
-                "default": {
-                  "children": [ 1, 2 ],
-                  "selected": true
-                },
-                "default1": {
-                  "children": [ 3, 4 ]
-                }
-              }
-            },
-            "1": {
-              "active": "default",
-              "revisions": {
-                "default": {
-                }
-              }
-            },
-            "2": {
-              "active": "default",
-              "revisions": {
-                "default": {
-                }
-              }
-            },
-            "3": {
-              "active": "default",
-              "revisions": {
-                "default": {
-                }
-              }
-            },
-            "4": {
-              "active": "default",
-              "revisions": {
-                "default": {
-                }
-              }
-            },
-            "mainId": 0,
-            "lastNodeId": 4
+        "3": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
+          }
+        },
+        "4": {
+          "active": "default",
+          "revisions": {
+            "default": {
+              "children": [8, 9, 10],
+              "foldAncestors": true
+            }
+          }
+        },
+        "5": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
+          }
+        },
+        "6": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
+          }
+        },
+        "7": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
+          }
+        },
+        "8": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
+          }
+        },
+        "9": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
+          }
+        },
+        "10": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
           }
         }
       }
+    }
     `;
     Event.dispatch(Event.LOAD_JSON_FILE_SUCCESSFUL, { json: JSON.parse(jsonString) });
   }
 
-  getData(id) {
-    let json = this.json;
-    let activeMeta = this.getGlobalActiveMeta(json);
-    return this.convertToHierarchy(id, activeMeta, json.nodes);
+  getConvertedD3JsonFormat(json) {
+    let mainId = json.meta.main;
+    let data = this.getData(mainId);
+    return data;
   }
 
-  parseToData(json) {
-    let activeMeta = this.getGlobalActiveMeta(json);
-    if (activeMeta.mainId == undefined)
-      console.log("Error mainId, please set");
-    return this.convertToHierarchy(activeMeta.mainId, activeMeta, json.nodes);
+  getData(id) {
+    let nodes = this.json.nodes;
+    let am = this.getActiveRevision(id);
+    return {
+      id: id,
+      text: nodes[id].text,
+      children: this.getChildren(id, this.json),
+      foldAncestors: am.foldDescendants,
+      foldDescendants: am.foldDescendants
+    }
   }
 
   convertToHierarchy(id, activeMeta, nodes) {
@@ -142,73 +202,33 @@ class DataManager {
       id: id,
       children: this.getChildren(id, activeMeta, nodes, rev),
       foldDescendants: rev.foldDescendants,
-      foldAncestors: rev.foldAncestors,
-      selected: rev.selected
+      foldAncestors: rev.foldAncestors
     }
 
     return data;
-
-
   }
 
-  getChildren(id, activeMeta, nodes, revision) {
-    let mNodes = activeMeta[id];
-    if (mNodes == undefined)
-      return;
-
+  getChildren(id, json) {
     let children = [];
-
-    let childrenIds = revision.children;
-    if (childrenIds == undefined)
-      return children;
-    for (let i = 0; i < childrenIds.length; i++) {
-      let cId = parseInt(childrenIds[i]);
-      let node = nodes[cId];
-      let cRev = this.getActiveRevision(cId);
-      let child = {
-        text: node.text,
-        id: cId,
-        children: this.getChildren(cId, activeMeta, nodes, cRev),
-        foldAncestors: cRev.foldAncestors,
-        foldDescendants: cRev.foldDescendants,
-        selected: cRev.selected
-      }
-      children.push(child);
+    let am = this.getActiveRevision(id);
+    if (am.children && am.children.length > 0) {
+      am.children.forEach((childId) => {
+        children.push(this.getData(childId));
+      });
     }
     return children;
   }
 
-
-  getRevisions(id) {
-    let meta = this.getGlobalActiveMeta(this.json);
-    return meta[id].revisions;
+  getRevisionsMeta(id) {
+    let meta = this.json.meta;
+    return meta[id];
   }
 
-  getActiveRevision(id, createIfNone = true) {
-    let gMeta = this.getGlobalActiveMeta(this.json);
-
-    if (gMeta[id] == undefined) {
-      if (createIfNone) {
-        gMeta[id] = {
-          active: "default",
-          revisions: {
-            default: {
-
-            }
-          }
-        }
-      }
-    }
-    return gMeta[id].revisions[gMeta[id].active];
-    // let revisions = this.getRevisions(id);
-    // let activeName = gMeta[id].active;
-    // let r = revisions[activeName];
-    // if (r == undefined) {
-    //   revisions[activeName] = {
-    //     active: "default"
-    //   }
-    // }
-    // return revisions[activeName];
+  getActiveRevision(id) {
+    let rm = this.getRevisionsMeta(id);
+    if (rm == undefined)
+      console.log("Active revision is undefined " + id);
+    return rm.revisions[rm.active];
   }
 
   getGlobalActiveMeta(json) {

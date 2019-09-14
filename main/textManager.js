@@ -129,7 +129,7 @@ class TextManager {
   onOpenTextEdit(d) {
     this.nodeToEdit = d;
     this.deleteTextInputUI();
-    this.createTextInput(d.data.name);
+    this.createTextInput(d.data.text);
     this.state = State.EDIT_NODE;
   }
 
