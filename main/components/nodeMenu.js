@@ -4,14 +4,14 @@ class NodeMenu {
   }
 
   initEventListener() {
-    window.addEventListener(Event.SELECTED_NODE_DATA, (e) => {
-      this.selectedData = e.detail.data;
+    window.addEventListener(Event.SELECTED_NODE, (e) => {
+      this.selectedNode = e.detail.node;
     });
     window.addEventListener(Event.SHOW_NODE_MENU, (e) => {
-      if (this.selectedData == undefined)
+      if (this.selectedNode == undefined)
         return;
       Event.dispatch(Event.GET_NODE_REVISIONS, 
-        { id: this.selectedData.data.id });
+        { id: this.selectedNode.data.id });
     });
     window.addEventListener(Event.SELECTED_NODE_REVISIONS, (e) => {
       this.showNodeMenu(e.detail.revisionsMeta);
@@ -26,7 +26,7 @@ class NodeMenu {
   }
 
   initDropdownListener() {
-    let selectedNode = this.selectedData;
+    let selectedNode = this.selectedNode;
     jQuery(document).ready(function() {
       jQuery(".versionList").click(function(e) {
         let versionName = jQuery(this).text();
@@ -47,7 +47,7 @@ class NodeMenu {
     jQuery("#nodeMenu").remove();
     jQuery(`#tree-container`).prepend(`
       <div id="nodeMenu">
-        <span>${this.selectedData.data.text}</span>
+        <span>${this.selectedNode.data.text}</span>
         <span>revisions</span>
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
@@ -63,7 +63,7 @@ class NodeMenu {
     `);
 
     this.initDropdownListener();
-    initAddRevision(this.selectedData);
+    initAddRevision(this.selectedNode);
 
     function initAddRevision(node) {
       jQuery(document).ready(function() {

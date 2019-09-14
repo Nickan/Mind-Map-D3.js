@@ -12,6 +12,8 @@ class DataManager {
     this.initEditData();
     this.initChangeParent();
     
+    this.initFoldAncestors();
+    this.initSelectedData();
     this.createMainNode();
   }
 
@@ -63,6 +65,7 @@ class DataManager {
     window.addEventListener(Event.ADD_DATA, (e) => {
       let node = e.detail.node;
       let data = node.data;
+      let parentId = node.parent.data.id;
       this.json.meta[data.id] = createRevisionsMeta(data);
       this.json.nodes[data.id] = { "text": data.text };
 
@@ -71,6 +74,7 @@ class DataManager {
           active: "default",
           revisions: {
             default: {
+              parentId: parentId
             }
           }
         }
@@ -105,6 +109,55 @@ class DataManager {
         return d.children; 
       });
       Event.dispatch(Event.REPLACE_ROOT, {root: root});
+    });
+  }
+
+  initFoldAncestors() {
+    window.addEventListener(Event.FOLD_ANCESTORS, (e) => {
+      // Should be toggle fold/unfold
+      if (this.selectedNode == undefined) {
+        console.log("Selected Data is undefined");
+        return;
+      }
+      let id = this.selectedNode.data.id;
+      
+      let rev = this.getActiveRevision(id);
+      rev.foldAncestors = (rev.foldAncestors) ? undefined: true;
+      
+      let d3Data = undefined;
+      if (rev.foldAncestors) {
+        d3Data = this.getData(id);
+      } else {
+        let nId = this.searchUpToGetNodeWithFoldAncestorOrMainId(id);
+        d3Data = this.getData(nId);
+      }
+      d3Data.selected = true;
+      Event.dispatch(Event.FOLD_ANCESTORS_VIEW, {
+        data: d3Data,
+        sourceId: id
+      });
+      // How to unfold?
+      // Search up until seeing a new node with foldAncestors or parentId is undefined
+    });
+  }
+
+  searchUpToGetNodeWithFoldAncestorOrMainId(id) {
+    let rev = this.getActiveRevision(id);
+    if (rev.foldAncestors) {
+      return id;
+    }
+
+    if (rev.parentId != undefined) {
+      return this.searchUpToGetNodeWithFoldAncestorOrMainId(rev.parentId);
+    } else {
+      return id;
+    }
+  }
+
+
+  initSelectedData() {
+    window.addEventListener(Event.SELECTED_NODE, (e) => {
+      this.selectedNode = e.detail.node;
     });
   }
 
@@ -262,6 +315,7 @@ class DataManager {
     let am = this.getActiveRevision(id);
     return {
       id: id,
+      parentId: am.parentId,
       text: nodes[id].text,
       children: this.getChildren(id, this.json),
       foldAncestors: am.foldDescendants,

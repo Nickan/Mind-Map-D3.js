@@ -8,8 +8,8 @@ class FoldDescendants {
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
       this.initCircle();
     });
-    window.addEventListener(Event.SELECTED_NODE_DATA, (e) => {
-      this.selectedData = e.detail.data;
+    window.addEventListener(Event.SELECTED_NODE, (e) => {
+      this.selectedNode = e.detail.node;
     });
     window.addEventListener(Event.MAIN_ROOT, (e) => {
       this.root = e.detail.root;
@@ -35,19 +35,11 @@ class FoldDescendants {
       });
 
       let source = e.detail.clickedNodeData;
-      let root = e.detail.root;
-      if (this.ancestorsRoot) {
-        root = this.ancestorsRoot;
-      }
-      
-      if (source == undefined)
-        source = root;
       
       Event.dispatch(Event.EDIT_DATA, {node: source});
       if (e.detail.init == undefined) {
         Event.dispatch(Event.UPDATE_TREE, {
-          source: source,
-          root: root
+          source: source
         });
       }
       
