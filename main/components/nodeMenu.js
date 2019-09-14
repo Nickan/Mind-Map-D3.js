@@ -43,7 +43,6 @@ class NodeMenu {
       return;
 
     let revisionNames = Object.keys(revisionsMeta.revisions);
-    // revisionNames.splice(revisionNames.indexOf("active"));
 
     jQuery("#nodeMenu").remove();
     jQuery(`#tree-container`).prepend(`

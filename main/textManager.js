@@ -250,7 +250,7 @@ class TextManager {
 
       function setDepth(node) {
         node.depth = node.parent.depth + 1;
-        if (node.children) {
+        if (node.children && node.children.length > 0) {
           for(let i = 0; i < node.children.length; i++) {
             setDepth(node.children[i]);
           }
