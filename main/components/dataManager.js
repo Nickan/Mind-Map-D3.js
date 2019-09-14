@@ -114,7 +114,7 @@ class DataManager {
 
   initFoldAncestors() {
     window.addEventListener(Event.FOLD_ANCESTORS, (e) => {
-      // Should be toggle fold/unfold
+      //NOTE: Should be toggle fold/unfold
       if (this.selectedNode == undefined) {
         console.log("Selected Data is undefined");
         return;
@@ -136,8 +136,6 @@ class DataManager {
         data: d3Data,
         sourceId: id
       });
-      // How to unfold?
-      // Search up until seeing a new node with foldAncestors or parentId is undefined
     });
   }
 

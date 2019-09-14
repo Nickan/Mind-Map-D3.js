@@ -34,14 +34,20 @@ class FoldDescendants {
         }
       });
 
-      let source = e.detail.clickedNodeData;
+      if (e.detail.init) {
+
+      } else {
+        let source = e.detail.clickedNodeData;
       
-      Event.dispatch(Event.EDIT_DATA, {node: source});
-      if (e.detail.init == undefined) {
-        Event.dispatch(Event.UPDATE_TREE, {
-          source: source
-        });
+        Event.dispatch(Event.EDIT_DATA, {node: source});
+        if (e.detail.init == undefined) {
+          Event.dispatch(Event.UPDATE_TREE, {
+            source: source
+          });
+        }
       }
+
+      
       
     });
     window.addEventListener(Event.REPLACE_ROOT, (e) => {
