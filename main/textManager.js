@@ -243,7 +243,11 @@ class TextManager {
       let p = selectedNode.parent;
       newNode.parent = p;
 
-      let i = p.children.indexOf(selectedNode);
+      // let i = p.children.indexOf(selectedNode);
+      let i = getNodeSelectedIndex(p.children, selectedNode.data.id);
+      if (i == -1) {
+        console.log("Selected Node ID is " + i);
+      }
       p.children[i] = newNode;
       p.data.children[i] = newNode.data;
       setDepth(newNode);
@@ -255,6 +259,15 @@ class TextManager {
             setDepth(node.children[i]);
           }
         }
+      }
+
+      function getNodeSelectedIndex(childrenNode, id) {
+        let index = -1;
+        childrenNode.forEach((child, i) => {
+          if (child.data.id == id)
+            index = i;
+        });
+        return index;
       }
 
 
