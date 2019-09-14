@@ -59,7 +59,8 @@ class ElonComponent {
       }
 
       this.update(source, root);
-      Event.dispatch(Event.UPDATE_TREE_AFTER, {});
+      if (e.detail.dispatchAfter == undefined)
+        Event.dispatch(Event.UPDATE_TREE_AFTER, {});
     });
     window.addEventListener(Event.REPLACE_ROOT, (e) => {
       this.source = e.detail.source;

@@ -14,7 +14,7 @@ class FoldAncentors {
       let root = d3.hierarchy(e.detail.data, function(d) {
         return d.children; 
       });
-
+      
       let source = getSource(root, e.detail.sourceId);
       Event.dispatch(Event.REPLACE_ROOT, {
         source: source,

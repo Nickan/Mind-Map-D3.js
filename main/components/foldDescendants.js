@@ -7,6 +7,11 @@ class FoldDescendants {
   initEventListeners() {
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
       this.initCircle();
+      Event.dispatch(Event.FOLD_DESCENDANTS, {init: true});
+      Event.dispatch(Event.UPDATE_TREE, {
+        source: this.selectedNode,
+        dispatchAfter: false
+      });
     });
     window.addEventListener(Event.SELECTED_NODE, (e) => {
       this.selectedNode = e.detail.node;

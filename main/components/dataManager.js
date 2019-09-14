@@ -299,6 +299,25 @@ class DataManager {
       }
     }
     `;
+    jsonString = `
+    {
+      "nodes": {
+        "0": {
+          "text": "Main"
+        }
+      },
+      "meta": {
+        "mainId": 0,
+        "0": {
+          "active": "default",
+          "revisions": {
+            "default": {
+            }
+          }
+        }
+      }
+    }
+    `;
     Event.dispatch(Event.LOAD_JSON_FILE_SUCCESSFUL, { json: JSON.parse(jsonString) });
   }
 
