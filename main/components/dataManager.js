@@ -36,7 +36,7 @@ class DataManager {
       let id = e.detail.node.data.id;
       let rv = this.getRevisionsMeta(id);
       if (rv.active == e.detail.versionName) {
-        console.log("Selected Revision " + rv.active);
+        console.log("Already selected " + rv.active);
         return;
       }
       rv.active = e.detail.versionName;
