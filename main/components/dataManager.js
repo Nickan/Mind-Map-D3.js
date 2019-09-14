@@ -24,7 +24,7 @@ class DataManager {
       let gm = this.getGlobalActiveMeta(this.json);
       gm[id].active = e.detail.versionName;
       let r = this.getActiveRevision(id);
-      r.selected = true;
+      // r.selected = true;
       let data = this.getData(id);
       Event.dispatch(Event.REPLACE_DATA, {
         node: e.detail.node,
@@ -36,7 +36,7 @@ class DataManager {
     });
     window.addEventListener(Event.ADD_REVISION, (e) => {
       this.addRevision(e.detail.node);
-      let data = this.getData(e.detail.node);
+      let data = this.getData(e.detail.node.data.id);
       Event.dispatch(Event.REPLACE_DATA, {
         node: e.detail.node,
         data: data
