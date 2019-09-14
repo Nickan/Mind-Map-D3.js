@@ -20,6 +20,7 @@ class DataManager {
     window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
       this.json = e.detail.json;
       let data = this.getConvertedD3JsonFormat(e.detail.json);
+      Event.dispatch(Event.GET_LAST_NODE_ID, {lastNodeId: this.json.nodes.length - 1});
       Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, { data: data });
     });
   }

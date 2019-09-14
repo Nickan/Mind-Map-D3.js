@@ -30,7 +30,8 @@ class Event {
   static REPLACE_ROOT = "REPLACE_ROOT";
   static EDIT_DATA = "EDIT_DATA";
   static ADD_REVISION = "ADD_REVISION";
-  static SET_GLOBAL_META = "SET_GLOBAL_META";
+  static GET_LAST_NODE_ID = "GET_LAST_NODE_ID";
+  static SET_LAST_NODE_ID = "SET_LAST_NODE_ID";
 
   constructor() {
     Object.freeze(this);
