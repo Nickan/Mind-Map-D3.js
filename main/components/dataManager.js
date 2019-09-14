@@ -9,10 +9,8 @@ class DataManager {
     this.initChangeNodeRevision();
     this.initAddRevision();
     this.initAddData();
-    
-    window.addEventListener(Event.EDIT_DATA, (e) => {
-      this.editData(e.detail.node);
-    });
+    this.initEditData();
+    this.initChangeParent();
     
     this.createMainNode();
   }
@@ -80,6 +78,36 @@ class DataManager {
     });
   }
 
+  initEditData() {
+    window.addEventListener(Event.EDIT_DATA, (e) => {
+      this.editData(e.detail.node);
+    });
+  }
+
+  initChangeParent() {
+    window.addEventListener(Event.APPEND_NODE, (e) => {
+      let pData = e.detail.parent.data;
+      let cData = e.detail.child.data;
+      let pRev = this.getActiveRevision(pData.id);
+
+      if (pRev.children == undefined)
+        pRev.children = [];
+      pRev.children.push(cData.id);
+
+      let cRev = this.getActiveRevision(cData.id);
+      let prevRev = this.getActiveRevision(cRev.parentId);
+      let index = prevRev.children.indexOf(cData.id);
+      prevRev.children.splice(index, 1);
+
+      cRev.parentId = pData.id;
+      let d3Data = this.getData(this.json.meta.mainId);
+      let root = d3.hierarchy(d3Data, function(d) {
+        return d.children; 
+      });
+      Event.dispatch(Event.REPLACE_ROOT, {root: root});
+    });
+  }
+
 
 
   createMainNode() {
@@ -121,7 +149,7 @@ class DataManager {
         }
       },
       "meta": {
-        "main": 0,
+        "mainId": 0,
         "0": {
           "active": "default",
           "revisions": {
@@ -137,6 +165,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 0, 
               "children": [6, 7],
               "foldDescendants": true
             }
@@ -146,6 +175,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 0
             }
           }
         },
@@ -153,6 +183,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 0
             }
           }
         },
@@ -160,6 +191,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 0,
               "children": [8, 9, 10],
               "foldAncestors": true
             }
@@ -169,6 +201,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 0
             }
           }
         },
@@ -176,6 +209,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 1
             }
           }
         },
@@ -183,6 +217,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 1
             }
           }
         },
@@ -190,6 +225,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 4
             }
           }
         },
@@ -197,6 +233,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 4
             }
           }
         },
@@ -204,6 +241,7 @@ class DataManager {
           "active": "default",
           "revisions": {
             "default": {
+              "parentId": 4
             }
           }
         }
@@ -214,7 +252,7 @@ class DataManager {
   }
 
   getConvertedD3JsonFormat(json) {
-    let mainId = json.meta.main;
+    let mainId = json.meta.mainId;
     let data = this.getData(mainId);
     return data;
   }

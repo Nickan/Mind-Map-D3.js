@@ -145,8 +145,8 @@ class DragManager {
               switchPosition(p, d);
             } else {
               Event.dispatch(Event.APPEND_NODE, {
-                appendTo: p,
-                toAppend: d
+                parent: p,
+                child: d
               });
             }
           }

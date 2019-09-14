@@ -5,32 +5,32 @@ class AppendNode {
 
   initEventListeners() {
     window.addEventListener(Event.APPEND_NODE, (e) => {
-      Event.dispatch(Event.DELETE_NODE_DATA, {nodeData: e.detail.toAppend});
-      this.removeFoldDescendants(e.detail.appendTo);
-      appendChild(e.detail.appendTo, e.detail.toAppend);
-      setDescendantsDepth(e.detail.appendTo);
-      Event.dispatch(Event.UPDATE_TREE, {source: e.detail.appendTo});
+      // Event.dispatch(Event.DELETE_NODE_DATA, {nodeData: e.detail.child});
+      // this.removeFoldDescendants(e.detail.parent);
+      // appendChild(e.detail.parent, e.detail.child);
+      // setDescendantsDepth(e.detail.parent);
+      // Event.dispatch(Event.UPDATE_TREE, {source: e.detail.parent});
 
-      function appendChild(parent, child) {
-        Node.changeParent(child, parent);
+      // function appendChild(parent, child) {
+      //   Node.changeParent(child, parent);
         
-        if (parent.children == undefined) {
-          parent.children = [child];
-        } else {
-          parent.children.push(child);
-        }
-      }
+      //   if (parent.children == undefined) {
+      //     parent.children = [child];
+      //   } else {
+      //     parent.children.push(child);
+      //   }
+      // }
 
-      function setDescendantsDepth(parent) {
-        let c = parent.children;
-        if (c != undefined) {
-          for (let i = 0; i < c.length; i++) {
-            let child = c[i];
-            child.depth = parent.depth + 1;
-            setDescendantsDepth(child);
-          }
-        }
-      }
+      // function setDescendantsDepth(parent) {
+      //   let c = parent.children;
+      //   if (c != undefined) {
+      //     for (let i = 0; i < c.length; i++) {
+      //       let child = c[i];
+      //       child.depth = parent.depth + 1;
+      //       setDescendantsDepth(child);
+      //     }
+      //   }
+      // }
     });
 
     window.addEventListener(Event.REMOVE_FOLD_DESCENDANTS, (e) => {
