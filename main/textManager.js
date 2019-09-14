@@ -220,7 +220,8 @@ class TextManager {
     if (parent.data.children == undefined)
       parent.data.children = [];
     parent.data.children.push(data);
-    Event.dispatch(Event.EDIT_DATA, {node: node});
+    Event.dispatch(Event.ADD_DATA, {node: node});
+    Event.dispatch(Event.EDIT_DATA, {node: node.parent});
   }
 
   replaceData(parent, data) {

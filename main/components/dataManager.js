@@ -8,6 +8,7 @@ class DataManager {
     this.initGetNodeRevisions();
     this.initChangeNodeRevision();
     this.initAddRevision();
+    this.initAddData();
     
     window.addEventListener(Event.EDIT_DATA, (e) => {
       this.editData(e.detail.node);
@@ -20,7 +21,8 @@ class DataManager {
     window.addEventListener(Event.LOAD_JSON_FILE_SUCCESSFUL, (e) => {
       this.json = e.detail.json;
       let data = this.getConvertedD3JsonFormat(e.detail.json);
-      Event.dispatch(Event.GET_LAST_NODE_ID, {lastNodeId: this.json.nodes.length - 1});
+      let lastNodeId = Object.keys(this.json.nodes).length - 1;
+      Event.dispatch(Event.GET_LAST_NODE_ID, {lastNodeId: lastNodeId});
       Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, { data: data });
     });
   }
@@ -58,6 +60,26 @@ class DataManager {
       });
     });
   }
+
+  initAddData() {
+    window.addEventListener(Event.ADD_DATA, (e) => {
+      let node = e.detail.node;
+      let data = node.data;
+      this.json.meta[data.id] = createRevisionsMeta(data);
+      this.json.nodes[data.id] = { "text": data.text };
+
+      function createRevisionsMeta(data) {
+        return {
+          active: "default",
+          revisions: {
+            default: {
+            }
+          }
+        }
+      }
+    });
+  }
+
 
 
   createMainNode() {
