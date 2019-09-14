@@ -249,7 +249,7 @@ class ElonComponent {
         .on('dblclick', function(d) {
           ec.textManager.onOpenTextEdit(d);
         })
-        .text(function(d) { return d.data.name; })
+        .text(function(d) { return d.data.text; })
         .style("fill", "white")
         .call(wrap, width, ec);
       }
