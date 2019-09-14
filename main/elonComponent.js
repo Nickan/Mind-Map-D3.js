@@ -41,7 +41,7 @@ class ElonComponent {
       ec.treeContainer = treeContainer;
       ec.treemap = treemap;
       ec.root = root;
-      Event.dispatch(Event.MAIN_ROOT, {root: root});
+      // Event.dispatch(Event.MAIN_ROOT, {root: root});
       resolve(root);
     });
   }
@@ -62,8 +62,12 @@ class ElonComponent {
       Event.dispatch(Event.UPDATE_TREE_AFTER, {});
     });
     window.addEventListener(Event.REPLACE_ROOT, (e) => {
+      this.source = e.detail.source;
       this.root = e.detail.root;
-      Event.dispatch(Event.UPDATE_TREE, {root: this.root});
+      Event.dispatch(Event.UPDATE_TREE, {
+        source: this.source,
+        root: this.root
+      });
     })
   }
 
@@ -183,7 +187,11 @@ class ElonComponent {
       //   return "g-" + d.id;
       // })
       .attr("transform", function(d) {
-        return "translate(" + source.y0 + "," + source.x0 + ")";
+        //NOTE: Have to set later for animation
+        if (source.y0 != undefined) {
+          return "translate(" + source.y0 + "," + source.x0 + ")";
+        }
+        return "translate(" + 0 + "," + 0 + ")";
       })
     }
 
@@ -309,9 +317,12 @@ class ElonComponent {
     function enterLinkToParentPreviousPosition(link, source, diagonalFn) {
       return link.enter().insert('path', "g")
       .attr("class", "link")
-      .attr('d', function(d){
-        var o = {x: source.x0, y: source.y0}
-        return diagonalFn(o, o)
+      .attr('d', function(d) {
+        //NOTE: Have to set later for animation
+        if (source.y0 != undefined) {
+          var o = {x: source.x0, y: source.y0}
+          return diagonalFn(o, o);
+        }
       });
     }
 

@@ -111,7 +111,7 @@ class TextManager {
     .style("font-weight", function(d) {
       if (d.data.selected) {
         tm.selectedData = d;
-        Event.dispatch(Event.SELECTED_NODE_DATA, {data: d});
+        Event.dispatch(Event.SELECTED_NODE, {node: d});
         return "800";
       }
         
