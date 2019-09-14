@@ -58,11 +58,14 @@ class TextManager {
     });
     window.addEventListener(Event.REPLACE_DATA, (e) => {
       this.replaceData(e.detail.node, e.detail.data);
+      e.detail.data.selected = true;
+      this.updateTextHighlight();
       Event.dispatch(Event.UPDATE_TREE, {
         // root: e.detail.node,
         source: e.detail.node
       });
     });
+
   }
 
   processTextInput() {
@@ -269,13 +272,6 @@ class TextManager {
         });
         return index;
       }
-
-
-      // // pp.children = [newNode];
-      // pp.data.children = [{
-      //   "text": node.data.text,
-      //   "id": node.data.id
-      // }];
     }
   }
 
