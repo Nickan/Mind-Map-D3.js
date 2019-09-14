@@ -6,30 +6,13 @@ class DataManager {
   initEventListeners() {
     this.initLoadJsonFileSuccessful();
     this.initGetNodeRevisions();
+    this.initChangeNodeRevision();
+    this.initAddRevision();
     
-    window.addEventListener(Event.CHANGE_NODE_VERSION, (e) => {
-      let id = parseInt(e.detail.node.data.id);
-      let v = this.getRevisionsMeta(id);
-      let gm = this.getGlobalActiveMeta(this.json);
-      gm[id].active = e.detail.versionName;
-      let r = this.getActiveRevision(id);
-      let data = this.getData(id);
-      Event.dispatch(Event.REPLACE_DATA, {
-        node: e.detail.node,
-        data: data
-      });
-    });
     window.addEventListener(Event.EDIT_DATA, (e) => {
       this.editData(e.detail.node);
     });
-    window.addEventListener(Event.ADD_REVISION, (e) => {
-      this.addRevision(e.detail.node);
-      let data = this.getData(e.detail.node.data.id);
-      Event.dispatch(Event.REPLACE_DATA, {
-        node: e.detail.node,
-        data: data
-      });
-    });
+    
     this.createMainNode();
   }
 
@@ -45,6 +28,33 @@ class DataManager {
     window.addEventListener(Event.GET_NODE_REVISIONS, (e) => {
       let rm = this.getRevisionsMeta(e.detail.id);
       Event.dispatch(Event.SELECTED_NODE_REVISIONS, { revisionsMeta: rm });
+    });
+  }
+
+  initChangeNodeRevision() {
+    window.addEventListener(Event.CHANGE_NODE_VERSION, (e) => {
+      let id = e.detail.node.data.id;
+      let rv = this.getRevisionsMeta(id);
+      if (rv.active == e.detail.versionName) {
+        console.log("Selected Revision " + rv.active);
+        return;
+      }
+      rv.active = e.detail.versionName;
+      let data = this.getData(id);
+      Event.dispatch(Event.REPLACE_DATA, {
+        node: e.detail.node,
+        data: data
+      });
+    });
+  }
+
+  initAddRevision() {
+    window.addEventListener(Event.ADD_REVISION, (e) => {
+      let revName = this.addRevision(e.detail.node);
+      Event.dispatch(Event.CHANGE_NODE_VERSION, {
+        node: e.detail.node,
+        versionName: revName
+      });
     });
   }
 
@@ -281,40 +291,12 @@ class DataManager {
     }
   }
 
-  getMeta(id) {
-    let pId = parseInt(id);
-    let meta = this.getGlobalActiveMeta(this.json);
-    let mNode = meta.nodes[pId];
-    if (mNode == undefined) {
-      mNode = {
-        "revisions": {
-          "default": {
-
-          }
-        }
-      }
-      meta.nodes.push(mNode);
-    }
-    return mNode;
-  }
-
   addRevision(node) {
-    let gm = this.getActiveMetaById(node.data.id);
-    gm.active = "default" + (Object.keys(gm.revisions).length);
-    gm.revisions[gm.active] = { selected: true };
-    let rev = gm.revisions[gm.active];
-    Event.dispatch(Event.CHANGE_NODE_VERSION, {
-      node: node,
-      versionName: gm.active
-    });
+    let gm = this.getRevisionsMeta(node.data.id);
+    let revisionName = "default" + (Object.keys(gm.revisions).length);
+    gm.revisions[revisionName] = { };
+    return revisionName;
   }
-
-  getActiveMetaById(id) {
-    let gm = this.getGlobalActiveMeta(this.json);
-    return gm[id];
-  }
-
-
 
   getUniqueName() {
     Math.random().toString(36).substring(7);
