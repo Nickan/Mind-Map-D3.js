@@ -14,13 +14,13 @@ class NodeMenu {
         { id: this.selectedData.data.id });
     });
     window.addEventListener(Event.SELECTED_NODE_REVISIONS, (e) => {
-      this.showNodeMenu(e.detail.metaRevisions);
-      this.metaRevisions = e.detail.metaRevisions;
+      this.showNodeMenu(e.detail.revisionsMeta);
+      this.revisionsMeta = e.detail.revisionsMeta;
     });
 
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
       if (jQuery("#nodeMenu").length) {
-        this.showNodeMenu(this.metaRevisions);
+        this.showNodeMenu(this.revisionsMeta);
       }
     });
   }
@@ -38,11 +38,11 @@ class NodeMenu {
     })
   }
 
-  showNodeMenu(metaRevisions) {
-    if (metaRevisions == undefined)
+  showNodeMenu(revisionsMeta) {
+    if (revisionsMeta == undefined)
       return;
 
-    let revisionNames = Object.keys(metaRevisions.revisions);
+    let revisionNames = Object.keys(revisionsMeta.revisions);
     // revisionNames.splice(revisionNames.indexOf("active"));
 
     jQuery("#nodeMenu").remove();
@@ -54,7 +54,7 @@ class NodeMenu {
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li>${metaRevisions.active}</li>`
+            <li>${revisionsMeta.active}</li>`
             + getList(revisionNames) +
           `
             <li id="addRevision">+</li>

@@ -5,13 +5,8 @@ class DataManager {
 
   initEventListeners() {
     this.initLoadJsonFileSuccessful();
-    window.addEventListener(Event.GET_NODE_REVISIONS, (e) => {
-      let r = this.getRevisionsMeta(e.detail.id);
-      let gMeta = this.getGlobalActiveMeta(this.json);
-      let metaRevisions = gMeta[e.detail.id];
-      metaRevisions.active = gMeta[e.detail.id].active;
-      Event.dispatch(Event.SELECTED_NODE_REVISIONS, { metaRevisions: metaRevisions });
-    });
+    this.initGetNodeRevisions();
+    
     window.addEventListener(Event.CHANGE_NODE_VERSION, (e) => {
       let id = parseInt(e.detail.node.data.id);
       let v = this.getRevisionsMeta(id);
@@ -45,6 +40,14 @@ class DataManager {
       Event.dispatch(Event.LOAD_DATA_SUCCESSFUL, { data: data });
     });
   }
+
+  initGetNodeRevisions() {
+    window.addEventListener(Event.GET_NODE_REVISIONS, (e) => {
+      let rm = this.getRevisionsMeta(e.detail.id);
+      Event.dispatch(Event.SELECTED_NODE_REVISIONS, { revisionsMeta: rm });
+    });
+  }
+
 
   createMainNode() {
     let jsonString = `
@@ -229,11 +232,6 @@ class DataManager {
     if (rm == undefined)
       console.log("Active revision is undefined " + id);
     return rm.revisions[rm.active];
-  }
-
-  getGlobalActiveMeta(json) {
-    let mSettings = json.metaSettings;
-    return json.metas[mSettings.active];
   }
 
   editData(node) {
