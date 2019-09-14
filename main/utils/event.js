@@ -28,6 +28,7 @@ class Event {
   static CHANGE_NODE_VERSION = "CHANGE_NODE_VERSION";
   static REPLACE_DATA = "REPLACE_DATA";
   static REPLACE_ROOT = "REPLACE_ROOT";
+  static ADD_DATA = "ADD_DATA";
   static EDIT_DATA = "EDIT_DATA";
   static ADD_REVISION = "ADD_REVISION";
   static GET_LAST_NODE_ID = "GET_LAST_NODE_ID";
