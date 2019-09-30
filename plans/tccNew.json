@@ -170,6 +170,42 @@
     },
     "56": {
       "text": "Total Estimates: 64"
+    },
+    "57": {
+      "text": "Get the total estimates"
+    },
+    "58": {
+      "text": "Run the TCC system to look for things to fix"
+    },
+    "59": {
+      "text": "Guidelines"
+    },
+    "60": {
+      "text": "Estimation"
+    },
+    "61": {
+      "text": "I won't be able to know everything"
+    },
+    "62": {
+      "text": "At least know every major part of it"
+    },
+    "63": {
+      "text": "Then make a best guess"
+    },
+    "64": {
+      "text": "Adjust it sooner rather than later"
+    },
+    "65": {
+      "text": "Put it in the spreadsheet"
+    },
+    "66": {
+      "text": "Break down the tasks down to the smallest details and show hrs"
+    },
+    "67": {
+      "text": "Draft"
+    },
+    "68": {
+      "text": "Current"
     }
   },
   "meta": {
@@ -180,7 +216,8 @@
           "children": [
             1,
             2,
-            3
+            3,
+            59
           ],
           "selected": true
         }
@@ -203,7 +240,9 @@
       "revisions": {
         "default": {
           "parentId": 0,
-          "children": [],
+          "children": [
+            57
+          ],
           "selected": true
         }
       }
@@ -222,9 +261,8 @@
         "default": {
           "parentId": 1,
           "children": [
-            5,
-            16,
-            29
+            68,
+            67
           ],
           "selected": true
         }
@@ -234,12 +272,12 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 4,
+          "parentId": 68,
           "children": [
             10,
             11
           ],
-          "foldDescendants": true
+          "selected": true
         }
       }
     },
@@ -303,7 +341,7 @@
             9,
             14
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -322,7 +360,7 @@
             46,
             56
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -368,12 +406,13 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 4,
+          "parentId": 68,
           "children": [
             17,
             18,
             21
-          ]
+          ],
+          "foldDescendants": true
         }
       }
     },
@@ -518,7 +557,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 4,
+          "parentId": 68,
           "children": [
             30,
             31
@@ -776,6 +815,124 @@
       "revisions": {
         "default": {
           "parentId": 11
+        }
+      }
+    },
+    "57": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 2,
+          "children": [
+            58,
+            65
+          ],
+          "selected": true
+        }
+      }
+    },
+    "58": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 57
+        }
+      }
+    },
+    "59": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            60
+          ],
+          "selected": true
+        }
+      }
+    },
+    "60": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 59,
+          "children": [
+            61,
+            62,
+            63,
+            64,
+            66
+          ],
+          "selected": true
+        }
+      }
+    },
+    "61": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 60
+        }
+      }
+    },
+    "62": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 60
+        }
+      }
+    },
+    "63": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 60
+        }
+      }
+    },
+    "64": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 60
+        }
+      }
+    },
+    "65": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 57
+        }
+      }
+    },
+    "66": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 60
+        }
+      }
+    },
+    "67": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 4
+        }
+      }
+    },
+    "68": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 4,
+          "children": [
+            5,
+            16,
+            29
+          ]
         }
       }
     },
