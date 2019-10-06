@@ -10,19 +10,7 @@ class TextManager {
       this.lastNodeId = parseInt(e.detail.lastNodeId);
     });
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
-      d3.selectAll(".text-wrap")
-      .style("pointer-events", "none");
-
-      d3.selectAll("g.node")
-      .on("click", (d) => {
-        this.handleClickEvent(d);
-      })
-      .each((d) => {
-        // if (d.data.id > this.lastNodeId) {
-        //   this.lastNodeId = d.data.id;
-        // }
-      });
-      this.updateTextHighlight();
+      this.updatePointerEventAndClickListeners();
     });
     window.addEventListener(Event.ON_DRAG_UPDATE_ONCE, (e) => {
       this.handleClickEvent(e.detail.selectedData);
@@ -71,16 +59,13 @@ class TextManager {
   processTextInput() {
     let t = jQuery(`#text-input`);
     if (t.length > 0) {
-      let node;
       switch (this.state) {
         case State.EDIT_NODE:
           this.onTextEdit();
-          node = this.nodeToEdit;
-          Event.dispatch(Event.EDIT_DATA, {node: node});
+          Event.dispatch(Event.EDIT_DATA, {node: this.selectedData});
           break;
         case State.CREATE_CHILD_NODE:
           this.onCreateNewChild(this.selectedData, t.val());
-          node = this.selectedData;
           break;
         default:
           break;
@@ -88,7 +73,7 @@ class TextManager {
       t.remove();
       Event.dispatch(Event.UPDATE_TREE, {
         root: this.ancestorsRoot,
-        source: node
+        source: this.selectedData
       });
     }
   }
@@ -129,9 +114,10 @@ class TextManager {
   }
 
   onOpenTextEdit(d) {
-    this.nodeToEdit = d;
+    // this.selectedData = d;
+
     this.deleteTextInputUI();
-    this.createTextInput(d.data.text);
+    this.createTextInput(this.selectedData.data.text);
     this.state = State.EDIT_NODE;
   }
 
@@ -158,7 +144,7 @@ class TextManager {
 
   onTextEdit() {
     let text = jQuery('#text-input').val();
-    this.nodeToEdit.data.text = text;
+    this.selectedData.data.text = text;
   }
 
   onNodeSelected(d) {
@@ -225,6 +211,8 @@ class TextManager {
     parent.data.children.push(data);
     Event.dispatch(Event.ADD_DATA, {node: node});
     Event.dispatch(Event.EDIT_DATA, {node: node.parent});
+
+    
   }
 
   replaceData(parent, data) {
@@ -273,6 +261,17 @@ class TextManager {
         return index;
       }
     }
+  }
+
+  updatePointerEventAndClickListeners() {
+    d3.selectAll(".text-wrap")
+      .style("pointer-events", "none");
+
+    d3.selectAll("g.node")
+      .on("click", (d) => {
+        this.handleClickEvent(d);
+      });
+    this.updateTextHighlight();
   }
 
   
