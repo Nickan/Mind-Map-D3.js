@@ -71,8 +71,6 @@ class DataManager {
       this.json.meta[data.id] = createRevisionsMeta(node.parent.data.id);
       this.json.nodes[data.id] = { "text": data.text };
 
-      Event.dispatch(Event.CIRCLE_UPDATE_LISTENER);
-
       function createRevisionsMeta(parentId) {
         return {
           active: "default",
