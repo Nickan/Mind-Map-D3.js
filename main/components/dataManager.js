@@ -14,6 +14,7 @@ class DataManager {
     
     this.initFoldAncestors();
     this.initSelectedData();
+    this.initNodeChangeBreadth();
     this.createMainNode();
   }
 
@@ -65,11 +66,12 @@ class DataManager {
     window.addEventListener(Event.ADD_DATA, (e) => {
       let node = e.detail.node;
       let data = node.data;
-      let parentId = node.parent.data.id;
-      this.json.meta[data.id] = createRevisionsMeta(data);
+      data.parentId = node.parent.data.id;
+
+      this.json.meta[data.id] = createRevisionsMeta(node.parent.data.id);
       this.json.nodes[data.id] = { "text": data.text };
 
-      function createRevisionsMeta(data) {
+      function createRevisionsMeta(parentId) {
         return {
           active: "default",
           revisions: {
@@ -98,12 +100,15 @@ class DataManager {
         pRev.children = [];
       pRev.children.push(cData.id);
 
-      let cRev = this.getActiveRevision(cData.id);
-      let prevRev = this.getActiveRevision(cRev.parentId);
+      let childRevision = this.getActiveRevision(cData.id);
+      if (childRevision.parentId == pData.id) {
+        throw new Error(`${pData.id} Already set as a parent, please check for error`);
+      }
+      let prevRev = this.getActiveRevision(childRevision.parentId);
       let index = prevRev.children.indexOf(cData.id);
       prevRev.children.splice(index, 1);
 
-      cRev.parentId = pData.id;
+      childRevision.parentId = pData.id;
       let d3Data = this.getData(this.json.meta.mainId);
       let root = d3.hierarchy(d3Data, function(d) {
         return d.children; 
@@ -152,12 +157,52 @@ class DataManager {
     }
   }
 
-
   initSelectedData() {
     window.addEventListener(Event.SELECTED_NODE, (e) => {
       this.selectedNode = e.detail.node;
     });
   }
+
+  initNodeChangeBreadth() {
+    window.addEventListener(Event.NODE_CHANGE_BREADTH_INDEX, (e) => {
+      // e.detail.nodeToMove
+      // Know how getting the data works
+      // Change index visually
+      
+      let parentRev = this.getActiveRevision(e.detail.nodeToMove.data.parentId);
+      data(e, parentRev);
+      graphics(e);
+      Event.dispatch(Event.UPDATE_TREE, {source: e.detail.nodeToMove.parent});
+
+      function data(e, parentRev) {
+        let a = e.detail.nodeToMove;
+        let b = e.detail.nodeBasis;
+        let p = e.detail.nodeToMove.parent;
+
+        let idToMove = a.data.id;
+        let idBasis = b.data.id;
+
+        let indexToMove = parentRev.children.indexOf(idToMove);
+        parentRev.children.splice(indexToMove, 1);
+
+        let indexBasis = parentRev.children.indexOf(idBasis);
+        parentRev.children.splice(indexBasis + 1, 0, idToMove);
+      }
+
+      function graphics(e) {
+        let a = e.detail.nodeToMove;
+        let b = e.detail.nodeBasis;
+        let p = e.detail.nodeToMove.parent;
+        
+        let indexToMove = p.children.indexOf(a);
+        p.children.splice(indexToMove, 1);
+
+        let indexBasis = p.children.indexOf(b);
+        p.children.splice(indexBasis + 1, 0, a);
+      }
+    });
+  }
+
 
 
 
