@@ -1,0 +1,417 @@
+{
+  "nodes": {
+    "0": {
+      "text": "Main"
+    },
+    "1": {
+      "text": "Routine"
+    },
+    "2": {
+      "text": "Goal"
+    },
+    "3": {
+      "text": "Always find a common algorithm to optime"
+    },
+    "4": {
+      "text": "To make things faster"
+    },
+    "5": {
+      "text": "Daily Update"
+    },
+    "6": {
+      "text": "Jibble"
+    },
+    "7": {
+      "text": "Start"
+    },
+    "8": {
+      "text": "Last"
+    },
+    "9": {
+      "text": "Check email"
+    },
+    "10": {
+      "text": "Reply"
+    },
+    "11": {
+      "text": "Break down tasks into 5 minutes"
+    },
+    "12": {
+      "text": "If no idea, list possible tasks"
+    },
+    "13": {
+      "text": "Then check if aligned to goal"
+    },
+    "14": {
+      "text": "Draft"
+    },
+    "15": {
+      "text": "Projected Result"
+    },
+    "16": {
+      "text": "Using time?"
+    },
+    "17": {
+      "text": "Using 5 minute rule?"
+    },
+    "18": {
+      "text": "Need to define the placement when to execute it"
+    },
+    "19": {
+      "text": "General rule for doing tasks"
+    },
+    "20": {
+      "text": "As much as possible, lay down the abstract idea before going deeper"
+    },
+    "21": {
+      "text": "Breadth before depth"
+    },
+    "22": {
+      "text": "Do tasks"
+    },
+    "23": {
+      "text": "Do General rule for doing tasks"
+    },
+    "24": {
+      "text": "Planning"
+    },
+    "25": {
+      "text": "Events"
+    },
+    "26": {
+      "text": "When faced with hard decision"
+    },
+    "27": {
+      "text": "Give at least 2 options"
+    },
+    "28": {
+      "text": "Break down pros and cons"
+    },
+    "29": {
+      "text": "Check if aligned with parent goal"
+    },
+    "30": {
+      "text": "Do Planning"
+    }
+  },
+  "meta": {
+    "0": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "children": [
+            1,
+            2,
+            19
+          ],
+          "selected": true
+        }
+      }
+    },
+    "1": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            14,
+            15
+          ],
+          "selected": true
+        }
+      }
+    },
+    "2": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            3,
+            4
+          ],
+          "selected": true
+        }
+      }
+    },
+    "3": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 2
+        }
+      }
+    },
+    "4": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 2
+        }
+      }
+    },
+    "5": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 8
+        }
+      }
+    },
+    "6": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 8
+        }
+      }
+    },
+    "7": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 15,
+          "children": [
+            9,
+            10
+          ]
+        }
+      }
+    },
+    "8": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 15,
+          "children": [
+            5,
+            6
+          ],
+          "selected": true
+        }
+      }
+    },
+    "9": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 7
+        }
+      }
+    },
+    "10": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 7
+        }
+      }
+    },
+    "11": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "12": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "13": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "14": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 1,
+          "children": [
+            16,
+            17,
+            18
+          ],
+          "selected": true
+        }
+      }
+    },
+    "15": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 1,
+          "children": [
+            7,
+            22,
+            8
+          ],
+          "selected": true
+        }
+      }
+    },
+    "16": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "17": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "18": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "19": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            24,
+            25
+          ],
+          "selected": true
+        }
+      }
+    },
+    "20": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24
+        }
+      }
+    },
+    "21": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24
+        }
+      }
+    },
+    "22": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 15,
+          "children": [
+            23
+          ],
+          "selected": true
+        }
+      }
+    },
+    "23": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 22
+        }
+      }
+    },
+    "24": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 19,
+          "children": [
+            11,
+            12,
+            13,
+            20,
+            21
+          ]
+        }
+      }
+    },
+    "25": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 19,
+          "children": [
+            26
+          ],
+          "selected": true
+        }
+      }
+    },
+    "26": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25,
+          "children": [
+            27,
+            28,
+            29,
+            30
+          ],
+          "selected": true
+        }
+      }
+    },
+    "27": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "28": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "29": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "30": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "mainId": 0
+  }
+}
