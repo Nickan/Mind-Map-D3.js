@@ -1,0 +1,141 @@
+{
+  "nodes": {
+    "0": {
+      "text": "Faster and easier"
+    },
+    "1": {
+      "text": "Daily Update: 10"
+    },
+    "2": {
+      "text": "Jibble: 10"
+    },
+    "3": {
+      "text": "Goal"
+    },
+    "4": {
+      "text": "Be able to make things easier and faster"
+    },
+    "5": {
+      "text": "General tasks"
+    },
+    "6": {
+      "text": "Finished"
+    },
+    "7": {
+      "text": "Daily Update"
+    },
+    "8": {
+      "text": "Jibble"
+    },
+    "9": {
+      "text": "10-06-19"
+    }
+  },
+  "meta": {
+    "0": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "children": [
+            5,
+            3
+          ],
+          "selected": true
+        }
+      }
+    },
+    "1": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 5,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "2": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 5,
+          "children": []
+        }
+      }
+    },
+    "3": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            4,
+            6
+          ],
+          "selected": true
+        }
+      }
+    },
+    "4": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 3
+        }
+      }
+    },
+    "5": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    "6": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 3,
+          "children": [
+            9
+          ],
+          "selected": true
+        }
+      }
+    },
+    "7": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "8": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "9": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 6,
+          "children": [
+            7,
+            8
+          ]
+        }
+      }
+    },
+    "mainId": 0
+  }
+}

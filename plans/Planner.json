@@ -1,0 +1,337 @@
+{
+  "nodes": {
+    "0": {
+      "text": "Main"
+    },
+    "1": {
+      "text": "Tasks"
+    },
+    "2": {
+      "text": "General"
+    },
+    "3": {
+      "text": "Specific"
+    },
+    "4": {
+      "text": "Optimization"
+    },
+    "5": {
+      "text": "Always find a way to see a general pattern when doing tasks"
+    },
+    "6": {
+      "text": "So that we can do things a lot faster"
+    },
+    "7": {
+      "text": "Reduce redundancy"
+    },
+    "8": {
+      "text": "Implement able to color code a node"
+    },
+    "9": {
+      "text": "Reason"
+    },
+    "10": {
+      "text": "To be able to identify which node is already finished"
+    },
+    "11": {
+      "text": "To have highlights of what to look at"
+    },
+    "12": {
+      "text": "Making things faster"
+    },
+    "13": {
+      "text": "Implementation"
+    },
+    "14": {
+      "text": "General ways to solve problem"
+    },
+    "15": {
+      "text": "Know what to ask"
+    },
+    "16": {
+      "text": "Get all the fundamental requirements"
+    },
+    "17": {
+      "text": "Have a steady foundation before doing expensive operations"
+    },
+    "18": {
+      "text": "Execute fast"
+    },
+    "19": {
+      "text": "Repeat"
+    },
+    "20": {
+      "text": "Shift + letter"
+    },
+    "21": {
+      "text": "Shift + y = Yellow"
+    },
+    "22": {
+      "text": "Cons"
+    },
+    "23": {
+      "text": "Might not needed"
+    },
+    "24": {
+      "text": "There might be other ways to highlight needed node"
+    }
+  },
+  "meta": {
+    "0": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "children": [
+            1,
+            4,
+            14
+          ],
+          "selected": true
+        }
+      }
+    },
+    "1": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            2,
+            3
+          ],
+          "selected": true
+        }
+      }
+    },
+    "2": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 1,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "3": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 1,
+          "children": [
+            8
+          ],
+          "selected": true
+        }
+      }
+    },
+    "4": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            5,
+            6,
+            7
+          ],
+          "selected": true
+        }
+      }
+    },
+    "5": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 4
+        }
+      }
+    },
+    "6": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 4
+        }
+      }
+    },
+    "7": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 4
+        }
+      }
+    },
+    "8": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 3,
+          "children": [
+            9,
+            13,
+            22
+          ],
+          "selected": true
+        }
+      }
+    },
+    "9": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 8,
+          "children": [
+            10,
+            11,
+            12
+          ],
+          "selected": true
+        }
+      }
+    },
+    "10": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "11": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "12": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "13": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 8,
+          "children": [
+            20
+          ],
+          "selected": true
+        }
+      }
+    },
+    "14": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "selected": true
+        }
+      }
+    },
+    "15": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "16": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "17": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "18": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "19": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "20": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 13,
+          "children": [
+            21
+          ],
+          "selected": true
+        }
+      }
+    },
+    "21": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 20
+        }
+      }
+    },
+    "22": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 8,
+          "children": [
+            23,
+            24
+          ],
+          "selected": true
+        }
+      }
+    },
+    "23": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 22
+        }
+      }
+    },
+    "24": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 22
+        }
+      }
+    },
+    "mainId": 0
+  }
+}
