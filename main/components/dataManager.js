@@ -71,6 +71,8 @@ class DataManager {
       this.json.meta[data.id] = createRevisionsMeta(node.parent.data.id);
       this.json.nodes[data.id] = { "text": data.text };
 
+      Event.dispatch(Event.CIRCLE_UPDATE_LISTENER);
+
       function createRevisionsMeta(parentId) {
         return {
           active: "default",
@@ -165,10 +167,6 @@ class DataManager {
 
   initNodeChangeBreadth() {
     window.addEventListener(Event.NODE_CHANGE_BREADTH_INDEX, (e) => {
-      // e.detail.nodeToMove
-      // Know how getting the data works
-      // Change index visually
-      
       let parentRev = this.getActiveRevision(e.detail.nodeToMove.data.parentId);
       data(e, parentRev);
       graphics(e);
@@ -194,11 +192,19 @@ class DataManager {
         let b = e.detail.nodeBasis;
         let p = e.detail.nodeToMove.parent;
         
-        let indexToMove = p.children.indexOf(a);
+        let indexToMove = getIndex(p.children, a);
         p.children.splice(indexToMove, 1);
 
-        let indexBasis = p.children.indexOf(b);
+        let indexBasis = getIndex(p.children, b);
         p.children.splice(indexBasis + 1, 0, a);
+      }
+
+      function getIndex(children, child) {
+        for (let i = 0; i < children.length; ++i) {
+          if (children[i].data.id == child.data.id)
+            return i;
+        }
+        return -1;
       }
     });
   }

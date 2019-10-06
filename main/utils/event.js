@@ -37,11 +37,13 @@ class Event {
   
   static NODE_CHANGE_BREADTH_INDEX = "NODE_CHANGE_BREADTH_INDEX";
 
+  static CIRCLE_UPDATE_LISTENER = "CIRCLE_UPDATE_LISTENER";
+
   constructor() {
     Object.freeze(this);
   }
 
-  static dispatch(type, detail) {
+  static dispatch(type, detail = {}) {
     window.dispatchEvent(new CustomEvent(type, {detail: detail}))
   }
 
