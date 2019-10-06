@@ -62,10 +62,6 @@ class DragManager {
     window.addEventListener(Event.UPDATE_TREE_AFTER, (e) => {
       this.initCircleNode();
     });
-
-    window.addEventListener(Event.CIRCLE_UPDATE_LISTENER, (e) => {
-      this.initCircleNode();
-    })
   }
 
   initCircleNode() {
