@@ -34,6 +34,8 @@ class Event {
   static ADD_REVISION = "ADD_REVISION";
   static GET_LAST_NODE_ID = "GET_LAST_NODE_ID";
   static SET_LAST_NODE_ID = "SET_LAST_NODE_ID";
+  
+  static NODE_CHANGE_BREADTH_INDEX = "NODE_CHANGE_BREADTH_INDEX";
 
   constructor() {
     Object.freeze(this);
