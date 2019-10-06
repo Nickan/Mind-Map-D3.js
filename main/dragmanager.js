@@ -142,22 +142,18 @@ class DragManager {
           let p = globalConnection.selectedData;
           if (p != undefined && p != d) {
             if (Node.siblings(p, d) && dy < 0) {
-              switchPosition(p, d);
+              Event.dispatch(Event.NODE_CHANGE_BREADTH_INDEX, {
+                nodeToMove: d,
+                nodeBasis: p
+              })
             } else {
-              Event.dispatch(Event.APPEND_NODE, {
-                parent: p,
-                child: d
-              });
+              if (p.data.id != d.data.parentId) {
+                Event.dispatch(Event.APPEND_NODE, {
+                  parent: p,
+                  child: d
+                });
+              }
             }
-          }
-          
-          function switchPosition(a, b) {
-            let p = a.parent;
-            let index1 = p.children.indexOf(a);
-            let index2 = p.children.indexOf(b);
-            p.children[index1] = b;
-            p.children[index2] = a;
-            Event.dispatch(Event.UPDATE_TREE, {source: p});
           }
         }
       })

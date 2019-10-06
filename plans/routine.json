@@ -1,0 +1,109 @@
+{
+  "nodes": {
+    "0": {
+      "text": "Faster and easier"
+    },
+    "1": {
+      "text": "Daily Update"
+    },
+    "2": {
+      "text": "Jibble"
+    },
+    "3": {
+      "text": "Goal"
+    },
+    "4": {
+      "text": "Be able to make things easier and faster"
+    },
+    "5": {
+      "text": "General tasks1"
+    },
+    "6": {
+      "text": "Tasks"
+    },
+    "7": {
+      "text": "Routine"
+    }
+  },
+  "meta": {
+    "0": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "children": [
+            1,
+            2,
+            3,
+            5
+          ]
+        }
+      }
+    },
+    "1": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 5
+        }
+      }
+    },
+    "2": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 5
+        }
+      }
+    },
+    "3": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            4
+          ],
+          "selected": true
+        }
+      }
+    },
+    "4": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 3
+        }
+      }
+    },
+    "5": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": []
+        }
+      }
+    },
+    "6": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            7
+          ],
+          "selected": true
+        }
+      }
+    },
+    "7": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 6
+        }
+      }
+    },
+    "mainId": 0
+  }
+}
