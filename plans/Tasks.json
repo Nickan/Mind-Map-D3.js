@@ -104,6 +104,84 @@
     },
     "34": {
       "text": "Strategies"
+    },
+    "35": {
+      "text": "Reply to email"
+    },
+    "36": {
+      "text": "Create a draft to upload xlsx for the estimate"
+    },
+    "37": {
+      "text": "Try to create a product dynamically"
+    },
+    "38": {
+      "text": "Update the estimate"
+    },
+    "39": {
+      "text": "Inform Sir Patrick"
+    },
+    "40": {
+      "text": "Run TCC locally"
+    },
+    "41": {
+      "text": "Switch php versin"
+    },
+    "42": {
+      "text": "Need to know"
+    },
+    "43": {
+      "text": "Difference between update and create"
+    },
+    "44": {
+      "text": "If the product exists, update"
+    },
+    "45": {
+      "text": "Else add it"
+    },
+    "46": {
+      "text": "Have to update the tags"
+    },
+    "47": {
+      "text": "Have to delete all existing tags"
+    },
+    "48": {
+      "text": "Then use what is currently being uploaded"
+    },
+    "49": {
+      "text": "Need to know how attributes is added to the database"
+    },
+    "50": {
+      "text": "How to add the products"
+    },
+    "51": {
+      "text": "Need to know how the image sizes are dictated"
+    },
+    "52": {
+      "text": "Seems to have uniform sizes"
+    },
+    "53": {
+      "text": "Can be done"
+    },
+    "54": {
+      "text": "?"
+    },
+    "55": {
+      "text": "Result"
+    },
+    "56": {
+      "text": "Image upload is separated"
+    },
+    "57": {
+      "text": "Has to be done first"
+    },
+    "58": {
+      "text": "Should not be searchable as unique item"
+    },
+    "59": {
+      "text": "Do we need this?"
+    },
+    "60": {
+      "text": "Yes, needed to search for the unique product"
     }
   },
   "meta": {
@@ -309,7 +387,7 @@
             24,
             25
           ],
-          "foldAncestors": true
+          "selected": true
         }
       }
     },
@@ -448,7 +526,15 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 31
+          "parentId": 31,
+          "children": [
+            35,
+            36,
+            37,
+            38,
+            39
+          ],
+          "selected": true
         }
       }
     },
@@ -461,7 +547,266 @@
             1,
             2,
             19
-          ]
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "35": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33
+        }
+      }
+    },
+    "36": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33
+        }
+      }
+    },
+    "37": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33,
+          "children": [
+            40,
+            42
+          ],
+          "selected": true
+        }
+      }
+    },
+    "38": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33
+        }
+      }
+    },
+    "39": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33
+        }
+      }
+    },
+    "40": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37,
+          "children": [
+            41
+          ],
+          "selected": true
+        }
+      }
+    },
+    "41": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40
+        }
+      }
+    },
+    "42": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37,
+          "children": [
+            43,
+            44,
+            45,
+            50
+          ],
+          "selected": true
+        }
+      }
+    },
+    "43": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42
+        }
+      }
+    },
+    "44": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42,
+          "children": [
+            46,
+            47,
+            48,
+            49,
+            55
+          ],
+          "selected": true
+        }
+      }
+    },
+    "45": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42
+        }
+      }
+    },
+    "46": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44
+        }
+      }
+    },
+    "47": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44
+        }
+      }
+    },
+    "48": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44
+        }
+      }
+    },
+    "49": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44,
+          "children": [
+            54,
+            59
+          ],
+          "selected": true
+        }
+      }
+    },
+    "50": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42,
+          "children": [
+            51,
+            52,
+            53
+          ],
+          "selected": true
+        }
+      }
+    },
+    "51": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50
+        }
+      }
+    },
+    "52": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "53": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50
+        }
+      }
+    },
+    "54": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 49
+        }
+      }
+    },
+    "55": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44,
+          "children": [
+            56,
+            58
+          ],
+          "selected": true
+        }
+      }
+    },
+    "56": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 55,
+          "children": [
+            57
+          ],
+          "selected": true
+        }
+      }
+    },
+    "57": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 56
+        }
+      }
+    },
+    "58": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 55
+        }
+      }
+    },
+    "59": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 49,
+          "children": [
+            60
+          ],
+          "selected": true
+        }
+      }
+    },
+    "60": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 59
         }
       }
     },
