@@ -374,6 +374,8 @@ class DataManager {
     let mainId = json.meta.mainId;
     let mData = undefined;
     // MainId or the deepest node with foldAncestors attribute;
+    this.count = 0;
+    this.parentIds = [];
     let data = this.getData(mainId, (activeRev, id, d) => {
       if (activeRev.foldAncestors) {
         mainId = id;
@@ -387,7 +389,13 @@ class DataManager {
     return data;
   }
 
-  getData(id, fn = function(ar, id, d){}) {
+  getData(id) {
+    let index = this.parentIds.indexOf(id);
+    if (index != -1) {
+      throw new Error("Called twice at index : " + index + " id: " + id);
+    }
+
+    this.parentIds.push(id);
     let nodes = this.json.nodes;
     let ar = this.getActiveRevision(id);
     let data = {
@@ -397,30 +405,16 @@ class DataManager {
       foldAncestors: ar.foldDescendants,
       foldDescendants: ar.foldDescendants
     }
-    fn(ar, id, data);
-    data.children = this.getChildren(id, this.json, fn);
+    data.children = this.getChildren(id);
     return data;
   }
 
-  convertToHierarchy(id, activeMeta, nodes) {
-    let rev = this.getActiveRevision(id);
-    let data = {
-      text: nodes[id].text,
-      id: id,
-      children: this.getChildren(id, activeMeta, nodes, rev),
-      foldDescendants: rev.foldDescendants,
-      foldAncestors: rev.foldAncestors
-    }
-
-    return data;
-  }
-
-  getChildren(id, json, fn) {
+  getChildren(id) {
     let children = [];
     let ar = this.getActiveRevision(id);
     if (ar.children && ar.children.length > 0) {
       ar.children.forEach((childId) => {
-        children.push(this.getData(childId, fn));
+        children.push(this.getData(childId));
       });
     }
     return children;

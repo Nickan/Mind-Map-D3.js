@@ -1,0 +1,1703 @@
+{
+  "nodes": {
+    "0": {
+      "text": "Main"
+    },
+    "1": {
+      "text": "Routine"
+    },
+    "2": {
+      "text": "Goal"
+    },
+    "3": {
+      "text": "Always find a common algorithm to optime"
+    },
+    "4": {
+      "text": "To make things faster"
+    },
+    "5": {
+      "text": "Daily Update"
+    },
+    "6": {
+      "text": "Jibble"
+    },
+    "7": {
+      "text": "Start"
+    },
+    "8": {
+      "text": "Last"
+    },
+    "9": {
+      "text": "Check email"
+    },
+    "10": {
+      "text": "Reply"
+    },
+    "11": {
+      "text": "Break down tasks into 5 minutes"
+    },
+    "12": {
+      "text": "If no idea, list possible tasks"
+    },
+    "13": {
+      "text": "Then check if aligned to goal"
+    },
+    "14": {
+      "text": "Draft"
+    },
+    "15": {
+      "text": "Projected Result"
+    },
+    "16": {
+      "text": "Using time?"
+    },
+    "17": {
+      "text": "Using 5 minute rule?"
+    },
+    "18": {
+      "text": "Need to define the placement when to execute it"
+    },
+    "19": {
+      "text": "General rule for doing tasks"
+    },
+    "20": {
+      "text": "As much as possible, lay down the abstract idea before going deeper"
+    },
+    "21": {
+      "text": "Breadth before depth"
+    },
+    "22": {
+      "text": "Do tasks"
+    },
+    "23": {
+      "text": "Do General rule for doing tasks"
+    },
+    "24": {
+      "text": "Planning"
+    },
+    "25": {
+      "text": "Events"
+    },
+    "26": {
+      "text": "When faced with hard decision"
+    },
+    "27": {
+      "text": "Give at least 2 options"
+    },
+    "28": {
+      "text": "Break down pros and cons"
+    },
+    "29": {
+      "text": "Check if aligned with parent goal"
+    },
+    "30": {
+      "text": "Do Planning"
+    },
+    "31": {
+      "text": "Project"
+    },
+    "32": {
+      "text": "Muse Square"
+    },
+    "33": {
+      "text": "TCC"
+    },
+    "34": {
+      "text": "Strategies"
+    },
+    "35": {
+      "text": "Reply to email"
+    },
+    "36": {
+      "text": "Create a draft to upload xlsx for the estimate"
+    },
+    "37": {
+      "text": "Try to create a product dynamically"
+    },
+    "38": {
+      "text": "Update the estimate"
+    },
+    "39": {
+      "text": "Inform Sir Patrick"
+    },
+    "40": {
+      "text": "Run TCC locally"
+    },
+    "41": {
+      "text": "Switch php versin"
+    },
+    "42": {
+      "text": "Need to know"
+    },
+    "43": {
+      "text": "Difference between update and create"
+    },
+    "44": {
+      "text": "If the product exists, update"
+    },
+    "45": {
+      "text": "Else add it"
+    },
+    "46": {
+      "text": "Have to update the tags"
+    },
+    "47": {
+      "text": "Have to delete all existing tags"
+    },
+    "48": {
+      "text": "Then use what is currently being uploaded"
+    },
+    "49": {
+      "text": "Need to know how attributes is added to the database"
+    },
+    "50": {
+      "text": "How to add the products"
+    },
+    "51": {
+      "text": "Need to know how the image sizes are dictated"
+    },
+    "52": {
+      "text": "Seems to have uniform sizes"
+    },
+    "53": {
+      "text": "Can be done"
+    },
+    "54": {
+      "text": "?"
+    },
+    "55": {
+      "text": "Result"
+    },
+    "56": {
+      "text": "Image upload is separated"
+    },
+    "57": {
+      "text": "Has to be done first"
+    },
+    "58": {
+      "text": "Should not be searchable as unique item"
+    },
+    "59": {
+      "text": "Do we need this?"
+    },
+    "60": {
+      "text": "Yes, needed to search for the unique product"
+    },
+    "61": {
+      "text": "10-10-19 Tasks"
+    },
+    "62": {
+      "text": "Fix bugs in art viewer"
+    },
+    "63": {
+      "text": "If no room is uploaded"
+    },
+    "64": {
+      "text": "Button upload and settings in the middle of the background"
+    },
+    "65": {
+      "text": "Allow guest to use custom viewer"
+    },
+    "66": {
+      "text": "Instead of redirecting to art viewer home, allow all users to view the screenshot room"
+    },
+    "67": {
+      "text": "Sharing consent: Re-ask for consent if necessary"
+    },
+    "68": {
+      "text": "Share via email"
+    },
+    "69": {
+      "text": "New UI to show download and fb share"
+    },
+    "70": {
+      "text": "Draft"
+    },
+    "71": {
+      "text": "There should be a detector if registered or not"
+    },
+    "72": {
+      "text": "If guest"
+    },
+    "73": {
+      "text": "If registered"
+    },
+    "74": {
+      "text": "V1"
+    },
+    "75": {
+      "text": "Handler redirection"
+    },
+    "76": {
+      "text": "Ask consent"
+    },
+    "77": {
+      "text": "They both go through the same flow"
+    },
+    "78": {
+      "text": "If consent not allowed"
+    },
+    "79": {
+      "text": "Nothing will happen"
+    },
+    "80": {
+      "text": "Else"
+    },
+    "81": {
+      "text": "Go to custom room"
+    },
+    "82": {
+      "text": "What do they want?"
+    },
+    "83": {
+      "text": "Want to use the custom room"
+    },
+    "84": {
+      "text": "Situation 1"
+    },
+    "85": {
+      "text": "When the Art Viewer is clicked:"
+    },
+    "86": {
+      "text": "From the product, then go directly to the custom room?"
+    },
+    "87": {
+      "text": "Consent"
+    },
+    "88": {
+      "text": "Yup, if I were the user, I want to see it in my room"
+    },
+    "89": {
+      "text": "If not agreed"
+    },
+    "90": {
+      "text": "Connected to the task above"
+    },
+    "91": {
+      "text": "Check the provided asset"
+    },
+    "92": {
+      "text": "Check the mockup"
+    },
+    "93": {
+      "text": "Need to have the same header and footer in magento"
+    },
+    "94": {
+      "text": "I can get that from magento admin"
+    },
+    "95": {
+      "text": "Should have the link to go to the custom room"
+    },
+    "96": {
+      "text": "Already have assets"
+    },
+    "97": {
+      "text": "Implementation"
+    },
+    "98": {
+      "text": "When hover over, show the options"
+    },
+    "99": {
+      "text": "Share on facebook"
+    },
+    "100": {
+      "text": "Share via email"
+    },
+    "101": {
+      "text": "Requirements"
+    },
+    "102": {
+      "text": "Check the layout on Mobile device"
+    },
+    "103": {
+      "text": "Current"
+    },
+    "104": {
+      "text": "Know the current status"
+    },
+    "105": {
+      "text": "Create a new branch"
+    },
+    "106": {
+      "text": "Art viewer enhancement"
+    },
+    "107": {
+      "text": "On laptop"
+    },
+    "108": {
+      "text": "I have to commit it on the new branch"
+    },
+    "109": {
+      "text": "SKIP: Error in database from dev, can't reproduce"
+    },
+    "110": {
+      "text": "V2"
+    },
+    "111": {
+      "text": "This is related to sharing"
+    },
+    "112": {
+      "text": "The room image should not reach the server"
+    },
+    "113": {
+      "text": "Only locally"
+    },
+    "114": {
+      "text": "When sharing, take screenshot"
+    },
+    "115": {
+      "text": "Upload room"
+    },
+    "116": {
+      "text": "Not much of a change from registered user"
+    },
+    "117": {
+      "text": "Already happening in the non custom page"
+    },
+    "118": {
+      "text": "Current"
+    },
+    "119": {
+      "text": "Waiting for feedback"
+    },
+    "120": {
+      "text": "UI"
+    },
+    "121": {
+      "text": "Able to hover over"
+    },
+    "122": {
+      "text": "Show the options"
+    },
+    "123": {
+      "text": "Not closing until the mouse is out of the icon"
+    },
+    "124": {
+      "text": "And the options"
+    },
+    "125": {
+      "text": "Need to have the header and footer in the email"
+    },
+    "126": {
+      "text": "Copy it from the magento admin"
+    }
+  },
+  "meta": {
+    "0": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "children": [
+            31,
+            34
+          ],
+          "selected": true
+        }
+      }
+    },
+    "1": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 34,
+          "children": [
+            14,
+            15
+          ],
+          "foldDescendants": true,
+          "selected": true,
+          "foldAncestors": true
+        }
+      }
+    },
+    "2": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 34,
+          "children": [
+            3,
+            4
+          ],
+          "selected": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "3": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 2
+        }
+      }
+    },
+    "4": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 2
+        }
+      }
+    },
+    "5": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 8
+        }
+      }
+    },
+    "6": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 8
+        }
+      }
+    },
+    "7": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 15,
+          "children": [
+            9,
+            10
+          ]
+        }
+      }
+    },
+    "8": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 15,
+          "children": [
+            5,
+            6
+          ],
+          "selected": true
+        }
+      }
+    },
+    "9": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 7
+        }
+      }
+    },
+    "10": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 7
+        }
+      }
+    },
+    "11": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "12": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "13": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "14": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 1,
+          "children": [
+            16,
+            17,
+            18
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "15": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 1,
+          "children": [
+            7,
+            22,
+            8
+          ],
+          "selected": true
+        }
+      }
+    },
+    "16": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "17": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "18": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14
+        }
+      }
+    },
+    "19": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 34,
+          "children": [
+            24,
+            25,
+            101
+          ],
+          "selected": true
+        }
+      }
+    },
+    "20": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24
+        }
+      }
+    },
+    "21": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 24
+        }
+      }
+    },
+    "22": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 15,
+          "children": [
+            23
+          ],
+          "selected": true
+        }
+      }
+    },
+    "23": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 22
+        }
+      }
+    },
+    "24": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 19,
+          "children": [
+            11,
+            12,
+            13,
+            20,
+            21
+          ]
+        }
+      }
+    },
+    "25": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 19,
+          "children": [
+            26
+          ],
+          "selected": true
+        }
+      }
+    },
+    "26": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25,
+          "children": [
+            27,
+            28,
+            29,
+            30
+          ],
+          "selected": true
+        }
+      }
+    },
+    "27": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "28": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "29": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "30": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "31": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            32,
+            33
+          ],
+          "selected": true
+        }
+      }
+    },
+    "32": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31,
+          "children": [
+            61
+          ],
+          "selected": true
+        }
+      }
+    },
+    "33": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31,
+          "children": [
+            35,
+            36,
+            37,
+            38,
+            39
+          ],
+          "selected": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "34": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            1,
+            2,
+            19
+          ],
+          "selected": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "35": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33
+        }
+      }
+    },
+    "36": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33
+        }
+      }
+    },
+    "37": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33,
+          "children": [
+            40,
+            42
+          ],
+          "selected": true
+        }
+      }
+    },
+    "38": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33
+        }
+      }
+    },
+    "39": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 33
+        }
+      }
+    },
+    "40": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37,
+          "children": [
+            41
+          ],
+          "selected": true
+        }
+      }
+    },
+    "41": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40
+        }
+      }
+    },
+    "42": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37,
+          "children": [
+            43,
+            44,
+            45,
+            50
+          ],
+          "selected": true
+        }
+      }
+    },
+    "43": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42
+        }
+      }
+    },
+    "44": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42,
+          "children": [
+            46,
+            47,
+            48,
+            49,
+            55
+          ],
+          "selected": true
+        }
+      }
+    },
+    "45": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42
+        }
+      }
+    },
+    "46": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44
+        }
+      }
+    },
+    "47": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44
+        }
+      }
+    },
+    "48": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44
+        }
+      }
+    },
+    "49": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44,
+          "children": [
+            54,
+            59
+          ],
+          "selected": true
+        }
+      }
+    },
+    "50": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42,
+          "children": [
+            51,
+            52,
+            53
+          ],
+          "selected": true
+        }
+      }
+    },
+    "51": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50
+        }
+      }
+    },
+    "52": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "53": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50
+        }
+      }
+    },
+    "54": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 49
+        }
+      }
+    },
+    "55": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44,
+          "children": [
+            56,
+            58
+          ],
+          "selected": true
+        }
+      }
+    },
+    "56": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 55,
+          "children": [
+            57
+          ],
+          "selected": true
+        }
+      }
+    },
+    "57": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 56
+        }
+      }
+    },
+    "58": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 55
+        }
+      }
+    },
+    "59": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 49,
+          "children": [
+            60
+          ],
+          "selected": true
+        }
+      }
+    },
+    "60": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 59
+        }
+      }
+    },
+    "61": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 32,
+          "children": [
+            62,
+            65,
+            66,
+            67,
+            68,
+            69,
+            106
+          ]
+        }
+      }
+    },
+    "62": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 61,
+          "children": [
+            63,
+            64,
+            103,
+            109
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "63": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 62
+        }
+      }
+    },
+    "64": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 62
+        }
+      }
+    },
+    "65": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 62,
+          "children": [
+            70,
+            74
+          ],
+          "selected": true
+        }
+      }
+    },
+    "66": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 61,
+          "children": [
+            86,
+            110,
+            118
+          ],
+          "selected": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "67": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 61,
+          "children": [
+            87,
+            90
+          ],
+          "foldAncestors": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "68": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 61,
+          "children": [
+            91,
+            93,
+            94,
+            95
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "69": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 61,
+          "children": [
+            92,
+            96,
+            97
+          ],
+          "foldAncestors": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "70": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 65,
+          "children": [
+            71,
+            72,
+            73,
+            82,
+            84
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "71": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 70
+        }
+      }
+    },
+    "72": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 70,
+          "children": [
+            76
+          ],
+          "selected": true
+        }
+      }
+    },
+    "73": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 70
+        }
+      }
+    },
+    "74": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 65,
+          "children": [
+            75,
+            89,
+            77
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "75": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 74
+        }
+      }
+    },
+    "76": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 72
+        }
+      }
+    },
+    "77": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 74,
+          "children": [
+            78,
+            80
+          ],
+          "selected": true
+        }
+      }
+    },
+    "78": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77,
+          "children": [
+            79
+          ],
+          "selected": true
+        }
+      }
+    },
+    "79": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 78
+        }
+      }
+    },
+    "80": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77,
+          "children": [
+            81
+          ],
+          "selected": true
+        }
+      }
+    },
+    "81": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 80,
+          "children": []
+        }
+      }
+    },
+    "82": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 70,
+          "children": [
+            83
+          ],
+          "selected": true
+        }
+      }
+    },
+    "83": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 82
+        }
+      }
+    },
+    "84": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 70,
+          "children": [
+            85
+          ],
+          "selected": true
+        }
+      }
+    },
+    "85": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 84
+        }
+      }
+    },
+    "86": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 66,
+          "children": [
+            88
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "87": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 67
+        }
+      }
+    },
+    "88": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 86
+        }
+      }
+    },
+    "89": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 74
+        }
+      }
+    },
+    "90": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 67
+        }
+      }
+    },
+    "91": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 68
+        }
+      }
+    },
+    "92": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 69
+        }
+      }
+    },
+    "93": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 68
+        }
+      }
+    },
+    "94": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 68
+        }
+      }
+    },
+    "95": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 68
+        }
+      }
+    },
+    "96": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 69
+        }
+      }
+    },
+    "97": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 69,
+          "children": [
+            98,
+            99,
+            100,
+            120
+          ],
+          "selected": true
+        }
+      }
+    },
+    "98": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97
+        }
+      }
+    },
+    "99": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97
+        }
+      }
+    },
+    "100": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97,
+          "children": [
+            125,
+            126
+          ],
+          "selected": true
+        }
+      }
+    },
+    "101": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 19,
+          "children": [
+            102
+          ],
+          "selected": true
+        }
+      }
+    },
+    "102": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 101,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "103": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 62,
+          "children": [
+            104,
+            105
+          ],
+          "selected": true
+        }
+      }
+    },
+    "104": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 103
+        }
+      }
+    },
+    "105": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 103
+        }
+      }
+    },
+    "106": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 61,
+          "children": [
+            107
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "107": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 106,
+          "children": [
+            108
+          ],
+          "selected": true
+        }
+      }
+    },
+    "108": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 107
+        }
+      }
+    },
+    "109": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 62,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "110": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 66,
+          "children": [
+            115,
+            114
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "111": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 115
+        }
+      }
+    },
+    "112": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 115
+        }
+      }
+    },
+    "113": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 115
+        }
+      }
+    },
+    "114": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 110,
+          "children": [
+            116,
+            117
+          ],
+          "selected": true
+        }
+      }
+    },
+    "115": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 110,
+          "children": [
+            111,
+            112,
+            113
+          ],
+          "selected": true
+        }
+      }
+    },
+    "116": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 114
+        }
+      }
+    },
+    "117": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 114
+        }
+      }
+    },
+    "118": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 66,
+          "children": [
+            119
+          ],
+          "selected": true
+        }
+      }
+    },
+    "119": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 118
+        }
+      }
+    },
+    "120": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97,
+          "children": [
+            121,
+            122,
+            123,
+            124
+          ],
+          "selected": true
+        }
+      }
+    },
+    "121": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 120
+        }
+      }
+    },
+    "122": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 120
+        }
+      }
+    },
+    "123": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 120
+        }
+      }
+    },
+    "124": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 120
+        }
+      }
+    },
+    "125": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 100
+        }
+      }
+    },
+    "126": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 100
+        }
+      }
+    },
+    "mainId": 0
+  }
+}
