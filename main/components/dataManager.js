@@ -44,7 +44,7 @@ class DataManager {
         return;
       }
       rv.active = e.detail.versionName;
-      let data = this.getData(id);
+      let data = this.getData(id, true);
       Event.dispatch(Event.REPLACE_DATA, {
         node: e.detail.node,
         data: data
@@ -94,26 +94,30 @@ class DataManager {
     window.addEventListener(Event.APPEND_NODE, (e) => {
       let pData = e.detail.parent.data;
       let cData = e.detail.child.data;
-      let pRev = this.getActiveRevision(pData.id);
+      let newParentRev = this.getActiveRevision(pData.id);
 
-      if (pRev.children == undefined)
-        pRev.children = [];
-      pRev.children.push(cData.id);
+      if (newParentRev.children == undefined)
+        newParentRev.children = [];
+      newParentRev.children.push(cData.id);
 
       let childRevision = this.getActiveRevision(cData.id);
       if (childRevision.parentId == pData.id) {
         throw new Error(`${pData.id} Already set as a parent, please check for error`);
       }
-      let prevRev = this.getActiveRevision(childRevision.parentId);
-      let index = prevRev.children.indexOf(cData.id);
-      prevRev.children.splice(index, 1);
+      let currentParentRev = this.getActiveRevision(childRevision.parentId);
+      let index = currentParentRev.children.indexOf(cData.id);
+      currentParentRev.children.splice(index, 1);
 
       childRevision.parentId = pData.id;
-      let d3Data = this.getData(this.json.meta.mainId);
+      let d3Data = this.getData(this.json.meta.mainId, true);
       let root = d3.hierarchy(d3Data, function(d) {
-        return d.children; 
+        return d.children;
       });
       Event.dispatch(Event.REPLACE_ROOT, {root: root});
+
+      // Only update certain part
+      // But we don't know where did they attached or removed the node
+      // It can be anywhere so everything must be updated
     });
   }
 
@@ -374,22 +378,18 @@ class DataManager {
     let mainId = json.meta.mainId;
     let mData = undefined;
     // MainId or the deepest node with foldAncestors attribute;
-    this.count = 0;
-    this.parentIds = [];
-    let data = this.getData(mainId, (activeRev, id, d) => {
-      if (activeRev.foldAncestors) {
-        mainId = id;
-        mData = d;
-        mData.parentId = undefined;
-      }
-    });
+    let data = this.getData(mainId, true);
     if (mData != undefined) {
       return mData;
     }
     return data;
   }
 
-  getData(id) {
+  getData(id, trackDuplicateParents = false) {
+    if (trackDuplicateParents) {
+      this.parentIds = [];
+    }
+
     let index = this.parentIds.indexOf(id);
     if (index != -1) {
       throw new Error("Called twice at index : " + index + " id: " + id);
