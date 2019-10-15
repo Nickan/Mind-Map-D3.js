@@ -53,6 +53,84 @@
     },
     "17": {
       "text": "Have to train about how symbol works"
+    },
+    "18": {
+      "text": "Implement DeepQ from scratch in galaga game"
+    },
+    "19": {
+      "text": "Setup the game to be modular"
+    },
+    "20": {
+      "text": "To accomodate the implementation"
+    },
+    "21": {
+      "text": "Then make mistakes from their"
+    },
+    "22": {
+      "text": "This is the fastest way for me to learn"
+    },
+    "23": {
+      "text": "As I have to test all of my assumptions"
+    },
+    "24": {
+      "text": "Then build up the ideas from there"
+    },
+    "25": {
+      "text": "Deliberation"
+    },
+    "26": {
+      "text": "Fix the error when closing the game"
+    },
+    "27": {
+      "text": "Deliberation"
+    },
+    "28": {
+      "text": "Current"
+    },
+    "29": {
+      "text": "Make the game a whole class"
+    },
+    "30": {
+      "text": "So that we can restart the game easy"
+    },
+    "31": {
+      "text": "And only access necessary data"
+    },
+    "32": {
+      "text": "Need to know the decision of setting hyperparameters"
+    },
+    "33": {
+      "text": "Conv2d"
+    },
+    "34": {
+      "text": "Linear"
+    },
+    "35": {
+      "text": "Relu"
+    },
+    "36": {
+      "text": "Weights"
+    },
+    "37": {
+      "text": "Deep Learning"
+    },
+    "38": {
+      "text": "What is optimizer"
+    },
+    "39": {
+      "text": "Loss"
+    },
+    "40": {
+      "text": "Flow"
+    },
+    "41": {
+      "text": "init optimizer"
+    },
+    "42": {
+      "text": "Init loss"
+    },
+    "43": {
+      "text": "init game state"
     }
   },
   "meta": {
@@ -62,6 +140,7 @@
         "default": {
           "children": [
             1,
+            18,
             9
           ],
           "selected": true
@@ -78,7 +157,8 @@
             4,
             5,
             6,
-            7
+            7,
+            37
           ],
           "selected": true
         }
@@ -233,6 +313,263 @@
       "revisions": {
         "default": {
           "parentId": 7
+        }
+      }
+    },
+    "18": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            25,
+            28
+          ],
+          "selected": true
+        }
+      }
+    },
+    "19": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 27,
+          "children": [
+            20
+          ],
+          "selected": true
+        }
+      }
+    },
+    "20": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 19
+        }
+      }
+    },
+    "21": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25
+        }
+      }
+    },
+    "22": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "23": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25
+        }
+      }
+    },
+    "24": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25
+        }
+      }
+    },
+    "25": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 18,
+          "children": [
+            26,
+            21,
+            22,
+            23,
+            24
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "26": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25
+        }
+      }
+    },
+    "27": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 18,
+          "children": []
+        }
+      }
+    },
+    "28": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 18,
+          "children": [
+            29,
+            30,
+            31
+          ],
+          "selected": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "29": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 28
+        }
+      }
+    },
+    "30": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 28
+        }
+      }
+    },
+    "31": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 28
+        }
+      }
+    },
+    "32": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37,
+          "children": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "selected": true
+        }
+      }
+    },
+    "33": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 32
+        }
+      }
+    },
+    "34": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 32
+        }
+      }
+    },
+    "35": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 32
+        }
+      }
+    },
+    "36": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 32
+        }
+      }
+    },
+    "37": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 1,
+          "children": [
+            32,
+            40
+          ],
+          "selected": true
+        }
+      }
+    },
+    "38": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 32
+        }
+      }
+    },
+    "39": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 32
+        }
+      }
+    },
+    "40": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37,
+          "children": [
+            41,
+            42,
+            43
+          ],
+          "selected": true
+        }
+      }
+    },
+    "41": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "42": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40
+        }
+      }
+    },
+    "43": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40
         }
       }
     },
