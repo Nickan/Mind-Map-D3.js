@@ -206,6 +206,90 @@
     },
     "68": {
       "text": "Current"
+    },
+    "69": {
+      "text": "10-16-19"
+    },
+    "70": {
+      "text": "Tasks"
+    },
+    "71": {
+      "text": "Finished"
+    },
+    "72": {
+      "text": "Break down the tasks more so that they can see the complexity"
+    },
+    "73": {
+      "text": "Estimates"
+    },
+    "74": {
+      "text": "And justify the time"
+    },
+    "75": {
+      "text": "10-22-19"
+    },
+    "76": {
+      "text": "Cable Assembly Builder"
+    },
+    "77": {
+      "text": "Request for quote"
+    },
+    "78": {
+      "text": "Need a request for quote plugin which can save from the cart"
+    },
+    "79": {
+      "text": "And send email"
+    },
+    "80": {
+      "text": "History"
+    },
+    "81": {
+      "text": "To test"
+    },
+    "82": {
+      "text": "Questions"
+    },
+    "83": {
+      "text": "How to create a json file from backend to frontend"
+    },
+    "84": {
+      "text": "Which will be the matrix for the cable assembly?"
+    },
+    "85": {
+      "text": "It should contains all the necessary conditions for cable assemblies"
+    },
+    "86": {
+      "text": "Not defined..."
+    },
+    "87": {
+      "text": "Create prototype"
+    },
+    "88": {
+      "text": "What to prove?"
+    },
+    "89": {
+      "text": "Able to create a finished json to process on the front end"
+    },
+    "90": {
+      "text": "Need to find a plugin which meets the ff:"
+    },
+    "91": {
+      "text": "Able to create a list of products in the wishlist"
+    },
+    "92": {
+      "text": "Able to create rfq based on the wishlist"
+    },
+    "93": {
+      "text": "Able to select specific multiple products then remove it from the list"
+    },
+    "94": {
+      "text": "Able to send email based on the RFQ"
+    },
+    "95": {
+      "text": "Able to send email when there is a modification in the wishlist"
+    },
+    "96": {
+      "text": "Check first the system"
     }
   },
   "meta": {
@@ -214,9 +298,8 @@
       "revisions": {
         "default": {
           "children": [
-            1,
-            2,
-            3,
+            80,
+            75,
             59
           ],
           "selected": true
@@ -227,10 +310,8 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0,
-          "children": [
-            4
-          ],
+          "parentId": 80,
+          "children": [],
           "selected": true
         }
       }
@@ -239,11 +320,13 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0,
+          "parentId": 80,
           "children": [
             57
           ],
-          "selected": true
+          "selected": true,
+          "foldAncestors": true,
+          "foldDescendants": true
         }
       }
     },
@@ -251,7 +334,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0
+          "parentId": 80
         }
       }
     },
@@ -259,7 +342,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 1,
+          "parentId": 73,
           "children": [
             68,
             67
@@ -341,7 +424,9 @@
             9,
             14
           ],
-          "foldDescendants": true
+          "foldDescendants": true,
+          "selected": true,
+          "foldAncestors": true
         }
       }
     },
@@ -360,7 +445,9 @@
             46,
             56
           ],
-          "foldDescendants": true
+          "foldDescendants": true,
+          "selected": true,
+          "foldAncestors": true
         }
       }
     },
@@ -412,7 +499,7 @@
             18,
             21
           ],
-          "foldDescendants": true
+          "foldAncestors": true
         }
       }
     },
@@ -562,7 +649,9 @@
             30,
             31
           ],
-          "foldDescendants": true
+          "foldDescendants": true,
+          "selected": true,
+          "foldAncestors": true
         }
       }
     },
@@ -933,6 +1022,309 @@
             16,
             29
           ]
+        }
+      }
+    },
+    "69": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 80,
+          "children": [
+            70,
+            71
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "70": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 69,
+          "children": [
+            73
+          ],
+          "selected": true
+        }
+      }
+    },
+    "71": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 69
+        }
+      }
+    },
+    "72": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 73
+        }
+      }
+    },
+    "73": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 70,
+          "children": [
+            72,
+            74,
+            4
+          ],
+          "selected": true
+        }
+      }
+    },
+    "74": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 73
+        }
+      }
+    },
+    "75": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            76,
+            77
+          ],
+          "selected": true
+        }
+      }
+    },
+    "76": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 75,
+          "children": [
+            81,
+            82
+          ],
+          "selected": true
+        }
+      }
+    },
+    "77": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 75,
+          "children": [
+            78,
+            79,
+            96
+          ],
+          "selected": true
+        }
+      }
+    },
+    "78": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77,
+          "children": [
+            90
+          ],
+          "selected": true
+        }
+      }
+    },
+    "79": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77
+        }
+      }
+    },
+    "80": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            3,
+            2,
+            1,
+            69
+          ]
+        }
+      }
+    },
+    "81": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 76,
+          "children": [
+            85
+          ],
+          "selected": true
+        }
+      }
+    },
+    "82": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 76,
+          "children": [
+            83,
+            84
+          ],
+          "selected": true
+        }
+      }
+    },
+    "83": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 82,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "84": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 82
+        }
+      }
+    },
+    "85": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 81,
+          "children": [
+            86,
+            87
+          ],
+          "selected": true
+        }
+      }
+    },
+    "86": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 85
+        }
+      }
+    },
+    "87": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 85,
+          "children": [
+            88
+          ],
+          "selected": true
+        }
+      }
+    },
+    "88": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 87,
+          "children": [
+            89
+          ],
+          "selected": true
+        }
+      }
+    },
+    "89": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 88
+        }
+      }
+    },
+    "90": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 78,
+          "children": [
+            91,
+            92
+          ],
+          "selected": true
+        }
+      }
+    },
+    "91": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 90,
+          "children": [
+            95
+          ],
+          "selected": true
+        }
+      }
+    },
+    "92": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 90,
+          "children": [
+            93,
+            94
+          ],
+          "selected": true
+        }
+      }
+    },
+    "93": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 92
+        }
+      }
+    },
+    "94": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 92
+        }
+      }
+    },
+    "95": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 91
+        }
+      }
+    },
+    "96": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77
         }
       }
     },
