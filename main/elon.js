@@ -37,9 +37,10 @@ $(document).ready(() => {
           break;
         case "Control": controlDown = true;
           break;
-        case "s":
-        case "S": if (controlDown) {
-            Event.dispatch(Event.SAVE, {root: elonComponent.root});
+        case "c":
+        case "C": if (controlDown) {
+            console.log("Copy");
+            Event.dispatch(Event.ON_COPY_NODE);
             controlDown = false;
             ev.preventDefault();
           }
@@ -47,6 +48,13 @@ $(document).ready(() => {
         case "o":
         case "O": if (controlDown) {
             Event.dispatch(Event.LOAD_JSON_FILE, {});
+            controlDown = false;
+            ev.preventDefault();
+          }
+          break;
+        case "s":
+        case "S": if (controlDown) {
+            Event.dispatch(Event.SAVE, {root: elonComponent.root});
             controlDown = false;
             ev.preventDefault();
           }
@@ -63,7 +71,6 @@ $(document).ready(() => {
     document.onkeyup = function(ev) {
       switch (ev.key) {
         case "Control": controlDown = false;
-          console.log("Control up");
           ev.preventDefault();
           break;
         default:
