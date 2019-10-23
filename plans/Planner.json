@@ -74,6 +74,57 @@
     },
     "24": {
       "text": "There might be other ways to highlight needed node"
+    },
+    "25": {
+      "text": "Copy paste"
+    },
+    "26": {
+      "text": "Copy"
+    },
+    "27": {
+      "text": "Paste"
+    },
+    "28": {
+      "text": "Able to get the data of the selected node"
+    },
+    "29": {
+      "text": "Able to paste the node on the selected node"
+    },
+    "30": {
+      "text": "As a child"
+    },
+    "31": {
+      "text": "Draft"
+    },
+    "32": {
+      "text": "Create as many node as possible in the same depth level"
+    },
+    "33": {
+      "text": "Worry arrangement later"
+    },
+    "34": {
+      "text": "The idea is to throw a lot of ideas in short period of time"
+    },
+    "35": {
+      "text": "Before executing"
+    },
+    "36": {
+      "text": "So that we can have as many options as possible"
+    },
+    "37": {
+      "text": "Then choose the best solution in a given amount of time"
+    },
+    "38": {
+      "text": "And feel the progress of what I am doing"
+    },
+    "39": {
+      "text": "Recursively get the data and its descendants"
+    },
+    "40": {
+      "text": "Create copy of it"
+    },
+    "41": {
+      "text": "Basically cloning it"
     }
   },
   "meta": {
@@ -97,7 +148,8 @@
           "parentId": 0,
           "children": [
             2,
-            3
+            3,
+            25
           ],
           "selected": true
         }
@@ -121,7 +173,7 @@
           "children": [
             8
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -237,7 +289,8 @@
             16,
             17,
             18,
-            19
+            19,
+            31
           ],
           "selected": true
         }
@@ -329,6 +382,173 @@
       "revisions": {
         "default": {
           "parentId": 22
+        }
+      }
+    },
+    "25": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 1,
+          "children": [
+            26,
+            27
+          ],
+          "selected": true
+        }
+      }
+    },
+    "26": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25,
+          "children": [
+            28,
+            41
+          ],
+          "selected": true
+        }
+      }
+    },
+    "27": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25,
+          "children": [
+            29,
+            30,
+            39,
+            40
+          ],
+          "selected": true
+        }
+      }
+    },
+    "28": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "29": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 27,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "30": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 27,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "31": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 14,
+          "children": [
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38
+          ],
+          "selected": true
+        }
+      }
+    },
+    "32": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31
+        }
+      }
+    },
+    "33": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31
+        }
+      }
+    },
+    "34": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31
+        }
+      }
+    },
+    "35": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31
+        }
+      }
+    },
+    "36": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31
+        }
+      }
+    },
+    "37": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31
+        }
+      }
+    },
+    "38": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 31
+        }
+      }
+    },
+    "39": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 27
+        }
+      }
+    },
+    "40": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 27
+        }
+      }
+    },
+    "41": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
         }
       }
     },

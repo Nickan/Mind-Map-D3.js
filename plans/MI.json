@@ -131,6 +131,18 @@
     },
     "43": {
       "text": "init game state"
+    },
+    "44": {
+      "text": "10-15-19"
+    },
+    "45": {
+      "text": "Need to know the Data Structure"
+    },
+    "46": {
+      "text": "Why does it need to have relu in between convolutional nn?"
+    },
+    "47": {
+      "text": "Convolutional vs normal neural network?"
     }
   },
   "meta": {
@@ -196,7 +208,7 @@
           "children": [
             13
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -217,7 +229,7 @@
             8,
             17
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -238,7 +250,7 @@
             10,
             11
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -325,7 +337,7 @@
             25,
             28
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -511,7 +523,8 @@
           "parentId": 1,
           "children": [
             32,
-            40
+            40,
+            44
           ],
           "selected": true
         }
@@ -570,6 +583,51 @@
       "revisions": {
         "default": {
           "parentId": 40
+        }
+      }
+    },
+    "44": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37,
+          "children": [
+            45
+          ],
+          "selected": true
+        }
+      }
+    },
+    "45": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44,
+          "children": [
+            46,
+            47
+          ],
+          "selected": true
+        }
+      }
+    },
+    "46": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 45,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "47": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 45,
+          "children": [],
+          "selected": true
         }
       }
     },
