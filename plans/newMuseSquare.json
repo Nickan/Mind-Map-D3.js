@@ -110,6 +110,126 @@
     },
     "36": {
       "text": "Testing"
+    },
+    "37": {
+      "text": "History"
+    },
+    "38": {
+      "text": "11-12-19"
+    },
+    "39": {
+      "text": "Tasks"
+    },
+    "40": {
+      "text": "Implement Special offer"
+    },
+    "41": {
+      "text": "Front-end"
+    },
+    "42": {
+      "text": "Backend"
+    },
+    "43": {
+      "text": "Able to get the data from backend"
+    },
+    "44": {
+      "text": "V1"
+    },
+    "45": {
+      "text": "Able to know the current date and decide what to do about it"
+    },
+    "46": {
+      "text": "Just get the data and let the front-end decide how to present it"
+    },
+    "47": {
+      "text": "Design"
+    },
+    "48": {
+      "text": "V1"
+    },
+    "49": {
+      "text": "Give all the data to the front-end(localStorage)"
+    },
+    "50": {
+      "text": "Get the following data"
+    },
+    "51": {
+      "text": "Promotion start"
+    },
+    "52": {
+      "text": "Promotion end"
+    },
+    "53": {
+      "text": "Promoted Edtion"
+    },
+    "54": {
+      "text": "Offered edtion"
+    },
+    "55": {
+      "text": "Check if the promotion has ended"
+    },
+    "56": {
+      "text": "Create product API"
+    },
+    "57": {
+      "text": "Search for product API from Magento"
+    },
+    "58": {
+      "text": "To test"
+    },
+    "59": {
+      "text": "Need all the data and attributes based of the product"
+    },
+    "60": {
+      "text": "Code structure"
+    },
+    "61": {
+      "text": "Should I separate the script file?"
+    },
+    "62": {
+      "text": "Mini Tasks"
+    },
+    "63": {
+      "text": "Tasks"
+    },
+    "64": {
+      "text": "Use event listeners to make things modular"
+    },
+    "65": {
+      "text": "Refactor existing dropdown menu"
+    },
+    "66": {
+      "text": "Integrate special products"
+    },
+    "67": {
+      "text": "Will be used in modular arts as well"
+    },
+    "68": {
+      "text": "Separate the operation of dropdown as script"
+    },
+    "69": {
+      "text": "Manage the loading of items there"
+    },
+    "70": {
+      "text": "Always use the event listener to make things modular"
+    },
+    "71": {
+      "text": "Code structuring guidelines"
+    },
+    "72": {
+      "text": "So that it will be easier to debug and develop"
+    },
+    "73": {
+      "text": "API call for product to get all the necessary data"
+    },
+    "74": {
+      "text": "Needed for time-based events"
+    },
+    "75": {
+      "text": "Such as promotion"
+    },
+    "76": {
+      "text": "And art/product info update"
     }
   },
   "meta": {
@@ -118,9 +238,9 @@
       "revisions": {
         "default": {
           "children": [
-            1,
-            2,
-            3
+            37,
+            38,
+            71
           ],
           "selected": true
         }
@@ -130,7 +250,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0,
+          "parentId": 37,
           "children": [
             4,
             6
@@ -143,7 +263,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0
+          "parentId": 37
         }
       }
     },
@@ -151,7 +271,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0
+          "parentId": 37
         }
       }
     },
@@ -164,7 +284,7 @@
             35,
             36
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -482,6 +602,425 @@
       "revisions": {
         "default": {
           "parentId": 4
+        }
+      }
+    },
+    "37": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            1,
+            2,
+            3
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "38": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            39
+          ],
+          "selected": true
+        }
+      }
+    },
+    "39": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 38,
+          "children": [
+            40
+          ],
+          "selected": true
+        }
+      }
+    },
+    "40": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 39,
+          "children": [
+            41,
+            42,
+            44,
+            47
+          ],
+          "selected": true
+        }
+      }
+    },
+    "41": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40,
+          "children": [
+            43
+          ],
+          "selected": true
+        }
+      }
+    },
+    "42": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40
+        }
+      }
+    },
+    "43": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 41
+        }
+      }
+    },
+    "44": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40,
+          "children": [
+            45,
+            46
+          ],
+          "selected": true
+        }
+      }
+    },
+    "45": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44
+        }
+      }
+    },
+    "46": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 44
+        }
+      }
+    },
+    "47": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40,
+          "children": [
+            48,
+            63
+          ],
+          "selected": true
+        }
+      }
+    },
+    "48": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 47,
+          "children": [
+            49,
+            50,
+            55,
+            56,
+            60
+          ],
+          "selected": true
+        }
+      }
+    },
+    "49": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 48,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "50": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 48,
+          "children": [
+            51,
+            52,
+            53,
+            54
+          ],
+          "selected": true
+        }
+      }
+    },
+    "51": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "52": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "53": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50
+        }
+      }
+    },
+    "54": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 50
+        }
+      }
+    },
+    "55": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 48
+        }
+      }
+    },
+    "56": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 48,
+          "children": [
+            57,
+            58
+          ],
+          "selected": true
+        }
+      }
+    },
+    "57": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 56
+        }
+      }
+    },
+    "58": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 56,
+          "children": [
+            59
+          ],
+          "selected": true
+        }
+      }
+    },
+    "59": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 58
+        }
+      }
+    },
+    "60": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 48,
+          "children": [
+            61
+          ],
+          "selected": true
+        }
+      }
+    },
+    "61": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 60
+        }
+      }
+    },
+    "62": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 40
+        }
+      }
+    },
+    "63": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 47,
+          "children": [
+            64,
+            65,
+            66,
+            67,
+            68,
+            73
+          ],
+          "selected": true
+        }
+      }
+    },
+    "64": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 63
+        }
+      }
+    },
+    "65": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 63
+        }
+      }
+    },
+    "66": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 63
+        }
+      }
+    },
+    "67": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 63
+        }
+      }
+    },
+    "68": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 63,
+          "children": [
+            69
+          ],
+          "selected": true
+        }
+      }
+    },
+    "69": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 68
+        }
+      }
+    },
+    "70": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 71,
+          "children": [
+            72
+          ],
+          "selected": true
+        }
+      }
+    },
+    "71": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            70
+          ],
+          "selected": true
+        }
+      }
+    },
+    "72": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 70
+        }
+      }
+    },
+    "73": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 63,
+          "children": [
+            74
+          ],
+          "selected": true
+        }
+      }
+    },
+    "74": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 73,
+          "children": [
+            75,
+            76
+          ],
+          "selected": true
+        }
+      }
+    },
+    "75": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 74
+        }
+      }
+    },
+    "76": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 74
         }
       }
     },
