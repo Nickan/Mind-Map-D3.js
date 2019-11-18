@@ -230,6 +230,54 @@
     },
     "76": {
       "text": "And art/product info update"
+    },
+    "77": {
+      "text": "11-18-19"
+    },
+    "78": {
+      "text": "Review previous task"
+    },
+    "79": {
+      "text": "Implement dropdown modular"
+    },
+    "80": {
+      "text": "Art simulator dropdown"
+    },
+    "81": {
+      "text": "Set the text for the modular dropdown"
+    },
+    "82": {
+      "text": "As text?"
+    },
+    "83": {
+      "text": "There might be a problem with the correctly loading"
+    },
+    "84": {
+      "text": "As we have to query how many children"
+    },
+    "85": {
+      "text": "A modular parent have"
+    },
+    "86": {
+      "text": "SolutionV1: just implement it then solve it afterwards"
+    },
+    "87": {
+      "text": "Art Preview simulator"
+    },
+    "88": {
+      "text": "Will occupy all the space for the art preview"
+    },
+    "89": {
+      "text": "Removes other arts if modular is selected"
+    },
+    "90": {
+      "text": "V1"
+    },
+    "91": {
+      "text": "Code implementation"
+    },
+    "92": {
+      "text": "Has to be simple and easy to implement"
     }
   },
   "meta": {
@@ -239,7 +287,7 @@
         "default": {
           "children": [
             37,
-            38,
+            77,
             71
           ],
           "selected": true
@@ -613,7 +661,8 @@
           "children": [
             1,
             2,
-            3
+            3,
+            38
           ],
           "foldDescendants": true
         }
@@ -623,7 +672,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0,
+          "parentId": 37,
           "children": [
             39
           ],
@@ -1021,6 +1070,174 @@
       "revisions": {
         "default": {
           "parentId": 74
+        }
+      }
+    },
+    "77": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            78,
+            79,
+            80,
+            87
+          ],
+          "selected": true
+        }
+      }
+    },
+    "78": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77,
+          "children": [
+            81
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "79": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77,
+          "children": [
+            82,
+            83
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "80": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77
+        }
+      }
+    },
+    "81": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 78
+        }
+      }
+    },
+    "82": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 79,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "83": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 79,
+          "children": [
+            84,
+            85,
+            86
+          ],
+          "selected": true
+        }
+      }
+    },
+    "84": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 83
+        }
+      }
+    },
+    "85": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 83
+        }
+      }
+    },
+    "86": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 83,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "87": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 77,
+          "children": [
+            90
+          ],
+          "selected": true
+        }
+      }
+    },
+    "88": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 90
+        }
+      }
+    },
+    "89": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 90
+        }
+      }
+    },
+    "90": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 87,
+          "children": [
+            88,
+            89,
+            91
+          ],
+          "selected": true
+        }
+      }
+    },
+    "91": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 90,
+          "children": [
+            92
+          ],
+          "selected": true
+        }
+      }
+    },
+    "92": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 91
         }
       }
     },
