@@ -1,28 +1,109 @@
 {
   "nodes": {
     "0": {
-      "text": "Faster and easier"
+      "text": "Main"
     },
     "1": {
-      "text": "Daily Update"
+      "text": "V1"
     },
     "2": {
-      "text": "Jibble"
+      "text": "Daily Update"
     },
     "3": {
-      "text": "Goal"
+      "text": "JIbble"
     },
     "4": {
-      "text": "Be able to make things easier and faster"
+      "text": "Email"
     },
     "5": {
-      "text": "General tasks1"
+      "text": "Review task"
     },
     "6": {
-      "text": "Tasks"
+      "text": "V2"
     },
     "7": {
-      "text": "Routine"
+      "text": "Start"
+    },
+    "8": {
+      "text": "Prep laptop"
+    },
+    "9": {
+      "text": "Check for the ff:"
+    },
+    "10": {
+      "text": "Laptop"
+    },
+    "11": {
+      "text": "Earphone"
+    },
+    "12": {
+      "text": "Charger"
+    },
+    "13": {
+      "text": "Mouse"
+    },
+    "14": {
+      "text": "Wallet having at least 100php"
+    },
+    "15": {
+      "text": "Motor key"
+    },
+    "16": {
+      "text": "Apartment key"
+    },
+    "17": {
+      "text": "Clothes"
+    },
+    "18": {
+      "text": "T-shirt"
+    },
+    "19": {
+      "text": "Socks"
+    },
+    "20": {
+      "text": "Pants"
+    },
+    "21": {
+      "text": "Food"
+    },
+    "22": {
+      "text": "Rice"
+    },
+    "23": {
+      "text": "Lunch box"
+    },
+    "24": {
+      "text": "Any viand: noodle, tuna"
+    },
+    "25": {
+      "text": "At work"
+    },
+    "26": {
+      "text": "Mindset"
+    },
+    "27": {
+      "text": "Just finish task, nothing else"
+    },
+    "28": {
+      "text": "No other activities"
+    },
+    "29": {
+      "text": "Update while at work"
+    },
+    "30": {
+      "text": "Time schedule"
+    },
+    "31": {
+      "text": "Wake up 6am"
+    },
+    "32": {
+      "text": "Go home 4pm"
+    },
+    "33": {
+      "text": "Study from 5pm to 9pm"
+    },
+    "34": {
+      "text": "Other activities onwards"
     }
   },
   "meta": {
@@ -32,10 +113,9 @@
         "default": {
           "children": [
             1,
-            2,
-            3,
-            5
-          ]
+            6
+          ],
+          "selected": true
         }
       }
     },
@@ -43,7 +123,14 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 5
+          "parentId": 0,
+          "children": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "selected": true
         }
       }
     },
@@ -51,7 +138,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 5
+          "parentId": 1
         }
       }
     },
@@ -59,11 +146,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0,
-          "children": [
-            4
-          ],
-          "selected": true
+          "parentId": 1
         }
       }
     },
@@ -71,7 +154,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 3
+          "parentId": 1
         }
       }
     },
@@ -79,8 +162,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0,
-          "children": []
+          "parentId": 1
         }
       }
     },
@@ -90,7 +172,9 @@
         "default": {
           "parentId": 0,
           "children": [
-            7
+            7,
+            25,
+            30
           ],
           "selected": true
         }
@@ -100,7 +184,272 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 6
+          "parentId": 6,
+          "children": [
+            8,
+            9,
+            17,
+            21
+          ],
+          "selected": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "8": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 7
+        }
+      }
+    },
+    "9": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 7,
+          "children": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "selected": true
+        }
+      }
+    },
+    "10": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9,
+          "children": [],
+          "selected": true
+        }
+      }
+    },
+    "11": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "12": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "13": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "14": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "15": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "16": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 9
+        }
+      }
+    },
+    "17": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 7,
+          "children": [
+            18,
+            19,
+            20
+          ],
+          "selected": true
+        }
+      }
+    },
+    "18": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 17
+        }
+      }
+    },
+    "19": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 17
+        }
+      }
+    },
+    "20": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 17
+        }
+      }
+    },
+    "21": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 7,
+          "children": [
+            22,
+            23,
+            24
+          ],
+          "selected": true
+        }
+      }
+    },
+    "22": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 21
+        }
+      }
+    },
+    "23": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 21
+        }
+      }
+    },
+    "24": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 21
+        }
+      }
+    },
+    "25": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 6,
+          "children": [
+            26,
+            29
+          ],
+          "selected": true
+        }
+      }
+    },
+    "26": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25,
+          "children": [
+            27,
+            28
+          ],
+          "selected": true
+        }
+      }
+    },
+    "27": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "28": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 26
+        }
+      }
+    },
+    "29": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 25
+        }
+      }
+    },
+    "30": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 6,
+          "children": [
+            31,
+            32,
+            33,
+            34
+          ],
+          "selected": true
+        }
+      }
+    },
+    "31": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 30
+        }
+      }
+    },
+    "32": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 30
+        }
+      }
+    },
+    "33": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 30
+        }
+      }
+    },
+    "34": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 30
         }
       }
     },
