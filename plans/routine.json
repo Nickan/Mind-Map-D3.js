@@ -104,6 +104,48 @@
     },
     "34": {
       "text": "Other activities onwards"
+    },
+    "35": {
+      "text": "Todo"
+    },
+    "36": {
+      "text": "Setup music"
+    },
+    "37": {
+      "text": "Make opening of things needed as few steps as possible"
+    },
+    "38": {
+      "text": "Apache error logger"
+    },
+    "39": {
+      "text": "GitExtension"
+    },
+    "40": {
+      "text": "HeidiSQL"
+    },
+    "41": {
+      "text": "Mindmap"
+    },
+    "42": {
+      "text": "Buy Mobile phone to"
+    },
+    "43": {
+      "text": "Motivation for exercise"
+    },
+    "44": {
+      "text": "Try listening while sleeping"
+    },
+    "45": {
+      "text": "Goal"
+    },
+    "46": {
+      "text": "Always find patterns then make it easier"
+    },
+    "47": {
+      "text": "Make things go faster and better"
+    },
+    "48": {
+      "text": "Doing things over and over again, the side effect is success"
     }
   },
   "meta": {
@@ -113,7 +155,9 @@
         "default": {
           "children": [
             1,
-            6
+            6,
+            35,
+            45
           ],
           "selected": true
         }
@@ -130,7 +174,7 @@
             4,
             5
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -175,8 +219,7 @@
             7,
             25,
             30
-          ],
-          "selected": true
+          ]
         }
       }
     },
@@ -192,7 +235,7 @@
             21
           ],
           "selected": true,
-          "foldDescendants": true
+          "foldAncestors": true
         }
       }
     },
@@ -365,7 +408,8 @@
             26,
             29
           ],
-          "selected": true
+          "selected": true,
+          "foldDescendants": true
         }
       }
     },
@@ -417,7 +461,7 @@
             33,
             34
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -450,6 +494,143 @@
       "revisions": {
         "default": {
           "parentId": 30
+        }
+      }
+    },
+    "35": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            36,
+            37,
+            42
+          ],
+          "foldDescendants": true
+        }
+      }
+    },
+    "36": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 35
+        }
+      }
+    },
+    "37": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 35,
+          "children": [
+            38,
+            39,
+            40,
+            41
+          ],
+          "selected": true
+        }
+      }
+    },
+    "38": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37
+        }
+      }
+    },
+    "39": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37
+        }
+      }
+    },
+    "40": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37
+        }
+      }
+    },
+    "41": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 37
+        }
+      }
+    },
+    "42": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 35,
+          "children": [
+            43,
+            44
+          ],
+          "selected": true
+        }
+      }
+    },
+    "43": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42
+        }
+      }
+    },
+    "44": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 42
+        }
+      }
+    },
+    "45": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            46,
+            47,
+            48
+          ],
+          "selected": true,
+          "foldDescendants": true
+        }
+      }
+    },
+    "46": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 45
+        }
+      }
+    },
+    "47": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 45
+        }
+      }
+    },
+    "48": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 45
         }
       }
     },
