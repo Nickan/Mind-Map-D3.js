@@ -278,6 +278,60 @@
     },
     "92": {
       "text": "Has to be simple and easy to implement"
+    },
+    "93": {
+      "text": "12-03-19"
+    },
+    "94": {
+      "text": "Implement the right changes in the /shop for ArtEditor"
+    },
+    "95": {
+      "text": "Implement default state"
+    },
+    "96": {
+      "text": "Border with text in the middle"
+    },
+    "97": {
+      "text": "Steps"
+    },
+    "98": {
+      "text": "Know how to implement the broken line border"
+    },
+    "99": {
+      "text": "Know the height and width of the ArtEditor"
+    },
+    "100": {
+      "text": "Does it change size?"
+    },
+    "101": {
+      "text": "How it is set"
+    },
+    "102": {
+      "text": "Is it by default being set"
+    },
+    "103": {
+      "text": "Check the css"
+    },
+    "104": {
+      "text": "Overlay with text"
+    },
+    "105": {
+      "text": "Will be loaded by default,"
+    },
+    "106": {
+      "text": "When there is a selected art, make it invisible"
+    },
+    "107": {
+      "text": "Get the size based on the size of the swappable grid"
+    },
+    "108": {
+      "text": "As this grid changes dependeng on the number of arts"
+    },
+    "109": {
+      "text": "No selected art"
+    },
+    "110": {
+      "text": "All items are unselect by default"
     }
   },
   "meta": {
@@ -287,8 +341,8 @@
         "default": {
           "children": [
             37,
-            77,
-            71
+            71,
+            93
           ],
           "selected": true
         }
@@ -303,7 +357,7 @@
             4,
             6
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -662,7 +716,8 @@
             1,
             2,
             3,
-            38
+            38,
+            77
           ],
           "foldDescendants": true
         }
@@ -676,7 +731,7 @@
           "children": [
             39
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -1020,7 +1075,7 @@
           "children": [
             70
           ],
-          "selected": true
+          "foldDescendants": true
         }
       }
     },
@@ -1077,7 +1132,7 @@
       "active": "default",
       "revisions": {
         "default": {
-          "parentId": 0,
+          "parentId": 37,
           "children": [
             78,
             79,
@@ -1238,6 +1293,184 @@
       "revisions": {
         "default": {
           "parentId": 91
+        }
+      }
+    },
+    "93": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 0,
+          "children": [
+            94
+          ],
+          "selected": true
+        }
+      }
+    },
+    "94": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 93,
+          "children": [
+            95
+          ],
+          "selected": true
+        }
+      }
+    },
+    "95": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 94,
+          "children": [
+            96,
+            109,
+            110
+          ],
+          "selected": true
+        }
+      }
+    },
+    "96": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 95,
+          "children": [
+            97
+          ]
+        }
+      }
+    },
+    "97": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 96,
+          "children": [
+            98,
+            99,
+            104,
+            105,
+            106,
+            107,
+            108
+          ],
+          "selected": true
+        }
+      }
+    },
+    "98": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97
+        }
+      }
+    },
+    "99": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97,
+          "children": [
+            100,
+            101,
+            102,
+            103
+          ],
+          "selected": true
+        }
+      }
+    },
+    "100": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 99
+        }
+      }
+    },
+    "101": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 99
+        }
+      }
+    },
+    "102": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 99
+        }
+      }
+    },
+    "103": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 99
+        }
+      }
+    },
+    "104": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97
+        }
+      }
+    },
+    "105": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97
+        }
+      }
+    },
+    "106": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97
+        }
+      }
+    },
+    "107": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97
+        }
+      }
+    },
+    "108": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 97
+        }
+      }
+    },
+    "109": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 95
+        }
+      }
+    },
+    "110": {
+      "active": "default",
+      "revisions": {
+        "default": {
+          "parentId": 95
         }
       }
     },
